@@ -1,6 +1,22 @@
 # depslib dependency file v1.0
-1555298050 source:/home/csuser/GroupFWordScramble/WordScramble/main.cpp
+1555634264 source:/home/csuser/GroupFWordScramble/WordScramble/main.cpp
+	"WordScrambleWindow.h"
+
+1555634714 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
+	"WordScrambleWindow.h"
+
+1555635045 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
-	<FL/Fl_Box.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Round_Button.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<FL/Fl_Button.H>
+	<FL/fl_types.h>
+	<Fl/fl_draw.H>
+	<Fl/Fl_File_Chooser.H>
+	<vector>
+	<string>
 
