@@ -28,6 +28,11 @@ private:
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
 
+    Fl_Output *scrambledWordOutputLabel;
+    Fl_Text_Buffer *scrambledWordTextBuffer;
+    Fl_Text_Display *scrambledWordTextDisplay;
+
+
 public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();

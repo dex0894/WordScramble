@@ -17,11 +17,19 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 {
     begin();
 
-    this->possibleWordsOutputLabel = new Fl_Output(135, 50, 0, 0, "Possible Words:");
+    this->possibleWordsOutputLabel = new Fl_Output(135, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 500, 200);
     this->possibleWordsTextDisplay->textfont(FL_COURIER);
     this->possibleWordsTextDisplay->buffer(possibleWordsTextBuffer);
+
+    this->scrambledWordOutputLabel = new Fl_Output(340, 285, 0, 0, "Scrambled Letters");
+    this->scrambledWordTextBuffer = new Fl_Text_Buffer();
+    this->scrambledWordTextDisplay = new Fl_Text_Display(175, 300, 200, 40);
+    this->scrambledWordTextDisplay->textfont(FL_COURIER);
+    this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
+
+
     end();
 }
 
