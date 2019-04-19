@@ -3,12 +3,20 @@
 namespace io
 {
 
-
+//
+//Constructs a new Text File Reader
+//
+//@precondition none
+//@postcondition none
+//
 TextFileReader::TextFileReader()
 {
     //ctor
 }
 
+//
+// Destructor that cleans up all allocated resources
+//
 TextFileReader::~TextFileReader()
 {
     //dtor
@@ -24,7 +32,7 @@ TextFileReader::~TextFileReader()
 vector<string> TextFileReader::readFile()
 {
     string line;
-    ifstream file("dictionary.txt");
+    ifstream file(FILENAME);
 
     if(!file)
     {

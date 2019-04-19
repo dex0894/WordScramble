@@ -15,7 +15,11 @@
 #include <Fl/Fl_File_Chooser.H>
 #include <vector>
 #include <string>
+#include <iostream>
 using namespace std;
+
+#include "../controller/WordScrambleController.h"
+using namespace controller;
 
 namespace view
 {
@@ -37,12 +41,18 @@ private:
     Fl_Button* shuffleButton;
     Fl_Button* restartButton;
     Fl_Button* submitButton;
-
+    WordScrambleController controller;
 
 
 public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
+
+    static void cbShuffle(Fl_Widget* widget, void* data);
+    static void cbSubmit(Fl_Widget* widget, void* data);
+
+    void setPossibleWordsText(const string& outputText);
+    void setScrambledWordText(const string& outputText);
 
 
 };

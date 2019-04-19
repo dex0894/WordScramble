@@ -31,10 +31,8 @@ private:
     Fl_Output *scrambledWordOutputLabel;
     Fl_Text_Buffer *scrambledWordTextBuffer;
     Fl_Text_Display *scrambledWordTextDisplay;
-    
-    Fl_Output *scrambledWordOutputLabel;
-    Fl_Text_Buffer *scrambledWordTextBuffer;
-    Fl_Text_Display *scrambledWordTextDisplay;
+
+    Fl_Input *wordEntry;
 
     Fl_Button* shuffleButton;
     Fl_Button* restartButton;
@@ -45,6 +43,8 @@ private:
 public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
+    
+    static void cbShuffle();
 
 
 };

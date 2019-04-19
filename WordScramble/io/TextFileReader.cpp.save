@@ -3,11 +3,19 @@
 namespace io
 {
 
-
+//
+//Constructs a new Text File Reader
+//
+//@precondition none
+//@postcondition none
+//
 TextFileReader::TextFileReader()
 {
     //ctor
 }
+
+//
+//
 
 TextFileReader::~TextFileReader()
 {
@@ -21,10 +29,10 @@ TextFileReader::~TextFileReader()
 //@postcondition none
 //@return the read in file as a vector<string>
 //
-vectorMsTextFileReader::readFile()
+vector<string> TextFileReader::readFile()
 {
     string line;
-    ifstream file("dictionary.txt");
+    ifstream file(FILENAME);
 
     if(!file)
     {

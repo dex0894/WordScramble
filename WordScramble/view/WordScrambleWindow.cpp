@@ -32,14 +32,92 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
 
     this->shuffleButton = new Fl_Button(380, 300, 70, 40, "Shuffle");
+    this->shuffleButton->callback(cbShuffle, this);
     this->submitButton = new Fl_Button(380, 375, 70, 25, "Submit");
+    this->submitButton->callback(cbSubmit, this);
 
-
+    ///TODO implement feature to set scrambled letters and possible words
+    this->setPossibleWordsText("This will display all words possible from the scrambled letters.");
+    this->setScrambledWordText("letters go here");
+    ///TODO
     end();
 }
 
+//
+// Destructor that cleans up all allocated resources for the window
+//
 WordScrambleWindow::~WordScrambleWindow()
 {
-    //dtor
+    delete this->possibleWordsOutputLabel;
+    this->possibleWordsTextDisplay->buffer(0);
+    delete this->possibleWordsTextBuffer;
+    delete this->possibleWordsTextDisplay;
+
+    delete this->scrambledWordOutputLabel;
+    this->scrambledWordTextDisplay->buffer(0);
+    delete this->scrambledWordTextBuffer;
+    delete this->scrambledWordTextDisplay;
+
+    delete this->shuffleButton;
+    delete this->submitButton;
+
 }
+
+//
+//Callback when the submit button is invoked
+//
+//@precondition widget != 0 AND data != 0
+//@postcondition none
+//
+//@param widget the widget that initiated the callback
+//@param data Any data that was passed with the call back, In this instance a pointer to the window.
+//
+void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
+{
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    cout << window->wordEntry->value() <<endl;
+    ///TODO Implement shuffle function
+}
+
+//
+//Callback when the shuffle button is invoked
+//
+//@precondition widget != 0 AND data != 0
+//@postcondition none
+//
+//@param widget the widget that initiated the callback
+//@param data Any data that was passed with the call back, In this instance a pointer to the window.
+//
+void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
+{
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    ///TODO Implement shuffle function
+}
+
+//
+//Sets the possible words text box to display the possible words, given a scrambled set of letters
+//
+//@precondition none
+//@postcondition none
+//
+//@param outputText the text to display
+//
+void WordScrambleWindow::setPossibleWordsText(const string& outputText)
+{
+    this->possibleWordsTextBuffer->text(outputText.c_str());
+}
+
+//
+//Sets the scrambled word text box to display the selected word's letters
+//
+//@precondition none
+//@postcondition none
+//
+//@param outputText the text to display
+//
+void WordScrambleWindow::setScrambledWordText(const string& outputText)
+{
+    this->scrambledWordTextBuffer->text(outputText.c_str());
+}
+
 }

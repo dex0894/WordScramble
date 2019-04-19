@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-#include <
+#include <fstream>
 using namespace std;
 
 namespace io
@@ -16,6 +16,7 @@ class TextFileReader
 {
     private:
         vector<string> wordCollection;
+        static const string FILENAME = "dictiona"
     public:
         TextFileReader();
         virtual ~TextFileReader();

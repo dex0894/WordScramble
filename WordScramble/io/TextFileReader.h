@@ -11,16 +11,18 @@ using namespace std;
 namespace io
 {
 
+static const string FILENAME = "dictionary.txt";
 
 class TextFileReader
 {
-    private:
-        vector<string> wordCollection;
-    public:
-        TextFileReader();
-        virtual ~TextFileReader();
+private:
+    vector<string> wordCollection;
 
-        vector<string> readFile();
+public:
+    TextFileReader();
+    virtual ~TextFileReader();
+
+    vector<string> readFile();
 
 
 

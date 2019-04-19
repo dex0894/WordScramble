@@ -3,10 +3,13 @@
 namespace controller
 {
 
-
+//
+//
+//
+//
 WordScrambleController::WordScrambleController()
 {
-    //ctor
+    this->readFile();
 }
 
 WordScrambleController::~WordScrambleController()
@@ -16,6 +19,6 @@ WordScrambleController::~WordScrambleController()
 
 void WordScrambleController::readFile()
 {
-    
+    this->wordCollection =  this->reader.readFile();
 }
 }
