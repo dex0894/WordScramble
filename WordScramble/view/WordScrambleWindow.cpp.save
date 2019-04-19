@@ -16,7 +16,7 @@ namespace view
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
-
+    this->controller = WordScrambleController();
     this->possibleWordsOutputLabel = new Fl_Output(135, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 500, 200);
@@ -27,6 +27,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->scrambledWordTextBuffer = new Fl_Text_Buffer();
     this->scrambledWordTextDisplay = new Fl_Text_Display(175, 300, 200, 40);
     this->scrambledWordTextDisplay->textfont(FL_COURIER);
+    this->scrambledWordTextDisplay->textsize(25);
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
 
     this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
@@ -36,9 +37,10 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->submitButton = new Fl_Button(380, 375, 70, 25, "Submit");
     this->submitButton->callback(cbSubmit, this);
 
+    ///TODO implement feature to set scrambled letters and possible words
     this->setPossibleWordsText("This will display all words possible from the scrambled letters.");
-    this->setScrambledWordText("letters go h")
-
+    this->setScrambledWordText(this->controller.generateRandomLetters());
+    ///TODO
     end();
 }
 
@@ -73,9 +75,22 @@ WordScrambleWindow::~WordScrambleWindow()
 //
 void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 {
+    ///TODO
+    ///Implement submit function
+    ///needs to update score, when valid word submitted
+    ///must check submitted wird to sse
     WordScrambleWindow* window = (WordScrambleWindow*)data;
+    string word = window->wordEntry->value();
+    string letterChoice = window->controller.getRandomLetters();
+    word = toUpper(word);
+    letterChoice = toUpper(letterChoice);
+
+    if(word.find_first_not_of(letterChoice) != std::string::npos)
+    {
+        fl_alert("Invalid Word");
+    }
     cout << window->wordEntry->value() <<endl;
-    ///TODO Implement shuffle function
+
 }
 
 //
@@ -90,7 +105,8 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    ///TODO Implement shuffle function
+    window->controller.shuffleStrings();
+    window->setScrambledWordText(window->controller.getRandomLetters());
 }
 
 //
@@ -116,6 +132,7 @@ void WordScrambleWindow::setPossibleWordsText(const string& outputText)
 //
 void WordScrambleWindow::setScrambledWordText(const string& outputText)
 {
+
     this->scrambledWordTextBuffer->text(outputText.c_str());
 }
 

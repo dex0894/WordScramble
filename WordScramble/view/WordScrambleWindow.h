@@ -18,6 +18,8 @@
 #include <iostream>
 using namespace std;
 
+#include "Utils.h"
+
 #include "../controller/WordScrambleController.h"
 using namespace controller;
 

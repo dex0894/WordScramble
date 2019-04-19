@@ -27,6 +27,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->scrambledWordTextBuffer = new Fl_Text_Buffer();
     this->scrambledWordTextDisplay = new Fl_Text_Display(175, 300, 200, 40);
     this->scrambledWordTextDisplay->textfont(FL_COURIER);
+    this->scrambledWordTextDisplay->textsize(25);
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
 
     this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
@@ -74,9 +75,22 @@ WordScrambleWindow::~WordScrambleWindow()
 //
 void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 {
+    ///TODO
+    ///Implement submit function
+    ///needs to update score, when valid word submitted
+    ///must check submitted word to see if dictionary contains it
     WordScrambleWindow* window = (WordScrambleWindow*)data;
+    string word = window->wordEntry->value();
+    string letterChoice = window->controller.getRandomLetters();
+    word = toUpper(word);
+    letterChoice = toUpper(letterChoice);
+
+    if(word.find_first_not_of(letterChoice) != std::string::npos)
+    {
+        fl_alert("Invalid Word");
+    }
     cout << window->wordEntry->value() <<endl;
-    ///TODO Implement submit function
+
 }
 
 //
