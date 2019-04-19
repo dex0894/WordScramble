@@ -27,4 +27,15 @@ void WordScrambleController::readFile()
 {
     this->wordCollection =  this->reader.readFile();
 }
+
+// Generates a string of six
+string WordScrambleController::generateRandomLetters()
+{
+    LetterGenerator letterGenerator;
+    int currentLetterLength = 6;
+    return letterGenerator.generateRandomLetters(currentLetterLength);
+}
+
+
+
 }

@@ -31,6 +31,8 @@
 		<Unit filename="io/TextFileReader.cpp" />
 		<Unit filename="io/TextFileReader.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="model/LetterGenerator.cpp" />
+		<Unit filename="model/LetterGenerator.h" />
 		<Unit filename="view/WordScrambleWindow.cpp" />
 		<Unit filename="view/WordScrambleWindow.h" />
 		<Extensions>

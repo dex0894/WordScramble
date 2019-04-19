@@ -16,7 +16,7 @@ namespace view
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
-
+    this->controller = WordScrambleController();
     this->possibleWordsOutputLabel = new Fl_Output(135, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 500, 200);
@@ -38,7 +38,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     ///TODO implement feature to set scrambled letters and possible words
     this->setPossibleWordsText("This will display all words possible from the scrambled letters.");
-    this->setScrambledWordText("letters go here");
+    this->setScrambledWordText(this->controller.generateRandomLetters());
     ///TODO
     end();
 }
@@ -91,7 +91,6 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    ///TODO Implement shuffle function
 }
 
 //
@@ -117,6 +116,7 @@ void WordScrambleWindow::setPossibleWordsText(const string& outputText)
 //
 void WordScrambleWindow::setScrambledWordText(const string& outputText)
 {
+
     this->scrambledWordTextBuffer->text(outputText.c_str());
 }
 

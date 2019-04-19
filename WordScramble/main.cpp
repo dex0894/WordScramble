@@ -1,5 +1,8 @@
 #include "view/WordScrambleWindow.h"
+
 using namespace view;
+
+
 
 int main (int argc, char ** argv)
 {
@@ -7,5 +10,6 @@ int main (int argc, char ** argv)
     mainWindow.show();
 
     int exitCode = Fl::run();
+
     return exitCode;
 }

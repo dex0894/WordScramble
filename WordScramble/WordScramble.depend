@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1555653005 source:/home/csuser/GroupFWordScramble/WordScramble/main.cpp
+1555704794 source:/home/csuser/GroupFWordScramble/WordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1555654751 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
+1555707299 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
-1555654213 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.h
+1555679257 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Group.H>
@@ -22,19 +22,29 @@
 	<iostream>
 	"../controller/WordScrambleController.h"
 
-1555652236 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
+1555707427 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
 	"WordScrambleController.h"
 
-1555652163 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
+1555705872 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
+	"../model/LetterGenerator.h"
 	"TextFileReader.h"
 
-1555649458 source:/home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.cpp
+1555679257 source:/home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.cpp
 	"TextFileReader.h"
 
-1555655072 /home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.h
+1555679257 /home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.h
 	<vector>
 	<string>
 	<iostream>
 	<sstream>
 	<fstream>
+
+1555704832 source:/home/csuser/GroupFWordScramble/WordScramble/model/LetterGenerator.cpp
+	"LetterGenerator.h"
+
+1555644009 /home/csuser/GroupFWordScramble/WordScramble/model/LetterGenerator.h
+	<string>
+	<iostream>
+	<cmath>
+	<ctime>
 
