@@ -27,9 +27,19 @@ private:
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
+
     Fl_Output *scrambledWordOutputLabel;
     Fl_Text_Buffer *scrambledWordTextBuffer;
     Fl_Text_Display *scrambledWordTextDisplay;
+    
+    Fl_Output *scrambledWordOutputLabel;
+    Fl_Text_Buffer *scrambledWordTextBuffer;
+    Fl_Text_Display *scrambledWordTextDisplay;
+
+    Fl_Button* shuffleButton;
+    Fl_Button* restartButton;
+    Fl_Button* submitButton;
+
 
 
 public:

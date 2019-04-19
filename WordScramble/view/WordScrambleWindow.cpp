@@ -29,6 +29,11 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->scrambledWordTextDisplay->textfont(FL_COURIER);
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
 
+    this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
+
+    this->shuffleButton = new Fl_Button(380, 300, 70, 40, "Shuffle");
+    this->submitButton = new Fl_Button(380, 375, 70, 25, "Submit");
+
 
     end();
 }

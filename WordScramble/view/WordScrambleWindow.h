@@ -32,6 +32,13 @@ private:
     Fl_Text_Buffer *scrambledWordTextBuffer;
     Fl_Text_Display *scrambledWordTextDisplay;
 
+    Fl_Input *wordEntry;
+
+    Fl_Button* shuffleButton;
+    Fl_Button* restartButton;
+    Fl_Button* submitButton;
+
+
 
 public:
     WordScrambleWindow(int width, int height, const char* title);
