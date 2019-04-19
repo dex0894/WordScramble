@@ -1,10 +1,7 @@
 #ifndef WORDSCRAMBLECONTROLLER_H
 #define WORDSCRAMBLECONTROLLER_H
-
-using namespace std;
-
 #include "../model/LetterGenerator.h"
-using namespace model;
+using namespace std;
 
 #include "TextFileReader.h"
 using namespace io;
