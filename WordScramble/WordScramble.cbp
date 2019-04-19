@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="../WordScramble" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -23,6 +24,8 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="controller/WordScrambleController.cpp" />
+		<Unit filename="controller/WordScrambleController.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="view/WordScrambleWindow.cpp" />
 		<Unit filename="view/WordScrambleWindow.h" />
