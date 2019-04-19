@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1555638856 source:/home/csuser/GroupFWordScramble/WordScramble/main.cpp
+1555652038 source:/home/csuser/GroupFWordScramble/WordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
 1555640204 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
@@ -19,4 +19,20 @@
 	<Fl/Fl_File_Chooser.H>
 	<vector>
 	<string>
+
+1555641650 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
+	"WordScrambleController.h"
+
+1555652143 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
+	"TextFileReader.h"
+
+1555649458 source:/home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.cpp
+	"TextFileReader.h"
+
+1555649502 /home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.h
+	<vector>
+	<string>
+	<iostream>
+	<sstream>
+	<fstream>
 

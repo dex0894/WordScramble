@@ -6,7 +6,7 @@ namespace controller
 
 WordScrambleController::WordScrambleController()
 {
-    this->readFile();
+    //ctor
 }
 
 WordScrambleController::~WordScrambleController()
@@ -16,6 +16,6 @@ WordScrambleController::~WordScrambleController()
 
 void WordScrambleController::readFile()
 {
-    this->wordCollection =  this->reader.readFile();
+    
 }
 }

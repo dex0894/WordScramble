@@ -1,13 +1,25 @@
-
-#include "WordScrambleWindow.h"
+#include "view/WordScrambleWindow.h"
 using namespace view;
+
+#include "TextFileReader.h"
+using namespace io;
 
 int main (int argc, char ** argv)
 {
 
 
-  WordScrambleWindow mainWindow(540, 375, "Word Scramble by Kevin Flynn and Dexter Tarver");
-    mainWindow.
+    WordScrambleWindow mainWindow(540, 500, "Word Scramble by Kevin Flynn and Dexter Tarver");
+    mainWindow.show();
 
-  return(Fl::run());
+
+    TextFileReader reader;
+    vector<string> words = reader.readFile();
+    
+    for (string cur)
+    {
+        
+    }
+
+    int exitCode = Fl::run();
+    return exitCode;
 }

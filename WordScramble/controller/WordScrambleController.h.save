@@ -13,10 +13,11 @@ class WordScrambleController
 {
 
 private:
-    TextFileReader reader;
-    vector<string> wordCollection;
+TextFileReader reader;
 
-    void readFile();
+vector<string> wordCollection;
+
+void read
 
 public:
     WordScrambleController();

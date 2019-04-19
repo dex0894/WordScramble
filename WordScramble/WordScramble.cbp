@@ -15,6 +15,7 @@
 					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="../WordScramble" />
+					<Add directory="io" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -26,6 +27,9 @@
 		</Linker>
 		<Unit filename="controller/WordScrambleController.cpp" />
 		<Unit filename="controller/WordScrambleController.h" />
+		<Unit filename="dictionary.txt" />
+		<Unit filename="io/TextFileReader.cpp" />
+		<Unit filename="io/TextFileReader.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="view/WordScrambleWindow.cpp" />
 		<Unit filename="view/WordScrambleWindow.h" />
