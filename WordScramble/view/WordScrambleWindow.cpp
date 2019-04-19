@@ -76,7 +76,7 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     cout << window->wordEntry->value() <<endl;
-    ///TODO Implement shuffle function
+    ///TODO Implement submit function
 }
 
 //
