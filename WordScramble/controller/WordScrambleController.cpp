@@ -13,6 +13,7 @@ namespace controller
 WordScrambleController::WordScrambleController()
 {
     this->readFile();
+    this->randomLetters = "";
 }
 
 //
@@ -33,9 +34,18 @@ string WordScrambleController::generateRandomLetters()
 {
     LetterGenerator letterGenerator;
     int currentLetterLength = 6;
-    return letterGenerator.generateRandomLetters(currentLetterLength);
+    this-> randomLetters = letterGenerator.generateRandomLetters(currentLetterLength);
+    return this->randomLetters;
 }
 
+string WordScrambleController:: getRandomLetters()
+{
+    return this->randomLetters;
+}
 
+void WordScrambleController::shuffleStrings()
+{
+    random_shuffle(this->randomLetters.begin(), this->randomLetters.end());
+}
 
 }

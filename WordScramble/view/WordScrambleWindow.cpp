@@ -91,6 +91,8 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->controller.shuffleStrings();
+    window->setScrambledWordText(window->controller.getRandomLetters());
 }
 
 //
