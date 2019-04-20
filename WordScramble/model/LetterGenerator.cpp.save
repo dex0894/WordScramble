@@ -33,7 +33,9 @@ string LetterGenerator:: generateRandomLetters(int length)
     string allLetters = "";
     for(int i=0; i< length; i++)
     {
-        char letter = letters[rand() % 26];
+        int r =rand() % 26;
+        char letter = letters[r];
+        //char letter = 'a' + r;
         allLetters += toupper(letter);
     }
     return allLetters;
