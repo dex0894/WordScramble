@@ -1,18 +1,18 @@
 #ifndef WORDSCRAMBLECONTROLLER_H
 #define WORDSCRAMBLECONTROLLER_H
 #include "../model/LetterGenerator.h"
-using namespace std;
 
 #include <algorithm>
 #include <iostream>
 #include <string>
 #include <cctype>
-
 using namespace std;
 
+#include "../model/AllPossibleWords.h"
 #include "TextFileReader.h"
 using namespace io;
 using namespace model;
+
 namespace controller
 {
 
@@ -32,6 +32,8 @@ public:
     string generateRandomLetters();
     void shuffleStrings();
     string getRandomLetters();
+    string allPossibleWordsFromLetters();
+
 };
 }
 #endif // WORDSCRAMBLECONTROLLER_H

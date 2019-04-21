@@ -30,13 +30,13 @@ LetterGenerator::~LetterGenerator()
 string LetterGenerator:: generateRandomLetters(int length)
 {
     char letters[] = "abcdefghijklmnopqrstuvwxyz";
-    string allLetters = "";
+    string randomLetters = "";
     for(int i=0; i< length; i++)
     {
         char letter = letters[rand() % 26];
-        allLetters += toupper(letter);
+        randomLetters += toupper(letter);
     }
-    return allLetters;
+    return randomLetters;
 }
 }
 

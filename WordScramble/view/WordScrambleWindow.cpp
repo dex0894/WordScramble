@@ -38,8 +38,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->submitButton->callback(cbSubmit, this);
 
     ///TODO implement feature to set scrambled letters and possible words
-    this->setPossibleWordsText("This will display all words possible from the scrambled letters.");
     this->setScrambledWordText(this->controller.generateRandomLetters());
+    this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
     ///TODO
     end();
 }

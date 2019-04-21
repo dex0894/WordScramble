@@ -32,6 +32,8 @@
 		<Unit filename="io/TextFileReader.cpp" />
 		<Unit filename="io/TextFileReader.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="model/AllPossibleWords.cpp" />
+		<Unit filename="model/AllPossibleWords.h" />
 		<Unit filename="model/LetterGenerator.cpp" />
 		<Unit filename="model/LetterGenerator.h" />
 		<Unit filename="utils/Utils.cpp" />

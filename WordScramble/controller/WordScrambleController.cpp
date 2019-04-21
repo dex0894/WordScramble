@@ -43,6 +43,24 @@ string WordScrambleController:: getRandomLetters()
     return this->randomLetters;
 }
 
+string WordScrambleController::allPossibleWordsFromLetters()
+{
+    string output;
+    TextFileReader textFileReader;
+    vector<string> dictionary = textFileReader.readFile();
+
+    AllPossibleWords allPossibleWord(dictionary, this->randomLetters);
+    map<string,string> allPossibleWordsMap = allPossibleWord.getPossibleWords();
+    for (map<string,string>::iterator it=allPossibleWordsMap.begin(); it!=allPossibleWordsMap.end(); ++it)
+    {
+        output += it->second + "\n";
+    }
+
+    return output;
+}
+
+
+
 void WordScrambleController::shuffleStrings()
 {
     random_shuffle(this->randomLetters.begin(), this->randomLetters.end());

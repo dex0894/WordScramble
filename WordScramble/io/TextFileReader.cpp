@@ -38,11 +38,10 @@ vector<string> TextFileReader::readFile()
     {
         cerr << "Error opening file" << endl;
     }
-
     while(getline(file, line))
     {
-        this->wordCollection.push_back(line);
-
+        string revisedLine = line.substr(0, line.size()-1);
+        this->wordCollection.push_back(revisedLine);
     }
 
     return this->wordCollection;
