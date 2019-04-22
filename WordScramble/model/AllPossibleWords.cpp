@@ -20,7 +20,6 @@ void AllPossibleWords:: determineValidWords(vector<string> dictionary, string ra
         size_t allUnMatchedLetters = upperCasedCurrWord.find_first_not_of(randomLetters);
         if( allUnMatchedLetters == string::npos)
         {
-            cout << "Passed" << endl;
             ///TODO: add further modification to data that is store in map
             this->possibleWords.insert (pair<string,string>(currWord,currWord));
         }

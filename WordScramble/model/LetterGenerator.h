@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
-
+#include<string.h>
 using namespace std;
 
 

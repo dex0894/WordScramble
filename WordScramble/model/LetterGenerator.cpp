@@ -29,13 +29,17 @@ LetterGenerator::~LetterGenerator()
 // make the strings to be
 string LetterGenerator:: generateRandomLetters(int length)
 {
-    char letters[] = "abcdefghijklmnopqrstuvwxyz";
+    char letters[] = "eeeeeeeeeeetttttttttooooooooaaaaaaiiiiiinnnnnnsssssshhhhhrrrrrllllddduuuwwwyyybbccffggmmppvvjkqxz";
     string randomLetters = "";
+   // gets(letters);
+    int len = strlen(letters);
     for(int i=0; i< length; i++)
     {
-        char letter = letters[rand() % 26];
+        cout << "Called" << endl;
+        char letter = letters[rand() % len];
         randomLetters += toupper(letter);
     }
+    cout << "end" << endl;
     return randomLetters;
 }
 }
