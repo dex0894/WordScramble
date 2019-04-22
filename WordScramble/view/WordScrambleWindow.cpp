@@ -36,6 +36,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->shuffleButton->callback(cbShuffle, this);
     this->submitButton = new Fl_Button(380, 375, 70, 25, "Submit");
     this->submitButton->callback(cbSubmit, this);
+    this->newGameButton = new Fl_Button(430, 10, 90, 40, "New Game");
+    this->newGameButton->callback(cbNewGame, this);
 
     ///TODO implement feature to set scrambled letters and possible words
     this->setScrambledWordText(this->controller.generateRandomLetters());
@@ -62,6 +64,7 @@ WordScrambleWindow::~WordScrambleWindow()
 
     delete this->shuffleButton;
     delete this->submitButton;
+    delete this->newGameButton;
 
 }
 
@@ -108,6 +111,22 @@ void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     window->controller.shuffleStrings();
     window->setScrambledWordText(window->controller.getRandomLetters());
+}
+
+//
+//Callback when the newGame button is invoked
+//
+//@precondition widget != 0 AND data != 0
+//@postcondition none
+//
+//@param widget the widget that initiated the callback
+//@param data Any data that was passed with the call back, In this instance a pointer to the window.
+//
+void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
+{
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->setScrambledWordText(window->controller.generateRandomLetters());
+    window->setPossibleWordsText(window->controller.allPossibleWordsFromLetters());
 }
 
 //

@@ -43,6 +43,7 @@ private:
     Fl_Button* shuffleButton;
     Fl_Button* restartButton;
     Fl_Button* submitButton;
+    Fl_Button* newGameButton;
     WordScrambleController controller;
 
 
@@ -52,6 +53,7 @@ public:
 
     static void cbShuffle(Fl_Widget* widget, void* data);
     static void cbSubmit(Fl_Widget* widget, void* data);
+    static void cbNewGame(Fl_Widget* widget, void* data);
 
     void setPossibleWordsText(const string& outputText);
     void setScrambledWordText(const string& outputText);
