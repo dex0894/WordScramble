@@ -39,6 +39,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     ///TODO implement feature to set scrambled letters and possible words
     this->setScrambledWordText(this->controller.generateRandomLetters());
+
     this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
     ///TODO
     end();
