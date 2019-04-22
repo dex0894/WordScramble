@@ -14,11 +14,10 @@ AllPossibleWords::~AllPossibleWords()
 
 void AllPossibleWords:: determineValidWords(vector<string> dictionary, string randomLetters)
 {
-
     for(string currWord: dictionary)
     {
         string upperCasedCurrWord = toUpper(currWord);
-        size_t allUnMatchedLetters = randomLetters.find_first_not_of(upperCasedCurrWord);
+        size_t allUnMatchedLetters = upperCasedCurrWord.find_first_not_of(randomLetters);
         if( allUnMatchedLetters == string::npos)
         {
             cout << "Passed" << endl;
