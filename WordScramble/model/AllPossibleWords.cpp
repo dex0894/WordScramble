@@ -18,7 +18,9 @@ void AllPossibleWords:: determineValidWords(vector<string> dictionary, string ra
     {
         string upperCasedCurrWord = toUpper(currWord);
         size_t allUnMatchedLetters = upperCasedCurrWord.find_first_not_of(randomLetters);
-        if( allUnMatchedLetters == string::npos)
+
+        bool correctLetterLength = currWord.length() >= 3;
+        if( allUnMatchedLetters == string::npos && correctLetterLength && isAPossibleWord(currWord, randomLetters))
         {
             this->possibleWords.insert (pair<string,string>(currWord,currWord));
         }
@@ -28,18 +30,19 @@ void AllPossibleWords:: determineValidWords(vector<string> dictionary, string ra
 bool AllPossibleWords::isAPossibleWord(string selectedWord, string randomLetters)
 {
     bool result = true;
+    std::transform(randomLetters.begin(), randomLetters.end(), randomLetters.begin(), ::tolower);
     for(char currLetter: selectedWord){
-        int currLetterCount = letterCount(selectedWord,currLetter);
-        int rdmLetterCount = letterCount(randomLetters, currLetter);
+        size_t currLetterCount = letterCount(selectedWord,currLetter);
+        size_t rdmLetterCount = letterCount(randomLetters, currLetter);
         if(currLetterCount > rdmLetterCount){
             result = false;
         }
     }
     return result;
 }
-int AllPossibleWords::letterCount(string word, char letter)
+size_t AllPossibleWords::letterCount(string word, char letter)
 {
-    int allLettersUsed = std::count(word.begin(), word.end(), letter);
+    size_t allLettersUsed = std::count(word.begin(), word.end(), letter);
     return allLettersUsed;
 }
 

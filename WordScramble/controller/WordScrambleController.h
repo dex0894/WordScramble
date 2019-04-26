@@ -11,6 +11,7 @@ using namespace std;
  #include <vector>
 #include "../model/AllPossibleWords.h"
 #include "TextFileReader.h"
+#include "Utils.h"
 using namespace io;
 using namespace model;
 
