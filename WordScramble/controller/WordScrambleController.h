@@ -7,7 +7,8 @@
 #include <string>
 #include <cctype>
 using namespace std;
-
+ #include <algorithm>
+ #include <vector>
 #include "../model/AllPossibleWords.h"
 #include "TextFileReader.h"
 using namespace io;
@@ -21,7 +22,7 @@ class WordScrambleController
 
 private:
     TextFileReader reader;
-    vector<string> dictionary;
+    vector<string> wordCollection;
     string randomLetters;
     void readFile();
     void removeSpaces();
@@ -33,7 +34,7 @@ public:
     void shuffleStrings();
     string getRandomLetters();
     string allPossibleWordsFromLetters();
-    bool isInDictionary(string word);
+    bool isAValidWord(string selectedWord);
 
 };
 }

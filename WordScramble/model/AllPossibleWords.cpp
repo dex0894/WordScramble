@@ -20,11 +20,30 @@ void AllPossibleWords:: determineValidWords(vector<string> dictionary, string ra
         size_t allUnMatchedLetters = upperCasedCurrWord.find_first_not_of(randomLetters);
         if( allUnMatchedLetters == string::npos)
         {
-            ///TODO: add further modification to data that is store in map
             this->possibleWords.insert (pair<string,string>(currWord,currWord));
         }
     }
 }
+
+bool AllPossibleWords::isAPossibleWord(string selectedWord, string randomLetters)
+{
+    bool result = true;
+    for(char currLetter: selectedWord){
+        int currLetterCount = letterCount(selectedWord,currLetter);
+        int rdmLetterCount = letterCount(randomLetters, currLetter);
+        if(currLetterCount > rdmLetterCount){
+            result = false;
+        }
+    }
+    return result;
+}
+int AllPossibleWords::letterCount(string word, char letter)
+{
+    int allLettersUsed = std::count(word.begin(), word.end(), letter);
+    return allLettersUsed;
+}
+
+
 
 map<string, string> AllPossibleWords:: getPossibleWords()
 {
