@@ -17,3 +17,22 @@ const string toUpper(string text)
 
     return text;
 }
+
+
+//
+// Converts and returns string in lowercase
+//
+// @precondition none
+// @postcondition none
+//
+// @param text the text to convert to lower case
+//
+// @return Lowercase version of the string
+//
+const string toLower(string text)
+{
+    transform(text.begin(), text.end(), text.begin(), ::tolower);
+
+    return text;
+}
+

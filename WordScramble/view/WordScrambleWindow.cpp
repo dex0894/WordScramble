@@ -96,14 +96,19 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     string word = window->wordEntry->value();
     string letterChoice = window->controller.getRandomLetters();
-    word = toUpper(word);
-    letterChoice = toUpper(letterChoice);
+    word = toLower(word);
+    letterChoice = toLower(letterChoice);
     bool allValidLetters = word.find_first_not_of(letterChoice) != std::string::npos;
     bool isAValidAmountOfLetters = word.length() == 3;
     bool validAmountOfLetters = window->controller.isAValidWord(window->wordEntry->value());
+
     if(allValidLetters && validAmountOfLetters || !isAValidAmountOfLetters )
     {
         fl_alert("Invalid Word");
+    }
+    else
+    {
+        window->validWordsTextBuffer->text(word.c_str());
     }
 
 }
