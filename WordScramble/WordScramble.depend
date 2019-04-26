@@ -2,7 +2,7 @@
 1555782533 source:/home/csuser/GroupFWordScramble/WordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1556240408 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
+1556249799 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555896823 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.h
@@ -23,10 +23,10 @@
 	"Utils.h"
 	"../controller/WordScrambleController.h"
 
-1556243856 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
+1556250015 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
 	"WordScrambleController.h"
 
-1556240653 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
+1556250007 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
 	"../model/LetterGenerator.h"
 	<algorithm>
 	<iostream>
@@ -36,6 +36,7 @@
 	<vector>
 	"../model/AllPossibleWords.h"
 	"TextFileReader.h"
+	"Utils.h"
 
 1555825239 source:/home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.cpp
 	"TextFileReader.h"
@@ -57,18 +58,18 @@
 	<ctime>
 	<string.h>
 
-1555718889 /home/csuser/GroupFWordScramble/WordScramble/utils/Utils.h
+1556250075 /home/csuser/GroupFWordScramble/WordScramble/utils/Utils.h
 	<string>
 	<algorithm>
 	<sstream>
 
-1555718889 source:/home/csuser/GroupFWordScramble/WordScramble/utils/Utils.cpp
+1556249927 source:/home/csuser/GroupFWordScramble/WordScramble/utils/Utils.cpp
 	"Utils.h"
 
-1556243891 source:/home/csuser/GroupFWordScramble/WordScramble/model/AllPossibleWords.cpp
+1556247072 source:/home/csuser/GroupFWordScramble/WordScramble/model/AllPossibleWords.cpp
 	"AllPossibleWords.h"
 
-1556242255 /home/csuser/GroupFWordScramble/WordScramble/model/AllPossibleWords.h
+1556246261 /home/csuser/GroupFWordScramble/WordScramble/model/AllPossibleWords.h
 	"Utils.h"
 	<iostream>
 	<ostream>
