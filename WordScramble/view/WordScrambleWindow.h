@@ -60,7 +60,7 @@ public:
     static void cbNewGame(Fl_Widget* widget, void* data);
 
     void setPossibleWordsText(const string& outputText);
-    void setScrambledWordText(string letters);
+    void setScrambledWordText(const string& letters);
 
 
 };

@@ -35,15 +35,15 @@ private:
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
-    string* radioSortingLabels[TOTAL_SORTING_METHODS];
+    Fl_Output *validWordsOutputLabel;
+    Fl_Text_Buffer *validWordsTextBuffer;
+    Fl_Text_Display *validWordsTextDisplay;
 
     Fl_Output *scrambledWordOutputLabel;
     Fl_Text_Buffer *scrambledWordTextBuffer;
     Fl_Text_Display *scrambledWordTextDisplay;
 
     Fl_Input *wordEntry;
-    Fl_Group *letterButtonGroup;
-    Fl_Button* letterButton[TOTAL_LETTERS];
     Fl_Button* shuffleButton;
     Fl_Button* restartButton;
     Fl_Button* submitButton;
@@ -60,7 +60,7 @@ public:
     static void cbNewGame(Fl_Widget* widget, void* data);
 
     void setPossibleWordsText(const string& outputText);
-    void setScrambledWordText(string letters);
+    void setScrambledWordText(const string letters);
 
 
 };

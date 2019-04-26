@@ -16,16 +16,21 @@ namespace view
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
-    this->controller = WordScrambleController();
-    this->possibleWordsOutputLabel = new Fl_Output(135, 50, 0, 0, "Possible Words");
+    this->possibleWordsOutputLabel = new Fl_Output(130, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
-    this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 500, 200);
+    this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
     this->possibleWordsTextDisplay->textfont(FL_COURIER);
     this->possibleWordsTextDisplay->buffer(possibleWordsTextBuffer);
 
+    this->validWordsOutputLabel = new Fl_Output(360, 50, 0, 0, "Valid Words");
+    this->validWordsTextBuffer = new Fl_Text_Buffer();
+    this->validWordsTextDisplay = new Fl_Text_Display(270, 60, 250, 200);
+    this->validWordsTextDisplay->textfont(FL_COURIER);
+    this->validWordsTextDisplay->buffer(validWordsTextBuffer);
+
     this->scrambledWordOutputLabel = new Fl_Output(340, 285, 0, 0, "Scrambled Letters");
     this->scrambledWordTextBuffer = new Fl_Text_Buffer();
-    this->scrambledWordTextDisplay = new Fl_Text_Display(175, 300, 200, 40);
+    this->scrambledWordTextDisplay = new Fl_Text_Display(220, 300, 135, 40);
     this->scrambledWordTextDisplay->textfont(FL_COURIER);
     this->scrambledWordTextDisplay->textsize(25);
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
