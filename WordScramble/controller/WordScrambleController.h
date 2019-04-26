@@ -21,7 +21,7 @@ class WordScrambleController
 
 private:
     TextFileReader reader;
-    vector<string> wordCollection;
+    vector<string> dictionary;
     string randomLetters;
     void readFile();
     void removeSpaces();
@@ -33,6 +33,7 @@ public:
     void shuffleStrings();
     string getRandomLetters();
     string allPossibleWordsFromLetters();
+    bool isInDictionary(string word);
 
 };
 }

@@ -30,16 +30,20 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 private:
+    static const int TOTAL_LETTERS = 6;
+
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
+    Fl_Output *validWordsOutputLabel;
+    Fl_Text_Buffer *validWordsTextBuffer;
+    Fl_Text_Display *validWordsTextDisplay;
 
     Fl_Output *scrambledWordOutputLabel;
     Fl_Text_Buffer *scrambledWordTextBuffer;
     Fl_Text_Display *scrambledWordTextDisplay;
 
     Fl_Input *wordEntry;
-
     Fl_Button* shuffleButton;
     Fl_Button* restartButton;
     Fl_Button* submitButton;
@@ -56,7 +60,7 @@ public:
     static void cbNewGame(Fl_Widget* widget, void* data);
 
     void setPossibleWordsText(const string& outputText);
-    void setScrambledWordText(const string& outputText);
+    void setScrambledWordText(string letters);
 
 
 };

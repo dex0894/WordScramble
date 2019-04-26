@@ -17,15 +17,21 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 {
     begin();
     this->controller = WordScrambleController();
-    this->possibleWordsOutputLabel = new Fl_Output(135, 50, 0, 0, "Possible Words");
+    this->possibleWordsOutputLabel = new Fl_Output(130, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
-    this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 500, 200);
+    this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
     this->possibleWordsTextDisplay->textfont(FL_COURIER);
     this->possibleWordsTextDisplay->buffer(possibleWordsTextBuffer);
 
+    this->validWordsOutputLabel = new Fl_Output(360, 50, 0, 0, "Valid Words");
+    this->validWordsTextBuffer = new Fl_Text_Buffer();
+    this->validWordsTextDisplay = new Fl_Text_Display(270, 60, 250, 200);
+    this->validWordsTextDisplay->textfont(FL_COURIER);
+    this->validWordsTextDisplay->buffer(validWordsTextBuffer);
+
     this->scrambledWordOutputLabel = new Fl_Output(340, 285, 0, 0, "Scrambled Letters");
     this->scrambledWordTextBuffer = new Fl_Text_Buffer();
-    this->scrambledWordTextDisplay = new Fl_Text_Display(175, 300, 200, 40);
+    this->scrambledWordTextDisplay = new Fl_Text_Display(220, 300, 135, 40);
     this->scrambledWordTextDisplay->textfont(FL_COURIER);
     this->scrambledWordTextDisplay->textsize(25);
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
@@ -56,6 +62,10 @@ WordScrambleWindow::~WordScrambleWindow()
     this->possibleWordsTextDisplay->buffer(0);
     delete this->possibleWordsTextBuffer;
     delete this->possibleWordsTextDisplay;
+    delete this->validWordsOutputLabel;
+    this->validWordsTextDisplay->buffer(0);
+    delete this->validWordsTextBuffer;
+    delete this->validWordsTextDisplay;
 
     delete this->scrambledWordOutputLabel;
     this->scrambledWordTextDisplay->buffer(0);
@@ -93,7 +103,6 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
     {
         fl_alert("Invalid Word");
     }
-    cout << window->wordEntry->value() <<endl;
 
 }
 
@@ -150,10 +159,11 @@ void WordScrambleWindow::setPossibleWordsText(const string& outputText)
 //
 //@param outputText the text to display
 //
-void WordScrambleWindow::setScrambledWordText(const string& outputText)
+void WordScrambleWindow::setScrambledWordText(string letters)
 {
+    string output (letters.begin(), letters.end());
+    this->scrambledWordTextBuffer->text(output.c_str());
 
-    this->scrambledWordTextBuffer->text(outputText.c_str());
 }
 
 }

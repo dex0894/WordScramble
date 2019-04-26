@@ -1,4 +1,5 @@
 #include "LetterGenerator.h"
+#include "Utils.h"
 
 //Class created to generate random letters
 
@@ -30,14 +31,15 @@ LetterGenerator::~LetterGenerator()
 string LetterGenerator:: generateRandomLetters(int length)
 {
     char letters[] = "eeeeeeeeeeetttttttttooooooooaaaaaaiiiiiinnnnnnsssssshhhhhrrrrrllllddduuuwwwyyybbccffggmmppvvjkqxz";
-    string randomLetters = "";
+    string randomLetters;
    // gets(letters);
     int len = strlen(letters);
     for(int i=0; i< length; i++)
     {
         cout << "Called" << endl;
-        char letter = letters[rand() % len];
-        randomLetters += toupper(letter);
+        char character = letters[rand() % len];
+        string letter(1, character);
+        randomLetters +=toUpper(letter);
     }
     cout << "end" << endl;
     return randomLetters;

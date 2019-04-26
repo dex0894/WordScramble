@@ -27,18 +27,21 @@ LetterGenerator::~LetterGenerator()
 //@postcondition none
 //@param length is the length you wish to
 // make the strings to be
-string LetterGenerator:: generateRandomLetters(int length)
+vector<string> LetterGenerator:: generateRandomLetters(int length)
 {
-    char letters[] = "abcdefghijklmnopqrstuvwxyz";
-    string allLetters = "";
+    char letters[] = "eeeeeeeeeeetttttttttooooooooaaaaaaiiiiiinnnnnnsssssshhhhhrrrrrllllddduuuwwwyyybbccffggmmppvvjkqxz";
+    vector<string> randomLetters;
+   // gets(letters);
+    int len = strlen(letters);
     for(int i=0; i< length; i++)
     {
-        int r =rand() % 26;
-        char letter = letters[r];
-        //char letter = 'a' + r;
-        allLetters += toupper(letter);
+        cout << "Called" << endl;
+        char character = letters[rand() % len];
+        string l
+        randomLetters.push_back(toupper(letter));
     }
-    return allLetters;
+    cout << "end" << endl;
+    return randomLetters;
 }
 }
 

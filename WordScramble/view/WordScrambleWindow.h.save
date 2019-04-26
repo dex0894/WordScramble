@@ -16,8 +16,9 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <str
 using namespace std;
+
+#include "Utils.h"
 
 #include "../controller/WordScrambleController.h"
 using namespace controller;
@@ -29,19 +30,24 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 private:
+    static const int TOTAL_LETTERS = 6;
+
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
+    string* radioSortingLabels[TOTAL_SORTING_METHODS];
 
     Fl_Output *scrambledWordOutputLabel;
     Fl_Text_Buffer *scrambledWordTextBuffer;
     Fl_Text_Display *scrambledWordTextDisplay;
 
     Fl_Input *wordEntry;
-
+    Fl_Group *letterButtonGroup;
+    Fl_Button* letterButton[TOTAL_LETTERS];
     Fl_Button* shuffleButton;
     Fl_Button* restartButton;
     Fl_Button* submitButton;
+    Fl_Button* newGameButton;
     WordScrambleController controller;
 
 
@@ -51,9 +57,10 @@ public:
 
     static void cbShuffle(Fl_Widget* widget, void* data);
     static void cbSubmit(Fl_Widget* widget, void* data);
+    static void cbNewGame(Fl_Widget* widget, void* data);
 
     void setPossibleWordsText(const string& outputText);
-    void setScrambledWordText(const string& outputText);
+    void setScrambledWordText(string letters);
 
 
 };
