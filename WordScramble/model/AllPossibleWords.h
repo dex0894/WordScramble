@@ -15,6 +15,8 @@ class AllPossibleWords
         map<string, string> possibleWords;
         void determineValidWords(vector<string> dictionary, string randomLetters);
         bool isAValidWord(string word, string randomLetters);
+        int letterCount(string word, char letter);
+        bool isAPossibleWord(string selectedWord, string randomLetters);
     public:
         AllPossibleWords(vector<string> dictionary, string randomLetters);
         virtual ~AllPossibleWords();

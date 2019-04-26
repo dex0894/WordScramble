@@ -51,6 +51,9 @@ string WordScrambleController::allPossibleWordsFromLetters()
     vector<string> dictionary = textFileReader.readFile();
     AllPossibleWords allPossibleWord(dictionary, this->randomLetters);
     map<string,string> allPossibleWordsMap = allPossibleWord.getPossibleWords();
+    if(allPossibleWordsMap.empty()){
+        //allPossibleWordsFromLetters();
+    }
     for (map<string,string>::iterator it=allPossibleWordsMap.begin(); it!=allPossibleWordsMap.end(); ++it)
     {
         output += it->second + "\n";
@@ -59,7 +62,14 @@ string WordScrambleController::allPossibleWordsFromLetters()
     return output;
 }
 
-
+bool WordScrambleController::isAValidWord(string selectedWord)
+{
+    string output;
+    TextFileReader textFileReader;
+    vector<string> dictionary = textFileReader.readFile();
+    vector<string>::iterator iteration = find (dictionary.begin(), dictionary.end(), selectedWord);
+    return iteration == dictionary.end();
+}
 
 void WordScrambleController::shuffleStrings()
 {

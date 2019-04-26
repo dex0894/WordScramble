@@ -7,7 +7,8 @@
 #include <string>
 #include <cctype>
 using namespace std;
-
+ #include <algorithm>
+ #include <vector>
 #include "../model/AllPossibleWords.h"
 #include "TextFileReader.h"
 using namespace io;
@@ -33,6 +34,7 @@ public:
     void shuffleStrings();
     string getRandomLetters();
     string allPossibleWordsFromLetters();
+    bool isAValidWord(string selectedWord);
 
 };
 }
