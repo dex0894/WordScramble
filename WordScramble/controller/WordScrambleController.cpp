@@ -14,6 +14,7 @@ WordScrambleController::WordScrambleController()
 {
     this->readFile();
     this->generateRandomLetters();
+    this->totalScore = 0;
 }
 
 //
@@ -139,6 +140,18 @@ bool WordScrambleController::isAValidWord(string selectedWord)
 
     return this->allPossibleWords.count(selectedWord);
 }
+
+
+int WordScrambleController::getTotalScore()
+{
+    return this->totalScore;
+}
+
+void WordScrambleController::updateTotalScore(int addedValue)
+{
+    totalScore += addedValue;
+}
+
 
 //
 // Shuffles the the random letters characters

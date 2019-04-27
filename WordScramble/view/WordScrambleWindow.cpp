@@ -21,10 +21,22 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
 
-    this->timeRemainingLabel = new Fl_Output(135, 20, 0,0, "Time Remaining: ");
-    this->actualClock = new Fl_Output(165, 20, 0,0, " 1:00");
+    this->timeRemainingLabel = new Fl_Output(65, 20, 0,0, "Time: ");
+    this->actualClock = new Fl_Progress(65, 10, 115,25);
+    this->actualClock->maximum(100);
+    ///Todo: remove me used to show how to change progress in progress bar
+    this->actualClock->value(50);
+    ///Todo: Implement a callback that has a timer that:
+    /// A.) updates the progress the bar by one every second
+    /// B.) changes the color of progress bar based on place (0-25% green, 26-75% yellow, 75-100% red)
+    /// C:) max value should be a set to total seconds used example if timer is one minute then max should be 60
     this->totalScoreLabel = new Fl_Output(345, 20, 0,0, "Total Score: ");
-    this->totalScore = new Fl_Output(355, 20, 0,0, "0");
+    this->totalScoreTextBuffer = new Fl_Text_Buffer();
+    this->totalScoreTextDisplay = new Fl_Text_Display(345, 10, 40,25);
+    this->totalScoreTextDisplay->buffer(this->totalScoreTextBuffer);
+    this->totalScoreTextDisplay->textfont(FL_COURIER);
+
+
 
     this->possibleWordsTextDisplay->textfont(FL_COURIER);
     this->possibleWordsTextDisplay->buffer(possibleWordsTextBuffer);
@@ -55,6 +67,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->setScrambledWordText(this->controller.getRandomLetters());
 
     this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
+    this->setTotalPointsText(to_string(this->controller.getTotalScore()));
     ///TODO
     end();
 }
@@ -106,15 +119,19 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
     if(!allValidLetters || !validAmountOfLetters || !isAValidAmountOfLetters )
     {
         fl_alert("Invalid Word");
-
+        window->controller.updateTotalScore(-10);
+        window->setTotalPointsText(to_string(window->controller.getTotalScore()));
     }
     else {
+        int addedScore = calculateScoreByWord(word);
+        window->controller.updateTotalScore(addedScore);
         window->controller.addValidWordEntered(word);
+        window->controller.updateTotalScore(addedScore);
+
         window->setPossibleWordsText(window->controller.allPossibleWordsFromLetters());
         window->setValidWordsText(window->controller.displayAllValidWordsEntered());
+        window->setTotalPointsText(to_string(window->controller.getTotalScore()));
     }
-    cout << window->wordEntry->value() <<endl;
-
 }
 
 //
@@ -180,6 +197,24 @@ void WordScrambleWindow::setValidWordsText(const string& outputText)
 {
     this->validWordsTextBuffer->text(outputText.c_str());
 }
+
+
+//
+//Sets the possible words text box to display the possible words, given a scrambled set of letters
+//
+//@precondition none
+//@postcondition none
+//
+//@param outputText the text to display
+//
+void WordScrambleWindow::setTotalPointsText(const string& outputText)
+{
+    this->totalScoreTextBuffer->text(outputText.c_str());
+}
+
+
+
+
 //
 //Sets the scrambled word text box to display the selected word's letters
 //

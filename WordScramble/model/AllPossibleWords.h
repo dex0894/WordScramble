@@ -17,6 +17,7 @@ class AllPossibleWords
         bool isAValidWord(string word, string randomLetters);
         size_t letterCount(string word, char letter);
         bool isAPossibleWord(string selectedWord, string randomLetters);
+        string hidePossibleWord(string word);
     public:
         AllPossibleWords(vector<string> dictionary, string randomLetters);
         virtual ~AllPossibleWords();

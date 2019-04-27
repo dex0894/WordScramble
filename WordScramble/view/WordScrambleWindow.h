@@ -12,6 +12,7 @@
 #include <FL/Fl_Button.H>
 #include <FL/fl_types.h>
 #include <Fl/fl_draw.H>
+#include <Fl/Fl_Progress.H>
 #include <Fl/Fl_File_Chooser.H>
 #include <vector>
 #include <string>
@@ -36,11 +37,10 @@ private:
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
     Fl_Output *timeRemainingLabel;
-    Fl_Output *actualClock;
+    Fl_Progress *actualClock;
     Fl_Output *totalScoreLabel;
 
-    Fl_Output *totalScore;
-    Fl_Text_Buffer *totalScoreBuffer;
+    Fl_Text_Buffer *totalScoreTextBuffer;
     Fl_Text_Display *totalScoreTextDisplay;
 
     Fl_Output *validWordsOutputLabel;
@@ -67,6 +67,7 @@ public:
     static void cbSubmit(Fl_Widget* widget, void* data);
     static void cbNewGame(Fl_Widget* widget, void* data);
 
+    void setTotalPointsText(const string& outputText);
     void setPossibleWordsText(const string& outputText);
     void setScrambledWordText(const string& letters);
     void setValidWordsText(const string& outputText);

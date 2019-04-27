@@ -30,6 +30,8 @@ private:
     void readFile();
     void removeSpaces();
     void determineAllPossibleWords();
+    int totalScore;
+    int currentScore;
 
 public:
     WordScrambleController();
@@ -43,6 +45,8 @@ public:
     string allPossibleWordsFromLetters();
     void addValidWordEntered(string word);
     void clearAllValidWordsEntered();
+    int getTotalScore();
+    void updateTotalScore(int addedValue);
 
 };
 }
