@@ -34,3 +34,44 @@ const string toLower(string text)
 
     return text;
 }
+
+//
+// Gets the length of the string and determines
+// the score based on the input
+//
+// @precondition none
+// @postcondition none
+//
+// @param word the word you want to determine the score for
+//
+// @return integer based on the length of the word
+//
+const int calculateScoreByWord(string word)
+{
+    int score =  0;
+    std::string::iterator space = std::remove(word.begin(), word.end(), ' ');
+    word.erase(space, word.end());
+    int length = word.length();
+    if(length == 3)
+    {
+        score = 60;
+    }
+    else if(length == 4)
+    {
+        score = 120;
+    }
+    else if(length == 5)
+    {
+        score = 200;
+    }
+    else if(length == 6)
+    {
+        score = 300;
+    }
+    else {
+        score = 420;
+    }
+    return score;
+}
+
+

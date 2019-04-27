@@ -16,9 +16,16 @@ namespace view
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
+
     this->possibleWordsOutputLabel = new Fl_Output(130, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
+
+    this->timeRemainingLabel = new Fl_Output(135, 20, 0,0, "Time Remaining: ");
+    this->actualClock = new Fl_Output(165, 20, 0,0, " 1:00");
+    this->totalScoreLabel = new Fl_Output(345, 20, 0,0, "Total Score: ");
+    this->totalScore = new Fl_Output(355, 20, 0,0, "0");
+
     this->possibleWordsTextDisplay->textfont(FL_COURIER);
     this->possibleWordsTextDisplay->buffer(possibleWordsTextBuffer);
 
@@ -45,7 +52,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->newGameButton->callback(cbNewGame, this);
 
     ///TODO implement feature to set scrambled letters and possible words
-    this->setScrambledWordText(this->controller.generateRandomLetters());
+    this->setScrambledWordText(this->controller.getRandomLetters());
 
     this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
     ///TODO
@@ -94,11 +101,17 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
     word = toUpper(word);
     letterChoice = toUpper(letterChoice);
     bool allValidLetters = word.find_first_not_of(letterChoice) == std::string::npos;
-    bool isAValidAmountOfLetters = word.length() == 3;
+    bool isAValidAmountOfLetters = word.length() >= 3;
     bool validAmountOfLetters = window->controller.isAValidWord(word);
     if(!allValidLetters || !validAmountOfLetters || !isAValidAmountOfLetters )
     {
         fl_alert("Invalid Word");
+
+    }
+    else {
+        window->controller.addValidWordEntered(word);
+        window->setPossibleWordsText(window->controller.allPossibleWordsFromLetters());
+        window->setValidWordsText(window->controller.displayAllValidWordsEntered());
     }
     cout << window->wordEntry->value() <<endl;
 
@@ -132,9 +145,14 @@ void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    window->setScrambledWordText(window->controller.generateRandomLetters());
+    window->controller.generateRandomLetters();
+    window->controller.clearAllValidWordsEntered();
+
+    window->setScrambledWordText(window->controller.getRandomLetters());
     window->setPossibleWordsText(window->controller.allPossibleWordsFromLetters());
+    window->setValidWordsText(window->controller.displayAllValidWordsEntered());
 }
+
 
 //
 //Sets the possible words text box to display the possible words, given a scrambled set of letters
@@ -149,6 +167,19 @@ void WordScrambleWindow::setPossibleWordsText(const string& outputText)
     this->possibleWordsTextBuffer->text(outputText.c_str());
 }
 
+
+//
+//Sets the possible words text box to display the possible words, given a scrambled set of letters
+//
+//@precondition none
+//@postcondition none
+//
+//@param outputText the text to display
+//
+void WordScrambleWindow::setValidWordsText(const string& outputText)
+{
+    this->validWordsTextBuffer->text(outputText.c_str());
+}
 //
 //Sets the scrambled word text box to display the selected word's letters
 //

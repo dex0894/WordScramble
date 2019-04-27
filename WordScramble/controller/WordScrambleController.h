@@ -7,8 +7,8 @@
 #include <string>
 #include <cctype>
 using namespace std;
- #include <algorithm>
- #include <vector>
+#include <algorithm>
+#include <vector>
 #include "../model/AllPossibleWords.h"
 #include "TextFileReader.h"
 #include "Utils.h"
@@ -24,18 +24,25 @@ class WordScrambleController
 private:
     TextFileReader reader;
     vector<string> wordCollection;
+    vector<string> allValidWordsEntered;
+    map<string,string> allPossibleWords;
     string randomLetters;
     void readFile();
     void removeSpaces();
+    void determineAllPossibleWords();
 
 public:
     WordScrambleController();
     virtual ~WordScrambleController();
-    string generateRandomLetters();
+    void generateRandomLetters();
     void shuffleStrings();
     string getRandomLetters();
-    string allPossibleWordsFromLetters();
     bool isAValidWord(string selectedWord);
+    void updateScore(string score);
+    string displayAllValidWordsEntered();
+    string allPossibleWordsFromLetters();
+    void addValidWordEntered(string word);
+    void clearAllValidWordsEntered();
 
 };
 }

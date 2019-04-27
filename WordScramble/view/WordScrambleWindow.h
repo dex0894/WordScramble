@@ -35,6 +35,14 @@ private:
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
+    Fl_Output *timeRemainingLabel;
+    Fl_Output *actualClock;
+    Fl_Output *totalScoreLabel;
+
+    Fl_Output *totalScore;
+    Fl_Text_Buffer *totalScoreBuffer;
+    Fl_Text_Display *totalScoreTextDisplay;
+
     Fl_Output *validWordsOutputLabel;
     Fl_Text_Buffer *validWordsTextBuffer;
     Fl_Text_Display *validWordsTextDisplay;
@@ -61,6 +69,7 @@ public:
 
     void setPossibleWordsText(const string& outputText);
     void setScrambledWordText(const string& letters);
+    void setValidWordsText(const string& outputText);
 
 
 };
