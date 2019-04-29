@@ -1,0 +1,72 @@
+#include "WordScrambleSettingsWindow.h"
+
+namespace view
+{
+
+WordScrambleSettingsWindow::WordScrambleSettingsWindow() : OKCancelWindow(430, 215, "Settings")
+{
+    const int X_INPUT_LOCATION = 110;
+    begin();
+    this->createAndDisplayRadioButtons();
+    end();
+}
+
+WordScrambleSettingsWindow::~WordScrambleSettingsWindow()
+{
+    //dtor
+}
+
+//
+//Returns the letter count from the window
+//
+//@precondition none
+//@postcondition none
+//
+//@return the letter count
+int WordScrambleSettingsWindow::getLetterCount()
+{
+    return this->letterCount;
+}
+
+//
+//Returns the total time from the window
+//
+//@precondition none
+//@postcondition none
+//
+//@return the total time
+int WordScrambleSettingsWindow::getTotalTime()
+{
+    return this->totalTime;
+}
+
+void WordScrambleSettingsWindow::createAndDisplayRadioButtons()
+{
+
+}
+
+//
+// Callback when a radio button for settings has changed
+//
+// @precondition widget != 0 AND data != 0
+// @postcondition CardCollectionWindow::getSortOrder() == value of new sort order selected
+//
+// @param widget The widget that initiatied the callback
+// @param data Any data that was passed with the call back. In this instance, a pointer to the window.
+//
+void WordScrambleSettingsWindow::cbSortingMethodChanged(Fl_Widget* widget, void* data)
+{
+    WordScrambleSettingsWindow* window = (WordScrambleSettingsWindow*)data;
+
+}
+
+void WordScrambleSettingsWindow::okHandler()
+{
+
+}
+
+void WordScrambleSettingsWindow::cancelHandler()
+{
+
+}
+}

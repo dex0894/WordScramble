@@ -1,0 +1,31 @@
+#ifndef WORDSCRAMBLESTARTWINDOW_H
+#define WORDSCRAMBLESTARTWINDOW_H
+
+#include "WordScrambleWindow.h"
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Button.H>
+#include <string>
+using namespace std;
+
+namespace view
+{
+
+
+class WordScrambleStartWindow : public Fl_Window
+{
+private:
+    Fl_Button* settingsButton;
+    Fl_Button* highScoreButton;
+    Fl_Button* startGameButton;
+    Fl_Te* gameTitle;
+public:
+    WordScrambleStartWindow(int width, int height, const char* title);
+    virtual ~WordScrambleStartWindow();
+
+    static void cbStartGame(Fl_Widget* widget, void* data);
+
+
+};
+}
+#endif // WORDSCRAMBLESTARTWINDOW_H
