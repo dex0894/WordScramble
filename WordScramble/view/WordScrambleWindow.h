@@ -31,6 +31,7 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 private:
+    static int TIME_LIMIT = 60;
     static const int TOTAL_LETTERS = 6;
     static const int POINT_DEDUCTION = -10;
     void validWordEntered(string word);
@@ -58,6 +59,7 @@ private:
     Fl_Button* submitButton;
     Fl_Button* newGameButton;
     WordScrambleController controller;
+    void determineProgressBarColor( WordScrambleWindow* window);
 
 
 public:
@@ -67,6 +69,7 @@ public:
     static void cbShuffle(Fl_Widget* widget, void* data);
     static void cbSubmit(Fl_Widget* widget, void* data);
     static void cbNewGame(Fl_Widget* widget, void* data);
+    static void cbTimer(void* data);
 
     void setTotalPointsText(const string& outputText);
     void setPossibleWordsText(const string& outputText);
