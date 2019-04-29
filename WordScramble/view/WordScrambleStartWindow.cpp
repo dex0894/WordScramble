@@ -84,5 +84,7 @@ void WordScrambleStartWindow::cbSettings(Fl_Widget* widget, void* data)
     {
         Fl::wait();
     }
+    cout << settingsWindow.getTotalTime() << endl;
+
 }
 }

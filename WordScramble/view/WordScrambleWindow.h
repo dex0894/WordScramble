@@ -34,6 +34,7 @@ private:
     static const int TIME_LIMIT = 60;
     static const int TOTAL_LETTERS = 6;
     static const int POINT_DEDUCTION = -10;
+    int CURRENT_TIME = 0;
     void validWordEntered(string word);
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
@@ -52,7 +53,6 @@ private:
     Fl_Output *scrambledWordOutputLabel;
     Fl_Text_Buffer *scrambledWordTextBuffer;
     Fl_Text_Display *scrambledWordTextDisplay;
-
     Fl_Input *wordEntry;
     Fl_Button* shuffleButton;
     Fl_Button* restartButton;
@@ -69,6 +69,7 @@ public:
     static void cbSubmit(Fl_Widget* widget, void* data);
     static void cbNewGame(Fl_Widget* widget, void* data);
     static void cbTimer(void* data);
+    static void cbWordEntry(Fl_Widget* widget, void* data);
 
     void setTotalPointsText(const string& outputText);
     void setPossibleWordsText(const string& outputText);

@@ -16,22 +16,22 @@ namespace view
 //
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
+    CURRENT_TIME = 0;
     begin();
+    this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
+    this->wordEntry->callback(cbWordEntry,this);
+    this->wordEntry->handle(FL_KEYDOWN);
     this->controller.generateRandomLetters(TOTAL_LETTERS);
     this->possibleWordsOutputLabel = new Fl_Output(130, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
 
     this->timeRemainingLabel = new Fl_Output(65, 20, 0,0, "Time: ");
-    this->actualClock = new Fl_Progress(65, 10, 115,25);
+    this->actualClock = new Fl_Progress(65, 10, 125,25);
     this->actualClock->maximum(TIME_LIMIT);
     this->actualClock->color2(FL_GREEN);
     Fl::add_timeout(1.0,cbTimer,this);
 
-    ///Todo: Implement a callback that has a timer that:
-    /// A.) updates the progress the bar by one every second
-    /// B.) changes the color of progress bar based on place (0-25% green, 26-75% yellow, 75-100% red)
-    /// C:) max value should be a set to total seconds used example if timer is one minute then max should be 60
     this->totalScoreLabel = new Fl_Output(345, 20, 0,0, "Total Score: ");
     this->totalScoreTextBuffer = new Fl_Text_Buffer();
     this->totalScoreTextDisplay = new Fl_Text_Display(345, 10, 40,25);
@@ -54,7 +54,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->scrambledWordTextDisplay->textsize(25);
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
 
-    this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
+
     this->shuffleButton = new Fl_Button(380, 300, 70, 40, "Shuffle");
     this->shuffleButton->callback(cbShuffle, this);
     this->submitButton = new Fl_Button(380, 375, 70, 25, "Submit");
@@ -87,7 +87,8 @@ WordScrambleWindow::~WordScrambleWindow()
     this->totalScoreTextDisplay->buffer(0);
     delete this->totalScoreTextBuffer;
     delete this->totalScoreTextDisplay;
-
+    Fl::remove_timeout(cbTimer,this);
+    delete this->wordEntry;
     delete this->timeRemainingLabel;
     this->actualClock->deactivate();
     delete this->actualClock;
@@ -107,21 +108,21 @@ WordScrambleWindow::~WordScrambleWindow()
 
 void WordScrambleWindow::cbTimer(void *data)
 {
-    static float count = 0;
-    cout << count << endl;
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-
+    cout << window->CURRENT_TIME << endl;
     float currentValue = window->actualClock->value();
-    count++;
-    if(count > window->actualClock->maximum())
+    window->CURRENT_TIME++;
+    if(window->CURRENT_TIME > window->actualClock->maximum())
     {
+        fl_alert("Times up");
+        window->submitButton->hide();
         Fl::remove_timeout(cbTimer,data);
     }
     else
     {
-        window->actualClock->value(currentValue + 1.0);
         window->determineProgressBarColor(window);
         Fl::repeat_timeout(1.0,cbTimer, data);
+        window->actualClock->value(currentValue +0.95555);
     }
 }
 
@@ -140,6 +141,40 @@ void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)
     }
 }
 
+
+
+//
+//Callback when the submit button is invoked
+//
+//@precondition widget != 0 AND data != 0
+//@postcondition none
+//
+//@param widget the widget that initiated the callback
+//@param data Any data that was passed with the call back, In this instance a pointer to the window.
+//
+void WordScrambleWindow::cbWordEntry(Fl_Widget* widget, void* data)
+{
+
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    if(window->wordEntry->changed() != 0){
+            cout << "Event fired" << endl;
+    }
+    string word = window->wordEntry->value();
+    string letterChoice = window->controller.getRandomLetters();
+    string uppercaseWord = toUpper(word);
+    letterChoice = toUpper(letterChoice);
+    bool validAmountOfLetters = window->controller.isAValidWord(word);
+
+    bool allValidLetters = uppercaseWord.find_first_not_of(letterChoice) == std::string::npos;
+    if(!allValidLetters || !validAmountOfLetters)
+    {
+        word.pop_back();
+        const char * charOfWord = word.c_str();
+        window->wordEntry->value(charOfWord);
+        delete charOfWord;
+    }
+}
+
 //
 //Callback when the submit button is invoked
 //
@@ -152,6 +187,8 @@ void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)
 void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->submitButton->show();
+
     string word = window->wordEntry->value();
     string letterChoice = window->controller.getRandomLetters();
     word = toUpper(word);
@@ -209,6 +246,10 @@ void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->actualClock->value(0);
+    window->actualClock->color2(FL_GREEN);
+    window->CURRENT_TIME = 0;
+
     window->controller.generateRandomLetters(TOTAL_LETTERS);
     window->controller.clearAllValidWordsEntered();
 

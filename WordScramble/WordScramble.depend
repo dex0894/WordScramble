@@ -150,3 +150,155 @@
 	<vector>
 	<string>
 
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/controller/WordScrambleController.cpp
+	"WordScrambleController.h"
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/controller/WordScrambleController.h
+	"Utils.h"
+	<algorithm>
+	<iostream>
+	<string>
+	<cctype>
+	<algorithm>
+	<vector>
+	"TextFileReader.h"
+	"ScoreBoardCSVReader.h"
+	"../model/LetterGenerator.h"
+	"../model/AllPossibleWords.h"
+	"OutputFormatter.h"
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/utils/Utils.h
+	<string>
+	<algorithm>
+	<sstream>
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/io/TextFileReader.h
+	<vector>
+	<string>
+	<iostream>
+	<sstream>
+	<fstream>
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/io/ScoreBoardCSVReader.h
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+	<bits/stdc++.h>
+	"Player.h"
+	"Utils.h"
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/Player.h
+	<string>
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/LetterGenerator.h
+	<string>
+	<iostream>
+	<cmath>
+	<ctime>
+	<string.h>
+	<vector>
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/AllPossibleWords.h
+	"Utils.h"
+	<iostream>
+	<ostream>
+	<vector>
+	<string>
+	<map>
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/format/OutputFormatter.h
+	<iostream>
+	<locale>
+	<iterator>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	<string>
+	"../model/AllPossibleWords.h"
+	"Player.h"
+	"Utils.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/format/OutputFormatter.cpp
+	"OutputFormatter.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/io/ScoreBoardCSVReader.cpp
+	"ScoreBoardCSVReader.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/io/TextFileReader.cpp
+	"TextFileReader.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/main.cpp
+	"view/WordScrambleWindow.h"
+	"view/WordScrambleStartWindow.h"
+
+1556565124 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/WordScrambleWindow.h
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Round_Button.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<FL/Fl_Button.H>
+	<FL/fl_types.h>
+	<Fl/fl_draw.H>
+	<Fl/Fl_Progress.H>
+	<Fl/Fl_File_Chooser.H>
+	<vector>
+	<string>
+	<iostream>
+	"Utils.h"
+	"../controller/WordScrambleController.h"
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/WordScrambleStartWindow.h
+	"WordScrambleWindow.h"
+	"WordScrambleSettingsWindow.h"
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Button.H>
+	<string>
+
+1556578392 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/WordScrambleSettingsWindow.h
+	"OKCancelWindow.h"
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Round_Button.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<FL/Fl_Button.H>
+	<iostream>
+	<vector>
+	<string>
+
+1556562902 /home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/OKCancelWindow.h
+	<Fl/Fl_Window.H>
+	<Fl/Fl_Button.H>
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/AllPossibleWords.cpp
+	"AllPossibleWords.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/LetterGenerator.cpp
+	"LetterGenerator.h"
+	"Utils.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/Player.cpp
+	"Player.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/utils/Utils.cpp
+	"Utils.h"
+
+1556569965 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/WordScrambleWindow.cpp
+	"WordScrambleWindow.h"
+
+1556562999 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/WordScrambleStartWindow.cpp
+	"WordScrambleStartWindow.h"
+
+1556578381 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/WordScrambleSettingsWindow.cpp
+	"WordScrambleSettingsWindow.h"
+
+1556562902 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/view/OKCancelWindow.cpp
+	"OKCancelWindow.h"
+
