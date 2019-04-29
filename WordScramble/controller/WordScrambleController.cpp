@@ -32,6 +32,7 @@ WordScrambleController::~WordScrambleController()
 void WordScrambleController::readFile()
 {
     this->dictionary =  this->reader.readFile();
+    this->scoreboardReader.parseCSVFile();
 }
 //
 // Generates a random string of six letters and then

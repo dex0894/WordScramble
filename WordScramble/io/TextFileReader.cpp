@@ -32,7 +32,7 @@ TextFileReader::~TextFileReader()
 vector<string> TextFileReader::readFile()
 {
     string line;
-    ifstream file(FILENAME);
+    ifstream file(FILE_NAME);
 
     if(!file)
     {

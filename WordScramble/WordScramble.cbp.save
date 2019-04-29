@@ -18,6 +18,8 @@
 					<Add directory="io" />
 					<Add directory="utils" />
 					<Add directory="format" />
+					<Add directory="view" />
+					<Add directory="model" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -32,6 +34,8 @@
 		<Unit filename="dictionary.txt" />
 		<Unit filename="format/OutputFormatter.cpp" />
 		<Unit filename="format/OutputFormatter.h" />
+		<Unit filename="io/ScoreBoardCSVReader.cpp" />
+		<Unit filename="io/ScoreBoardCSVReader.h" />
 		<Unit filename="io/TextFileReader.cpp" />
 		<Unit filename="io/TextFileReader.h" />
 		<Unit filename="main.cpp" />
@@ -39,8 +43,17 @@
 		<Unit filename="model/AllPossibleWords.h" />
 		<Unit filename="model/LetterGenerator.cpp" />
 		<Unit filename="model/LetterGenerator.h" />
+		<Unit filename="model/Player.cpp" />
+		<Unit filename="model/Player.h" />
+		<Unit filename="scoreboard.csv" />
 		<Unit filename="utils/Utils.cpp" />
 		<Unit filename="utils/Utils.h" />
+		<Unit filename="view/OKCancelWindow.cpp" />
+		<Unit filename="view/OKCancelWindow.h" />
+		<Unit filename="view/WordScrambleSettingsWindow.cpp" />
+		<Unit filename="view/WordScrambleSettingsWindow.h" />
+		<Unit filename="view/WordScrambleStartWindow.cpp" />
+		<Unit filename="view/WordScrambleStartWindow.h" />
 		<Unit filename="view/WordScrambleWindow.cpp" />
 		<Unit filename="view/WordScrambleWindow.h" />
 		<Extensions>

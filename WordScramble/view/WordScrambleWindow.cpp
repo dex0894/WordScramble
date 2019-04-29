@@ -38,8 +38,6 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->totalScoreTextDisplay->buffer(this->totalScoreTextBuffer);
     this->totalScoreTextDisplay->textfont(FL_COURIER);
 
-
-
     this->possibleWordsTextDisplay->textfont(FL_COURIER);
     this->possibleWordsTextDisplay->buffer(possibleWordsTextBuffer);
 
@@ -57,7 +55,6 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
 
     this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
-
     this->shuffleButton = new Fl_Button(380, 300, 70, 40, "Shuffle");
     this->shuffleButton->callback(cbShuffle, this);
     this->submitButton = new Fl_Button(380, 375, 70, 25, "Submit");
@@ -92,6 +89,7 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->totalScoreTextDisplay;
 
     delete this->timeRemainingLabel;
+    this->actualClock->deactivate();
     delete this->actualClock;
 
     delete this->shuffleButton;
@@ -115,10 +113,12 @@ void WordScrambleWindow::cbTimer(void *data)
 
     float currentValue = window->actualClock->value();
     count++;
-    if(count > window->actualClock->maximum()){
+    if(count > window->actualClock->maximum())
+    {
         Fl::remove_timeout(cbTimer,data);
     }
-    else {
+    else
+    {
         window->actualClock->value(currentValue + 1.0);
         window->determineProgressBarColor(window);
         Fl::repeat_timeout(1.0,cbTimer, data);
@@ -127,13 +127,15 @@ void WordScrambleWindow::cbTimer(void *data)
 
 void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)
 {
-     float currValue = window->actualClock->value();
-     float maxValue = window->actualClock->maximum();
-     float progressOfBar = currValue / maxValue;
-     if(progressOfBar > .25 && progressOfBar < .75){
+    float currValue = window->actualClock->value();
+    float maxValue = window->actualClock->maximum();
+    float progressOfBar = currValue / maxValue;
+    if(progressOfBar > .25 && progressOfBar < .75)
+    {
         window->actualClock->color2(FL_YELLOW);
     }
-    else if(progressOfBar >= .75) {
+    else if(progressOfBar >= .75)
+    {
         window->actualClock->color2(FL_RED);
     }
 }

@@ -11,7 +11,7 @@ using namespace std;
 namespace io
 {
 
-static const string FILENAME = "dictionary.txt";
+static const string FILE_NAME = "dictionary.txt";
 
 class TextFileReader
 {

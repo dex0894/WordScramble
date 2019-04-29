@@ -31,7 +31,7 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 private:
-    static int TIME_LIMIT = 60;
+    static const int TIME_LIMIT = 60;
     static const int TOTAL_LETTERS = 6;
     static const int POINT_DEDUCTION = -10;
     void validWordEntered(string word);
@@ -60,7 +60,6 @@ private:
     Fl_Button* newGameButton;
     WordScrambleController controller;
     void determineProgressBarColor( WordScrambleWindow* window);
-
 
 public:
     WordScrambleWindow(int width, int height, const char* title);

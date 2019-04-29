@@ -10,6 +10,7 @@
 #include <vector>
 using namespace std;
 #include "TextFileReader.h"
+#include "ScoreBoardCSVReader.h"
 using namespace io;
 #include "../model/LetterGenerator.h"
 #include "../model/AllPossibleWords.h"
@@ -25,6 +26,7 @@ class WordScrambleController
 
 private:
     TextFileReader reader;
+    ScoreBoardCSVReader scoreboardReader;
     OutputFormatter formatter;
     LetterGenerator letterGenerator;
     vector<string> dictionary;
