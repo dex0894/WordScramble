@@ -13,7 +13,6 @@ namespace controller
 WordScrambleController::WordScrambleController()
 {
     this->readFile();
-    this->generateRandomLetters();
     this->totalScore = 0;
 }
 
@@ -32,7 +31,7 @@ WordScrambleController::~WordScrambleController()
 
 void WordScrambleController::readFile()
 {
-    this->wordCollection =  this->reader.readFile();
+    this->dictionary =  this->reader.readFile();
 }
 //
 // Generates a random string of six letters and then
@@ -41,20 +40,19 @@ void WordScrambleController::readFile()
 //@precondition none
 //@postcondition none
 //
-void WordScrambleController::generateRandomLetters()
+//@param letterCount the number of letters to generate
+//
+void WordScrambleController::generateRandomLetters(int letterCount)
 {
-    LetterGenerator letterGenerator;
-    int currentLetterLength = 6;
-    this-> randomLetters = letterGenerator.generateRandomLetters(currentLetterLength);
+
+    this->randomLetters = this->letterGenerator.generateRandomLetters(letterCount);
     this->determineAllPossibleWords();
 }
 
 void WordScrambleController::determineAllPossibleWords()
 {
-    TextFileReader textFileReader;
-    vector<string> dictionary = textFileReader.readFile();
-    AllPossibleWords allPossibleWord(dictionary, this->randomLetters);
-    this->allPossibleWords = allPossibleWord.getPossibleWords();
+    AllPossibleWords possibleWords(this->dictionary, this->randomLetters);
+    this->allPossibleWords = possibleWords.getPossibleWords();
 }
 //
 // gets the random letters that were generated
@@ -99,12 +97,7 @@ void WordScrambleController::clearAllValidWordsEntered()
 //@return all words that have been entered
 string WordScrambleController::displayAllValidWordsEntered()
 {
-    string output;
-    for(string currWord: this->allValidWordsEntered)
-    {
-        output += currWord + "\n";
-    }
-    return output;
+    return formatter.buildValidWordsOutput(this->allValidWordsEntered);
 }
 //
 // displays all words that are possible based on
@@ -116,13 +109,7 @@ string WordScrambleController::displayAllValidWordsEntered()
 //@return output of all words that are possible based random letters
 string WordScrambleController::allPossibleWordsFromLetters()
 {
-    string output;
-    for (map<string,string>::iterator it=this->allPossibleWords.begin(); it!=this->allPossibleWords.end(); ++it)
-    {
-        output += it->second + "\n";
-    }
-
-    return output;
+    return this->formatter.buildAllPossibleWordsOutput(this->allPossibleWords);
 }
 
 

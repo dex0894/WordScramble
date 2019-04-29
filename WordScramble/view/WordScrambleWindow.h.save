@@ -12,6 +12,7 @@
 #include <FL/Fl_Button.H>
 #include <FL/fl_types.h>
 #include <Fl/fl_draw.H>
+#include <Fl/Fl_Progress.H>
 #include <Fl/Fl_File_Chooser.H>
 #include <vector>
 #include <string>
@@ -31,10 +32,18 @@ class WordScrambleWindow : public Fl_Window
 {
 private:
     static const int TOTAL_LETTERS = 6;
-
+    static const int POINT_DEDUCTION = -10;
+    void validWordEntered(string word);
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;
+    Fl_Output *timeRemainingLabel;
+    Fl_Progress *actualClock;
+    Fl_Output *totalScoreLabel;
+
+    Fl_Text_Buffer *totalScoreTextBuffer;
+    Fl_Text_Display *totalScoreTextDisplay;
+
     Fl_Output *validWordsOutputLabel;
     Fl_Text_Buffer *validWordsTextBuffer;
     Fl_Text_Display *validWordsTextDisplay;
@@ -59,8 +68,10 @@ public:
     static void cbSubmit(Fl_Widget* widget, void* data);
     static void cbNewGame(Fl_Widget* widget, void* data);
 
+    void setTotalPointsText(const string& outputText);
     void setPossibleWordsText(const string& outputText);
-    void setScrambledWordText(const string letters);
+    void setScrambledWordText(const string& letters);
+    void setValidWordsText(const string& outputText);
 
 
 };

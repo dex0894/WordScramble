@@ -10,5 +10,6 @@ using namespace std;
 
 const string toUpper(string text);
 const string toLower(string text);
+const string hideText(string text);
 const int calculateScoreByWord(string word);
 #endif // UTILS_H

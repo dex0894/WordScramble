@@ -17,6 +17,7 @@
 					<Add directory="../WordScramble" />
 					<Add directory="io" />
 					<Add directory="utils" />
+					<Add directory="format" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -29,6 +30,8 @@
 		<Unit filename="controller/WordScrambleController.cpp" />
 		<Unit filename="controller/WordScrambleController.h" />
 		<Unit filename="dictionary.txt" />
+		<Unit filename="format/OutputFormatter.cpp" />
+		<Unit filename="format/OutputFormatter.h" />
 		<Unit filename="io/TextFileReader.cpp" />
 		<Unit filename="io/TextFileReader.h" />
 		<Unit filename="main.cpp" />

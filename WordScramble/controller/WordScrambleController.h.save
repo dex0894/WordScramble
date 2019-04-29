@@ -1,16 +1,18 @@
 #ifndef WORDSCRAMBLECONTROLLER_H
 #define WORDSCRAMBLECONTROLLER_H
-#include "../model/LetterGenerator.h"
 
+#include "Utils.h"
 #include <algorithm>
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <algorithm>
+#include <vector>
 using namespace std;
-
-#include "../model/AllPossibleWords.h"
 #include "TextFileReader.h"
 using namespace io;
+#include "../model/LetterGenerator.h"
+#include "../model/AllPossibleWords.h"
 using namespace model;
 
 namespace controller
@@ -21,19 +23,32 @@ class WordScrambleController
 
 private:
     TextFileReader reader;
+    OutputFormatter format
+    LetterGenerator letterGenerator;
     vector<string> dictionary;
-    vector<string> randomLetters;
+    vector<string> allValidWordsEntered;
+    map<string,string> allPossibleWords;
+    string randomLetters;
     void readFile();
     void removeSpaces();
+    void determineAllPossibleWords();
+    int totalScore;
+    int currentScore;
 
 public:
     WordScrambleController();
     virtual ~WordScrambleController();
-    vector<char> generateRandomLetters();
+    void generateRandomLetters();
     void shuffleStrings();
-    vector<string> getRandomLetters();
+    string getRandomLetters();
+    bool isAValidWord(string selectedWord);
+    void updateScore(string score);
+    string displayAllValidWordsEntered();
     string allPossibleWordsFromLetters();
-    bool isInDictionary(string word);
+    void addValidWordEntered(string word);
+    void clearAllValidWordsEntered();
+    int getTotalScore();
+    void updateTotalScore(int addedValue);
 
 };
 }

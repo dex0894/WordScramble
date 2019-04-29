@@ -13,6 +13,7 @@ namespace controller
 WordScrambleController::WordScrambleController()
 {
     this->readFile();
+    this->totalScore = 0;
 }
 
 //
@@ -22,97 +23,131 @@ WordScrambleController::~WordScrambleController()
 {
     //dtor
 }
+//
+// loads all words in dictionary into a vector
+//
+//@precondition none
+//@postcondition none
 
 void WordScrambleController::readFile()
 {
     this->dictionary =  this->reader.readFile();
 }
-
 //
-//Generates a collection of random letters
+// Generates a random string of six letters and then
+//generates all possible words from those random letters
 //
 //@precondition none
 //@postcondition none
 //
-//@return the collection of letters
+//@param letterCount the number of letters to generate
 //
-vector<string> WordScrambleController::generateRandomLetters()
+void WordScrambleController::generateRandomLetters(int letterCount)
 {
-    LetterGenerator letterGenerator;
-    int currentLetterLength = 6;
-    this-> randomLetters = letterGenerator.generateRandomLetters(currentLetterLength);
+
+    this->randomLetters = this->letterGenerator.generateRandomLetters(letterCount);
+    this->determineAllPossibleWords();
+}
+
+void WordScrambleController::determineAllPossibleWords()
+{
+    AllPossibleWords possibleWords(this->dictionary, this->randomLetters);
+    this->allPossibleWords = possibleWords.getPossibleWords();
+}
+//
+// gets the random letters that were generated
+//
+//@precondition none
+//@postcondition none
+//
+//@return the random letters in a string format
+string WordScrambleController:: getRandomLetters()
+{
     return this->randomLetters;
 }
 
 //
-//Returns the current generated collection of letters
+//Adds the valid word into words that have been entered and
+//removes that word from all possible words
 //
 //@precondition none
 //@postcondition none
-//
-//@return the current collection of letters
-//
-vector<string> WordScrambleController:: getRandomLetters()
+void WordScrambleController::addValidWordEntered(string word)
 {
-    return this->randomLetters;
+    word = toLower(word);
+    this->allPossibleWords.erase(word);
+    this->allValidWordsEntered.push_back(word);
+}
+//
+//Clears all words that have be entered
+//
+//@precondition none
+//@postcondition none
+void WordScrambleController::clearAllValidWordsEntered()
+{
+    this->allValidWordsEntered.clear();
 }
 
 //
-//Returns a string of all the possible words that can be created from the generated letters
+// displays all words that have been entered by user
 //
 //@precondition none
 //@postcondition none
 //
-//@return the string of possible words
+//@return all words that have been entered
+string WordScrambleController::displayAllValidWordsEntered()
+{
+    return formatter.buildValidWordsOutput(this->allValidWordsEntered);
+}
 //
+// displays all words that are possible based on
+// the random letters generated
+//
+//@precondition none
+//@postcondition none
+//
+//@return output of all words that are possible based random letters
 string WordScrambleController::allPossibleWordsFromLetters()
 {
-    string output;
-    string letters;
-    for (string curletter : this->randomLetters)
-    {
-        letters += curletter;
-    }
-    AllPossibleWords allPossibleWord(this->dictionary, this->randomLetters);
-    map<string,string> allPossibleWordsMap = allPossibleWord.getPossibleWords();
-    for (map<string,string>::iterator it=allPossibleWordsMap.begin(); it!=allPossibleWordsMap.end(); ++it)
-    {
-        output += it->second + "\n";
-    }
-
-    return output;
+    return this->formatter.buildAllPossibleWordsOutput(this->allPossibleWords);
 }
 
 
 //
-//Shuffles the string of generated letters
+// Checks if the word entered is a possible word based on the
+//random letters
 //
 //@precondition none
 //@postcondition none
 //
+//@return true if it is valid false if otherwise
+bool WordScrambleController::isAValidWord(string selectedWord)
+{
+    selectedWord = toLower(selectedWord);
+
+    return this->allPossibleWords.count(selectedWord);
+}
+
+
+int WordScrambleController::getTotalScore()
+{
+    return this->totalScore;
+}
+
+void WordScrambleController::updateTotalScore(int addedValue)
+{
+    totalScore += addedValue;
+}
+
+
+//
+// Shuffles the the random letters characters
+//
+//@precondition none
+//@postcondition none
 void WordScrambleController::shuffleStrings()
 {
     random_shuffle(this->randomLetters.begin(), this->randomLetters.end());
-}
-
-//
-//Checks if a passed in word is contained within the dictionary
-//
-//@precondition none
-//@postcondition none
-//
-bool WordScrambleController::isInDictionary(string word)
-{
-
-    if (find(this->dictionary.begin(), this->dictionary.end(), word) != this->dictionary.end())
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
 }
 
 }

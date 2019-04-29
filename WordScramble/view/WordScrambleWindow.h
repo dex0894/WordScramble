@@ -32,7 +32,8 @@ class WordScrambleWindow : public Fl_Window
 {
 private:
     static const int TOTAL_LETTERS = 6;
-
+    static const int POINT_DEDUCTION = -10;
+    void validWordEntered(string word);
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
     Fl_Text_Display *possibleWordsTextDisplay;

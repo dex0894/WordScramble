@@ -16,7 +16,7 @@ namespace view
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
-
+    this->controller.generateRandomLetters(TOTAL_LETTERS);
     this->possibleWordsOutputLabel = new Fl_Output(130, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
@@ -63,12 +63,9 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->newGameButton = new Fl_Button(430, 10, 90, 40, "New Game");
     this->newGameButton->callback(cbNewGame, this);
 
-    ///TODO implement feature to set scrambled letters and possible words
     this->setScrambledWordText(this->controller.getRandomLetters());
-
     this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
     this->setTotalPointsText(to_string(this->controller.getTotalScore()));
-    ///TODO
     end();
 }
 
@@ -87,6 +84,14 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->scrambledWordTextBuffer;
     delete this->scrambledWordTextDisplay;
 
+    delete this->totalScoreLabel;
+    this->totalScoreTextDisplay->buffer(0);
+    delete this->totalScoreTextBuffer;
+    delete this->totalScoreTextDisplay;
+
+    delete this->timeRemainingLabel;
+    delete this->actualClock;
+
     delete this->shuffleButton;
     delete this->submitButton;
     delete this->newGameButton;
@@ -104,10 +109,6 @@ WordScrambleWindow::~WordScrambleWindow()
 //
 void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 {
-    ///TODO
-    ///Implement submit function
-    ///needs to update score, when valid word submitted
-    ///must check submitted word to see if dictionary contains it
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     string word = window->wordEntry->value();
     string letterChoice = window->controller.getRandomLetters();
@@ -118,20 +119,24 @@ void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
     bool validAmountOfLetters = window->controller.isAValidWord(word);
     if(!allValidLetters || !validAmountOfLetters || !isAValidAmountOfLetters )
     {
-        fl_alert("Invalid Word");
-        window->controller.updateTotalScore(-10);
+        fl_alert("Invalid Word, 10 points will be deducted");
+        window->controller.updateTotalScore(POINT_DEDUCTION);
         window->setTotalPointsText(to_string(window->controller.getTotalScore()));
     }
-    else {
-        int addedScore = calculateScoreByWord(word);
-        window->controller.updateTotalScore(addedScore);
-        window->controller.addValidWordEntered(word);
-        window->controller.updateTotalScore(addedScore);
-
+    else
+    {
+        window->validWordEntered(word);
         window->setPossibleWordsText(window->controller.allPossibleWordsFromLetters());
         window->setValidWordsText(window->controller.displayAllValidWordsEntered());
         window->setTotalPointsText(to_string(window->controller.getTotalScore()));
     }
+}
+
+void WordScrambleWindow::validWordEntered(string word)
+{
+    int score = calculateScoreByWord(word);
+    this->controller.updateTotalScore(score);
+    this->controller.addValidWordEntered(word);
 }
 
 //
@@ -162,7 +167,7 @@ void WordScrambleWindow::cbShuffle(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    window->controller.generateRandomLetters();
+    window->controller.generateRandomLetters(TOTAL_LETTERS);
     window->controller.clearAllValidWordsEntered();
 
     window->setScrambledWordText(window->controller.getRandomLetters());

@@ -12,6 +12,7 @@ AllPossibleWords::AllPossibleWords(vector<string> dictionary, string randomLette
     this->possibleWords = map<string, string>();
     this->determineValidWords(dictionary, randomLetters);
 }
+
 //Deconstructs AllPossibleWords when it loses scope
 AllPossibleWords::~AllPossibleWords()
 {
@@ -24,10 +25,10 @@ void AllPossibleWords:: determineValidWords(vector<string> dictionary, string ra
         string upperCasedCurrWord = toUpper(currWord);
         size_t allUnMatchedLetters = upperCasedCurrWord.find_first_not_of(randomLetters);
 
-        bool correctLetterLength = currWord.length() >= 3;
+        bool correctLetterLength = currWord.length() >= MINIMUM_LENGTH;
         if( allUnMatchedLetters == string::npos && correctLetterLength && isAPossibleWord(currWord, randomLetters))
         {
-            this->possibleWords.insert (pair<string,string>(currWord,hidePossibleWord(currWord)));
+            this->possibleWords.insert (pair<string,string>(currWord,hideText(currWord)));
         }
     }
 }
@@ -36,23 +37,16 @@ bool AllPossibleWords::isAPossibleWord(string selectedWord, string randomLetters
 {
     bool result = true;
     std::transform(randomLetters.begin(), randomLetters.end(), randomLetters.begin(), ::tolower);
-    for(char currLetter: selectedWord){
+    for(char currLetter: selectedWord)
+    {
         size_t currLetterCount = letterCount(selectedWord,currLetter);
         size_t rdmLetterCount = letterCount(randomLetters, currLetter);
-        if(currLetterCount > rdmLetterCount){
+        if(currLetterCount > rdmLetterCount)
+        {
             result = false;
         }
     }
     return result;
-}
-
-string AllPossibleWords::hidePossibleWord(string word)
-{
-    string output;
-    for(char currLetter: word){
-        output += "-";
-    }
-    return output;
 }
 
 
@@ -62,16 +56,18 @@ size_t AllPossibleWords::letterCount(string word, char letter)
     return allLettersUsed;
 }
 
-
+//
 //Gets the map of all possible words
 //@precondition none
-//@postcondition noen
+//@postcondition none
+//
 //@return map of all possible words
 map<string, string> AllPossibleWords:: getPossibleWords()
 {
     return this->possibleWords;
 }
 
+//
 // Checks if input is part of the selected word
 //
 //@precondition none

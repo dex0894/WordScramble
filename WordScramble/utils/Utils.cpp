@@ -36,6 +36,22 @@ const string toLower(string text)
 }
 
 //
+//Replaces the char of a string with underscores hiding the text
+//
+//@precondition none
+//@postcondition none
+//
+const string hideText(string text)
+{
+    string output;
+    for(char currLetter: text)
+    {
+        output += "-";
+    }
+    return output;
+}
+
+//
 // Gets the length of the string and determines
 // the score based on the input
 //

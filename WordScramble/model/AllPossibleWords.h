@@ -12,12 +12,12 @@ namespace model {
 class AllPossibleWords
 {
     private:
+        static const int MINIMUM_LENGTH = 3;
         map<string, string> possibleWords;
         void determineValidWords(vector<string> dictionary, string randomLetters);
         bool isAValidWord(string word, string randomLetters);
         size_t letterCount(string word, char letter);
         bool isAPossibleWord(string selectedWord, string randomLetters);
-        string hidePossibleWord(string word);
     public:
         AllPossibleWords(vector<string> dictionary, string randomLetters);
         virtual ~AllPossibleWords();
