@@ -24,6 +24,11 @@ WordScrambleScoreboardController::~WordScrambleScoreboardController()
     //dtor
 }
 
+//
+//Loads the scoreboard
+//
+//@precondition none
+//@postconditi
 void WordScrambleScoreboardController::loadScoreBoard()
 {
     for (Player* player : this->scoreboardReader.parseCSVFile())
@@ -70,7 +75,7 @@ void WordScrambleScoreboardController::setScoreBoardSortByScore(bool value)
 //
 void WordScrambleScoreboardController::clearScoreBoard()
 {
-    this->
+    this->scoreboardWriter.writeToCSV(" ");
 }
 
 }

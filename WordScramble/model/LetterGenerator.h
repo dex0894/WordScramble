@@ -11,20 +11,21 @@ using namespace std;
 
 
 
-namespace model {
+namespace model
+{
 class LetterGenerator
 {
-    public:
+public:
 
-        LetterGenerator();
+    LetterGenerator();
 
-        virtual ~LetterGenerator();
+    virtual ~LetterGenerator();
 
-        string generateRandomLetters(int length);
+    string generateRandomLetters(int length);
 
-    protected:
+protected:
 
-    private:
+private:
 };
 
 }

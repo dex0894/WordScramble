@@ -84,7 +84,8 @@ const int calculateScoreByWord(string word)
     {
         score = 300;
     }
-    else {
+    else
+    {
         score = 420;
     }
     return score;

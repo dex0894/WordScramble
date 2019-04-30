@@ -19,7 +19,7 @@ ScoreBoardCSVWriter::~ScoreBoardCSVWriter()
 
 void ScoreBoardCSVWriter::writeToCSV(string content)
 {
-     ofstream file(SCOREBOARD_FILE_NAME);
+    ofstream file(SCOREBOARD_FILE_NAME);
 
     if(file.is_open())
     {

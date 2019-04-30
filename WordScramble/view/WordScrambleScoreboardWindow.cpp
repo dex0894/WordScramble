@@ -12,7 +12,8 @@ WordScrambleScoreboardWindow::WordScrambleScoreboardWindow(int width, int height
     this->scoreboardTextDisplay->textfont(FL_COURIER);
     this->scoreboardTextDisplay->buffer(this->scoreboardTextBuffer);
     this->scoreboardTextBuffer->text(this->controller.getScoreBoardInfo().c_str());
-    this->clearScoreBoardBtn = new Fl_Button(200, 20,140, 30, "Reset ScoreBoard");
+    this->clearScoreBoardBtn = new Fl_Button(300, 20,140, 30, "Reset ScoreBoard");
+    this->clearScoreBoardBtn->callback(cbClearButton, this);
     end();
 }
 
@@ -71,25 +72,54 @@ void WordScrambleScoreboardWindow::cbSortMethodChanged(Fl_Widget* widget, void* 
     window->sortMethodChanged();
 }
 
+//
+// Callback when a clear button is clicked
+//
+// @precondition widget != 0 AND data != 0
+// @postcondition none
+//
+// @param widget The widget that initiatied the callback
+// @param data Any data that was passed with the call back. In this instance, a pointer to the window.
+//
+void WordScrambleScoreboardWindow::cbClearButton(Fl_Widget* widget, void* data)
+{
+    WordScrambleScoreboardWindow* window = (WordScrambleScoreboardWindow*)data;
+    window->controller.clearScoreBoard();
+    window->clearTextSource();
+}
+
 void WordScrambleScoreboardWindow::sortMethodChanged()
 {
-    for (int i=0; i<TOTAL_SORTING_METHODS; i++)
+    if (clearClicked == false)
     {
-        if (this->sortRadioGroupButton[i]->value())
+
+        for (int i=0; i<TOTAL_SORTING_METHODS; i++)
         {
-            if(i == FIRST_RADIO_BUTTON)
+            if (this->sortRadioGroupButton[i]->value())
             {
-                this->controller.setScoreBoardSortByScore(true);
-                this->scoreboardTextBuffer->text(this->controller.getScoreBoardInfo().c_str());
-            }
-            else if( i == SECOND_RADIO_BUTTON)
-            {
-                this->controller.setScoreBoardSortByScore(false);
-                this->scoreboardTextBuffer->text(this->controller.getScoreBoardInfo().c_str());
+                if(i == FIRST_RADIO_BUTTON)
+                {
+                    this->controller.setScoreBoardSortByScore(true);
+                    this->scoreSortDisplay = this->controller.getScoreBoardInfo();
+                    this->scoreboardTextBuffer->text(scoreSortDisplay.c_str());
+                }
+                else if( i == SECOND_RADIO_BUTTON)
+                {
+                    this->controller.setScoreBoardSortByScore(false);
+                    this->timeSortDisplay = this->controller.getScoreBoardInfo();
+                    this->scoreboardTextBuffer->text(timeSortDisplay.c_str());
+                }
             }
         }
     }
 }
 
+void WordScrambleScoreboardWindow::clearTextSource()
+{
+    this->scoreSortDisplay = " ";
+    this->timeSortDisplay = " ";
+    this->clearClicked = true;
+    this->scoreboardTextBuffer->text(scoreSortDisplay.c_str());
+}
 
 }

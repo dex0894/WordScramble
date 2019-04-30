@@ -23,6 +23,7 @@ private:
     Fl_Text_Display* scoreboardTextDisplay;
     string scoreSortDisplay;
     string timeSortDisplay;
+    bool clearClicked = false;
     static const int FIRST_RADIO_BUTTON = 0;
     static const int SECOND_RADIO_BUTTON = 1;
     static const int CURRENT_GROUP = 1;
@@ -33,12 +34,14 @@ private:
     Fl_Round_Button *sortRadioGroupButton[TOTAL_SORTING_METHODS];
     void buildAndDisplayRadioBtn();
     void sortMethodChanged();
+    void clearTextSource();
     void setScoreboardText(string text);
     string* sortRadioSelectedLabels[TOTAL_SORTING_METHODS];
 public:
     WordScrambleScoreboardWindow(int width, int height, const char* title);
     virtual ~WordScrambleScoreboardWindow();
     static void cbSortMethodChanged(Fl_Widget* widget, void* data);
+    static void cbClearButton(Fl_Widget* widget, void* data);
     void setScoreDisplay(string text);
     void setTimeDisplay(string text);
 

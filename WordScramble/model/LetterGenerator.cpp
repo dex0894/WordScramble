@@ -32,7 +32,7 @@ string LetterGenerator:: generateRandomLetters(int length)
 {
     char letters[] = "eeeeeeeeeeetttttttttooooooooaaaaaaiiiiiinnnnnnsssssshhhhhrrrrrllllddduuuwwwyyybbccffggmmppvvjkqxz";
     string randomLetters;
-   // gets(letters);
+    // gets(letters);
     int len = strlen(letters);
     for(int i=0; i< length; i++)
     {
