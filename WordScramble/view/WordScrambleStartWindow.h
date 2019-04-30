@@ -3,6 +3,7 @@
 
 #include "WordScrambleWindow.h"
 #include "WordScrambleSettingsWindow.h"
+#include "WordScrambleScoreboardWindow.h"
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Button.H>
@@ -23,7 +24,6 @@ private:
     Fl_Button* highScoreButton;
     Fl_Button* startGameButton;
     Fl_Text_Display* gameTitle;
-
 public:
     WordScrambleStartWindow(int width, int height, const char* title);
     virtual ~WordScrambleStartWindow();

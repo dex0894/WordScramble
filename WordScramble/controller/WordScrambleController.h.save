@@ -24,7 +24,6 @@ namespace controller
 
 class WordScrambleController
 {
-
 private:
     TextFileReader reader;
     ScoreBoardCSVReader scoreboardReader;
@@ -41,7 +40,6 @@ private:
     void determineAllPossibleWords();
     int totalScore;
     int currentScore;
-    bool sortByScore;
 public:
     WordScrambleController();
     virtual ~WordScrambleController();
@@ -54,8 +52,6 @@ public:
     string allPossibleWordsFromLetters();
     void addValidWordEntered(string word);
     void clearAllValidWordsEntered();
-    void setScoreBoard
-    string getScoreBoardInfo();
     int getTotalScore();
     void updateTotalScore(int addedValue);
 };

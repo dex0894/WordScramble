@@ -46,7 +46,7 @@ void PlayerCollection::sortedInsert(PlayerNode* &head, Player* player, T (Player
     PlayerNode *currPlayer;
     PlayerNode *prevPlayer;
 
-    if(head == nullptr || (head->*dataPtr)() >= (newPlayer->*dataPtr)())
+    if(head == nullptr || (head->*dataPtr)() <= (newPlayer->*dataPtr)())
     {
         (newPlayer->*setNodePtr)(head);
         head = newPlayer;
@@ -54,7 +54,7 @@ void PlayerCollection::sortedInsert(PlayerNode* &head, Player* player, T (Player
     else
     {
         currPlayer = head;
-        while(currPlayer != nullptr && (currPlayer->*dataPtr)() <= (newPlayer->*dataPtr)())
+        while(currPlayer != nullptr && (currPlayer->*dataPtr)() >= (newPlayer->*dataPtr)())
         {
             if ((currPlayer->*dataPtr)() == (newPlayer->*dataPtr)())
             {

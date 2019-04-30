@@ -5,7 +5,7 @@ namespace view
 
 
 //
-// Constructs a wordscramble window creating and initializing all the widgets that will be displayed
+// Constructs a WordScramble Window creating and initializing all the widgets that will be displayed
 //
 // @precondition width > 0 AND height > 0
 // @postcondition none
@@ -27,43 +27,35 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->possibleWordsOutputLabel = new Fl_Output(130, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
-
     this->timeRemainingLabel = new Fl_Output(65, 20, 0,0, "Time: ");
     this->actualClock = new Fl_Progress(65, 10, 125,25);
     this->actualClock->maximum(this->timeLimit);
     this->actualClock->color2(FL_GREEN);
     Fl::add_timeout(1.0,cbTimer,this);
-
     this->totalScoreLabel = new Fl_Output(345, 20, 0,0, "Total Score: ");
     this->totalScoreTextBuffer = new Fl_Text_Buffer();
     this->totalScoreTextDisplay = new Fl_Text_Display(345, 10, 40,25);
     this->totalScoreTextDisplay->buffer(this->totalScoreTextBuffer);
     this->totalScoreTextDisplay->textfont(FL_COURIER);
-
     this->possibleWordsTextDisplay->textfont(FL_COURIER);
     this->possibleWordsTextDisplay->buffer(possibleWordsTextBuffer);
-
     this->validWordsOutputLabel = new Fl_Output(360, 50, 0, 0, "Valid Words");
     this->validWordsTextBuffer = new Fl_Text_Buffer();
     this->validWordsTextDisplay = new Fl_Text_Display(270, 60, 250, 200);
     this->validWordsTextDisplay->textfont(FL_COURIER);
     this->validWordsTextDisplay->buffer(validWordsTextBuffer);
-
     this->scrambledWordOutputLabel = new Fl_Output(340, 285, 0, 0, "Scrambled Letters");
     this->scrambledWordTextBuffer = new Fl_Text_Buffer();
     this->scrambledWordTextDisplay = new Fl_Text_Display(220, 300, 135, 40);
     this->scrambledWordTextDisplay->textfont(FL_COURIER);
     this->scrambledWordTextDisplay->textsize(25);
     this->scrambledWordTextDisplay->buffer(scrambledWordTextBuffer);
-
-
     this->shuffleButton = new Fl_Button(380, 300, 70, 40, "Shuffle");
     this->shuffleButton->callback(cbShuffle, this);
     this->submitButton = new Fl_Button(380, 375, 70, 25, "Submit");
     this->submitButton->callback(cbSubmit, this);
     this->newGameButton = new Fl_Button(430, 10, 90, 40, "New Game");
     this->newGameButton->callback(cbNewGame, this);
-
     this->setScrambledWordText(this->controller.getRandomLetters());
     this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
     this->setTotalPointsText(to_string(this->controller.getTotalScore()));
@@ -79,12 +71,10 @@ WordScrambleWindow::~WordScrambleWindow()
     this->possibleWordsTextDisplay->buffer(0);
     delete this->possibleWordsTextBuffer;
     delete this->possibleWordsTextDisplay;
-
     delete this->scrambledWordOutputLabel;
     this->scrambledWordTextDisplay->buffer(0);
     delete this->scrambledWordTextBuffer;
     delete this->scrambledWordTextDisplay;
-
     delete this->totalScoreLabel;
     this->totalScoreTextDisplay->buffer(0);
     delete this->totalScoreTextBuffer;
@@ -94,20 +84,20 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->timeRemainingLabel;
     this->actualClock->deactivate();
     delete this->actualClock;
-
     delete this->shuffleButton;
     delete this->submitButton;
     delete this->newGameButton;
-
 }
 
 
 // Creates a timer that updates progress bar based on currentValue
 // The timer stops once it equals the progress's bar max value
+//
 //@precondition none
 //@postcondition none
+//
 //@param data Any data that was passed with the call back, In this instance a pointer to the window.
-
+//
 void WordScrambleWindow::cbTimer(void *data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
@@ -143,8 +133,6 @@ void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)
     }
 }
 
-
-
 //
 //Callback when the submit button is invoked
 //
@@ -156,7 +144,6 @@ void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)
 //
 void WordScrambleWindow::cbWordEntry(Fl_Widget* widget, void* data)
 {
-
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     string word = window->wordEntry->value();
     string letterChoice = window->controller.getRandomLetters();
@@ -250,7 +237,6 @@ void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
     window->setValidWordsText(window->controller.displayAllValidWordsEntered());
 }
 
-
 //
 //Sets the possible words text box to display the possible words, given a scrambled set of letters
 //
@@ -263,7 +249,6 @@ void WordScrambleWindow::setPossibleWordsText(const string& outputText)
 {
     this->possibleWordsTextBuffer->text(outputText.c_str());
 }
-
 
 //
 //Sets the possible words text box to display the possible words, given a scrambled set of letters
@@ -278,7 +263,6 @@ void WordScrambleWindow::setValidWordsText(const string& outputText)
     this->validWordsTextBuffer->text(outputText.c_str());
 }
 
-
 //
 //Sets the possible words text box to display the possible words, given a scrambled set of letters
 //
@@ -291,9 +275,6 @@ void WordScrambleWindow::setTotalPointsText(const string& outputText)
 {
     this->totalScoreTextBuffer->text(outputText.c_str());
 }
-
-
-
 
 //
 //Sets the scrambled word text box to display the selected word's letters
@@ -308,16 +289,15 @@ void WordScrambleWindow::setScrambledWordText(const string& outputText)
 
     this->scrambledWordTextBuffer->text(outputText.c_str());
 }
-    void WordScrambleWindow::updateSettings(int newTimeLimit, int newLetterLimt)
-    {
-        this->totalLetters = newLetterLimt;
-        this->timeLimit = newTimeLimit;
-        this->actualClock->maximum(this->timeLimit);
-        this->controller.generateRandomLetters(this->totalLetters);
-        this->setScrambledWordText(this->controller.getRandomLetters());
-        this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
-        this->setTotalPointsText(to_string(this->controller.getTotalScore()));
-
-    }
+void WordScrambleWindow::updateSettings(int newTimeLimit, int newLetterLimt)
+{
+    this->totalLetters = newLetterLimt;
+    this->timeLimit = newTimeLimit;
+    this->actualClock->maximum(this->timeLimit);
+    this->controller.generateRandomLetters(this->totalLetters);
+    this->setScrambledWordText(this->controller.getRandomLetters());
+    this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
+    this->setTotalPointsText(to_string(this->controller.getTotalScore()));
+}
 
 }

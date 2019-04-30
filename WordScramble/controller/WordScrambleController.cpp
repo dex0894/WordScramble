@@ -52,7 +52,8 @@ void WordScrambleController::generateRandomLetters(int letterCount)
 
     this->randomLetters = this->letterGenerator.generateRandomLetters(letterCount);
     this->determineAllPossibleWords();
-    if(this->allPossibleWords.empty()){
+    if(this->allPossibleWords.empty())
+    {
         this->generateRandomLetters(letterCount);
     }
 }
@@ -156,36 +157,6 @@ void WordScrambleController::updateTotalScore(int addedValue)
 void WordScrambleController::shuffleStrings()
 {
     random_shuffle(this->randomLetters.begin(), this->randomLetters.end());
-}
-
-//
-//Gets the information for the scoreboard
-//
-//@precondition none
-//@postcondition none
-//
-//@return the information for the scoreboard
-string WordScrambleController::getScoreBoardInfo()
-{
-    if(this->sortByScore)
-    {
-        return this->formatter.getScoreBoardOutput(this->playerCollection.getScoreHead(), NEXT_SCORE_FUNC_PTR);
-    }
-    else
-    {
-        return this->formatter.getScoreBoardOutput(this->playerCollection.getTimeHead(), NEXT_TIME_FUNC_PTR);
-    }
-}
-
-//
-//Sets the value of the sort
-//
-//@precondition none
-//@postcondition none
-//
-void WordScrambleController::setScoreBoardSortByScore(bool value)
-{
-    this->sortByScore = value;
 }
 
 }

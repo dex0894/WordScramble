@@ -49,7 +49,6 @@ void WordScrambleStartWindow::cbStartGame(Fl_Widget* widget, void* data)
         gameWindow.updateSettings(currentWindow->newTimeLimit, currentWindow->newLetterLimit);
     }
     gameWindow.show();
-
     while (gameWindow.shown())
     {
         Fl::wait();
@@ -70,7 +69,15 @@ void WordScrambleStartWindow::cbStartGame(Fl_Widget* widget, void* data)
 void WordScrambleStartWindow::cbScoreBoard(Fl_Widget* widget, void* data)
 {
     WordScrambleStartWindow* currentWindow = (WordScrambleStartWindow*)data;
-
+    WordScrambleScoreboardWindow scoreboard(540, 300, "Scoreboard");
+    scoreboard.set_non_modal();
+    scoreboard.show();
+    while(scoreboard.shown())
+    {
+        Fl::wait();
+        currentWindow->deactivate();
+    }
+    currentWindow->activate();
 }
 
 //

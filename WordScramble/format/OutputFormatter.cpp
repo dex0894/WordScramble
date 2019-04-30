@@ -65,6 +65,7 @@ string OutputFormatter::buildValidWordsOutput(vector<string> words)
 //@return the built output
 string OutputFormatter::getScoreBoardOutput(PlayerNode** headRef,PlayerNode* (PlayerNode::*nextNodePtr)())
 {
+    this->summary.str("");
     PlayerNode* temp;
     temp = *headRef;
     this->buildScoreBoard(temp, nextNodePtr);
@@ -108,9 +109,8 @@ void OutputFormatter::buildScoreBoard(PlayerNode* head, PlayerNode* (PlayerNode:
         return;
     }
 
-    this->summary <<setw(6) << left << head->getFirstName() << setw(15) << head->getLastName()<< setw(15) << head->getScore() << setw(15) << head->getTime() << endl;
+    this->summary << left<< setw(10) << head->getFirstName() << setw(10)<< head->getLastName()  <<"Score: " << setw(10) << head->getScore() << "Time: " << head->getTime() << endl;
     this->buildScoreBoard((head->*nextNodePtr)(), nextNodePtr);
-
 
 }
 

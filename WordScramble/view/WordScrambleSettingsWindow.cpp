@@ -83,10 +83,9 @@ void WordScrambleSettingsWindow::createAndDisplayTimeLimitRadioButtons()
 
     this->timeLimitRadioGroup->end();
 
-    this->timeLimitRadioGroupButton[0]->set();
+    this->timeLimitRadioGroupButton[FIRST_RADIO_BUTTON]->set();
     this->timeLimitSelection = ONE_MINUTE;
 }
-
 
 void WordScrambleSettingsWindow::createAndDisplayLetterAmountRadioButtons()
 {
@@ -111,14 +110,10 @@ void WordScrambleSettingsWindow::createAndDisplayLetterAmountRadioButtons()
             this->letterLimitRadioGroupButton[offset]->callback(cbLetterLimitMethodChanged, this);
         }
     }
-
     this->letterCountRadioGroup->end();
     this->letterLimitRadioGroupButton[1]->set();
     this->LetterLimitSelection = SIX_LETTERS;
 }
-
-
-
 
 //
 // Callback when a radio button for settings has changed
@@ -158,13 +153,16 @@ void WordScrambleSettingsWindow::letterLimitMethodChanged()
     {
         if (this->letterLimitRadioGroupButton[i]->value())
         {
-            if(i == FIRST_RADIO_BUTTON) {
+            if(i == FIRST_RADIO_BUTTON)
+            {
                 this->LetterLimitSelection = SEVEN_LETTERS;
             }
-            else if( i == SECOND_RADIO_BUTTON){
+            else if( i == SECOND_RADIO_BUTTON)
+            {
                 this->LetterLimitSelection = FIVE_LETTERS;
             }
-            else {
+            else
+            {
                 this->LetterLimitSelection = SIX_LETTERS;
             }
 
@@ -172,29 +170,28 @@ void WordScrambleSettingsWindow::letterLimitMethodChanged()
     }
 }
 
-
 void WordScrambleSettingsWindow::timeLimitMethodChanged()
 {
     for (int i=0; i<TOTAL_SORTING_METHODS; i++)
     {
         if (this->timeLimitRadioGroupButton[i]->value())
         {
-            if(i == FIRST_RADIO_BUTTON) {
+            if(i == FIRST_RADIO_BUTTON)
+            {
                 cout << "Selected " << endl;
                 this->timeLimitSelection = ONE_MINUTE;
             }
-            else if( i == SECOND_RADIO_BUTTON){
+            else if( i == SECOND_RADIO_BUTTON)
+            {
                 this->timeLimitSelection = TWO_MINUTES;
             }
-            else {
+            else
+            {
                 this->timeLimitSelection = THREE_MINUTES;
             }
-
-
         }
     }
 }
-
 
 void WordScrambleSettingsWindow::okHandler()
 {

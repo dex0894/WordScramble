@@ -20,6 +20,7 @@
 					<Add directory="format" />
 					<Add directory="view" />
 					<Add directory="model" />
+					<Add directory="controller" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -31,6 +32,8 @@
 		</Linker>
 		<Unit filename="controller/WordScrambleController.cpp" />
 		<Unit filename="controller/WordScrambleController.h" />
+		<Unit filename="controller/WordScrambleScoreboardController.cpp" />
+		<Unit filename="controller/WordScrambleScoreboardController.h" />
 		<Unit filename="dictionary.txt" />
 		<Unit filename="format/OutputFormatter.cpp" />
 		<Unit filename="format/OutputFormatter.h" />
@@ -54,6 +57,8 @@
 		<Unit filename="utils/Utils.h" />
 		<Unit filename="view/OKCancelWindow.cpp" />
 		<Unit filename="view/OKCancelWindow.h" />
+		<Unit filename="view/WordScrambleScoreboardWindow.cpp" />
+		<Unit filename="view/WordScrambleScoreboardWindow.h" />
 		<Unit filename="view/WordScrambleSettingsWindow.cpp" />
 		<Unit filename="view/WordScrambleSettingsWindow.h" />
 		<Unit filename="view/WordScrambleStartWindow.cpp" />

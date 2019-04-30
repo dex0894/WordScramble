@@ -68,7 +68,7 @@ string OutputFormatter::getScoreBoardOutput(PlayerNode** headRef,PlayerNode* (Pl
     PlayerNode* temp;
     temp = *headRef;
     this->buildScoreBoard(temp, nextNodePtr);
-    return this->sum
+    return this->summary.str();
 }
 
 //
@@ -108,9 +108,8 @@ void OutputFormatter::buildScoreBoard(PlayerNode* head, PlayerNode* (PlayerNode:
         return;
     }
 
-    this->summary <<setw(6) << left << head->getFirstName() << setw(15) << head->getLastName()<< setw(15) << head->getScore() << setw(15) << head->getTime() << endl;
+    this->summary << left << head->getFirstName() << " " << head->getLastName() << setw(15) <<"Score: " << head->getScore() << setw(15) << "Time: " << head->getTime() << endl;
     this->buildScoreBoard((head->*nextNodePtr)(), nextNodePtr);
-
 
 }
 
