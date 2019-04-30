@@ -26,7 +26,7 @@ public:
     //
     enum TimeLimit {ONE_MINUTE = 60, TWO_MINUTES = 120, THREE_MINUTES = 180};
 
-    enum LetterLimit { FOUR_LETTERS = 4, FIVE_LETTERS = 5, SEVEN_LETTERS = 7};
+    enum LetterLimit {FIVE_LETTERS = 5, SIX_LETTERS = 6,  SEVEN_LETTERS = 7};
 
 private:
 
@@ -35,9 +35,9 @@ private:
     static const int SECOND_RADIO_BUTTON = 1;
     static const int SELECTION_TYPES_PER_GROUP = 3;
     static const int TOTAL_SORTING_METHODS = CURRENT_GROUP * SELECTION_TYPES_PER_GROUP;
-
+    bool cancelled;
     vector<string> timeLimitType = {"1 minute", "2 minute", "3 minutes"};
-    vector<string> wordAmountType = {"7 letters", "5 letters", "4 letters"};
+    vector<string> wordAmountType = {"7 letters", "6 letters", "5 letters"};
 
     vector<string> sortingTypes = {"Time", "Letters"};
     string* radioSelectedLabels[TOTAL_SORTING_METHODS];
@@ -66,10 +66,11 @@ private:
 public:
     WordScrambleSettingsWindow();
     virtual ~WordScrambleSettingsWindow();
-    int getLetterCount();
-    int getTotalTime();
+    int getUpdatedLetterLimit();
+    int getUpdatedTimeLimit();
     static void cbTimeLimitMethodChanged(Fl_Widget* widget, void* data);
     static void cbLetterLimitMethodChanged(Fl_Widget* widget, void* data);
+    bool wasCancelled();
 
 };
 }

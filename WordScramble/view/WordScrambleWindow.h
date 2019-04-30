@@ -31,8 +31,8 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 private:
-    static const int TIME_LIMIT = 60;
-    static const int TOTAL_LETTERS = 6;
+    int TIME_LIMIT;
+    int TOTAL_LETTERS;
     static const int POINT_DEDUCTION = -10;
     int CURRENT_TIME = 0;
     void validWordEntered(string word);
@@ -75,6 +75,7 @@ public:
     void setPossibleWordsText(const string& outputText);
     void setScrambledWordText(const string& letters);
     void setValidWordsText(const string& outputText);
+    void updateSettings(int newTimeLimit, int newLetterLimt);
 
 
 };

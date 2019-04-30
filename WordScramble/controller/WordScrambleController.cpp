@@ -52,6 +52,9 @@ void WordScrambleController::generateRandomLetters(int letterCount)
 
     this->randomLetters = this->letterGenerator.generateRandomLetters(letterCount);
     this->determineAllPossibleWords();
+    if(this->allPossibleWords.empty()){
+        this->generateRandomLetters(letterCount);
+    }
 }
 
 void WordScrambleController::determineAllPossibleWords()
