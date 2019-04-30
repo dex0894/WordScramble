@@ -109,7 +109,9 @@ void WordScrambleWindow::cbTimer(void *data)
         fl_alert("Times up");
         window->submitButton->deactivate();
         Fl::remove_timeout(cbTimer,data);
-        window->displayRequestForUserInfo(data);
+        if(window->controller.newHighScore()){
+            window->displayRequestForUserInfo(data);
+        }
 
     }
     else
@@ -138,7 +140,7 @@ void WordScrambleWindow::displayRequestForUserInfo(void *data)
 
     if(userInfoWindow.getWindowResult() == OKCancelWindow::WindowResult::OK)
     {
-
+        window->controller.addNewPlayer(userInfoWindow.getFirstName(), userInfoWindow.getLastName(), window->controller.getTotalScore(), window->timeLimit);
     }
 
 }

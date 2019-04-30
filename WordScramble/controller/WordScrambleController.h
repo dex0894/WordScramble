@@ -60,6 +60,7 @@ public:
     void addPlayer(Player* player);
     void updateScoreBoard();
     bool newHighScore();
+    void addNewPlayer(string fistName, string lastName, int score, int time);
 };
 }
 #endif // WORDSCRAMBLECONTROLLER_H
