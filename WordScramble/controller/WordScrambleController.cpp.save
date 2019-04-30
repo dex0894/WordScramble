@@ -12,7 +12,7 @@ namespace controller
 //
 WordScrambleController::WordScrambleController()
 {
-    this->readFile();
+    this->loadDictionary();
     this->totalScore = 0;
 }
 
@@ -23,17 +23,21 @@ WordScrambleController::~WordScrambleController()
 {
     //dtor
 }
-//
-// loads all words in dictionary into a vector
-//
-//@precondition none
-//@postcondition none
 
-void WordScrambleController::readFile()
+void WordScrambleController::loadDictionary()
 {
     this->dictionary =  this->reader.readFile();
-    this->scoreboardReader.parseCSvF
+
 }
+
+void WordScrambleController::loadScoreBoard()
+{
+    for (Player* player : this->scoreboardReader.parseCSVFile())
+    {
+        this->playerCollection.add(player);
+    }
+}
+
 //
 // Generates a random string of six letters and then
 //generates all possible words from those random letters
@@ -149,6 +153,34 @@ void WordScrambleController::updateTotalScore(int addedValue)
 void WordScrambleController::shuffleStrings()
 {
     random_shuffle(this->randomLetters.begin(), this->randomLetters.end());
+}
+
+//
+//Gets the information for the scoreboard
+//
+//@precondition none
+//@postcondition none
+//
+//@return the information for the scoreboard
+string WordScrambleController::getScoreBoardInfo()
+{
+    if(this->sortByScore)
+    {
+        return this->formatter.getScoreBoardOutput(this->playerCollection.getScoreHead(), NEXT_SCORE_FUNC_PTR);
+    }
+    else
+    {
+        return this->formatter.getScoreBoardOutput(this->playerCollection.getTimeHead(), NEXT_TIME_FUNC_PTR);
+    }
+}
+
+//
+//Sets teh value of the sort
+//
+//
+void WordScrambleController::setScoreBoardSortByScore(bool value)
+{
+    this->sortByScore = value;
 }
 
 }

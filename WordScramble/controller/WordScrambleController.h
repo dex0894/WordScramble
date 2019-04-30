@@ -14,6 +14,7 @@ using namespace std;
 using namespace io;
 #include "../model/LetterGenerator.h"
 #include "../model/AllPossibleWords.h"
+#include "PlayerCollection.h"
 using namespace model;
 #include "OutputFormatter.h"
 using namespace format;
@@ -27,18 +28,20 @@ class WordScrambleController
 private:
     TextFileReader reader;
     ScoreBoardCSVReader scoreboardReader;
+    PlayerCollection playerCollection;
     OutputFormatter formatter;
     LetterGenerator letterGenerator;
     vector<string> dictionary;
     vector<string> allValidWordsEntered;
     map<string,string> allPossibleWords;
     string randomLetters;
-    void readFile();
+    void loadDictionary();
+    void loadScoreBoard();
     void removeSpaces();
     void determineAllPossibleWords();
     int totalScore;
     int currentScore;
-
+    bool sortByScore = true;
 public:
     WordScrambleController();
     virtual ~WordScrambleController();
@@ -51,9 +54,10 @@ public:
     string allPossibleWordsFromLetters();
     void addValidWordEntered(string word);
     void clearAllValidWordsEntered();
+    void setScoreBoardSortByScore(bool value);
+    string getScoreBoardInfo();
     int getTotalScore();
     void updateTotalScore(int addedValue);
-
 };
 }
 #endif // WORDSCRAMBLECONTROLLER_H

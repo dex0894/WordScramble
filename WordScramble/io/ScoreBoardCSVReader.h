@@ -23,14 +23,15 @@ private:
     const int LAST_NAME = 1;
     const int FIRST_NAME = 0;
     const int SCORE = 2;
-    const int MINIMUM_FIELDS = 3;
+    const int TIME = 3;
+    const int MINIMUM_FIELDS = 4;
     const string FILE_ERROR = "Unable to locate file or file has not been specified.";
-    vector<Player> players;
+    vector<Player*> players;
 
 public:
     ScoreBoardCSVReader();
     virtual ~ScoreBoardCSVReader();
-    vector<Player> parseCSVFile();
+    vector<Player*> parseCSVFile();
 
 };
 }

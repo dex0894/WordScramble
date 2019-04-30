@@ -22,7 +22,7 @@ vector<Player> ScoreBoardCSVReader::parseCSVFile()
     string field;
     int score;
     vector<string> storedFields;
-    ifstream myFile (FI);
+    ifstream myFile (FILENAME);
 
     if (myFile.is_open())
     {
@@ -43,6 +43,7 @@ vector<Player> ScoreBoardCSVReader::parseCSVFile()
                     firstname = toUpper(firstname);
                     lastname = toUpper(lastname);
                     score = stoi(storedFields[SCORE]);
+                    time = 
                     Player player(firstname,lastname,score);
                     this->players.push_back(player);
                     storedFields.clear();

@@ -1,0 +1,141 @@
+#include "PlayerNode.h"
+
+namespace model
+{
+
+//
+//Constructs a new PlayerNode
+//
+//@precondition none
+//@postcondition none
+PlayerNode::PlayerNode()
+{
+    //ctor
+}
+
+//
+//Constructs a new PlayerNode
+//
+//@precondition none
+//@postcondition none
+PlayerNode::PlayerNode(Player* player)
+{
+    this->firstName = player->getFirstName();
+    this->lastName = player->getLastName();
+    this->score = player->getScore();
+    this->timeAlloted = player->getTime();
+    this->nextScore = nullptr;
+    this->nextTime = nullptr;
+}
+
+//
+//Destructs the PlayerNode at the end of its lifetime
+//
+//@precondition none
+//@postcondition none
+PlayerNode::~PlayerNode()
+{
+    //dtor
+}
+
+//
+//Gets the first name of the Player that the node is pointing to.
+//
+//@precondition none
+//@postcondition none
+//
+//@return the firstName the node points to.
+//
+const string& PlayerNode::getFirstName()
+{
+    return this->firstName;
+}
+
+//
+//Gets the last name of the Player that the node is pointing to.
+//
+//@precondition none
+//@postcondition none
+//
+//@return the firstName the node points to.
+//
+const string& PlayerNode::getLastName()
+{
+    return this->lastName;
+}
+
+//
+//Gets the score of the player that the node is pointing to
+//
+//@precondition none
+//@postcondition none
+//
+//@return the score of the player
+int PlayerNode::getScore()
+{
+    return this->score;
+}
+
+//
+//Gets the time of the player that the node is pointing to
+//
+//@precondition none
+//@postcondition none
+//
+//@return the time of the player
+int PlayerNode::getTime()
+{
+    return this->timeAlloted;
+}
+
+//
+//Gets the next score that the node points to
+//
+//@precondition none
+//@postcondition none
+//
+//@return the score that is being pointed to
+PlayerNode* PlayerNode::getNextScoreNode()
+{
+    return this->nextScore;
+}
+
+//
+//Gets the next time that the node points to
+//
+//@precondition none
+//@postcondition none
+//
+//@return the time that is being pointed to
+PlayerNode* PlayerNode::getNextTimeNode()
+{
+    return this->nextTime;
+}
+
+//
+//Sets the next score that this current node will point to.
+//
+//@precondition none
+//@postcondition none
+//
+//@param node the next node's score that should be pointed to by this node
+//
+void PlayerNode::setNextScoreNode(PlayerNode* node)
+{
+    this->nextScore = node;
+}
+
+//
+//Sets the next time that this current node will point to.
+//
+//@precondition none
+//@postcondition none
+//
+//@param node the next node's time that should be pointed to by this node
+//
+void PlayerNode::setNextTimeNode(PlayerNode* node)
+{
+    this->nextTime = node;
+}
+
+}

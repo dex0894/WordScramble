@@ -16,11 +16,12 @@ ScoreBoardCSVReader::~ScoreBoardCSVReader()
     //dtor
 }
 
-vector<Player> ScoreBoardCSVReader::parseCSVFile()
+vector<Player*> ScoreBoardCSVReader::parseCSVFile()
 {
     string line;
     string field;
     int score;
+    int time;
     vector<string> storedFields;
     ifstream myFile (FILENAME);
 
@@ -43,7 +44,8 @@ vector<Player> ScoreBoardCSVReader::parseCSVFile()
                     firstname = toUpper(firstname);
                     lastname = toUpper(lastname);
                     score = stoi(storedFields[SCORE]);
-                    Player player(firstname,lastname,score);
+                    time = stoi(storedFields[TIME]);
+                    Player* player = new Player(firstname,lastname,score, time);
                     this->players.push_back(player);
                     storedFields.clear();
                     dataOnLine.clear();

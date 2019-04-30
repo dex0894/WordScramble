@@ -63,13 +63,55 @@ string OutputFormatter::buildValidWordsOutput(vector<string> words)
 //@postcondition none
 //
 //@return the built output
-string OutputFormatter::buildScoreBoardOutput(vector<Player> players)
+string OutputFormatter::getScoreBoardOutput(PlayerNode** headRef,PlayerNode* (PlayerNode::*nextNodePtr)())
 {
-    ostringstream output;
-    for(Player currPlayer: players)
-    {
-        output << setw(6) << left << currPlayer.getFirstName() << setw(6) << currPlayer.getLastName() << " "  << currPlayer.getScore() << " "<< "points"<< endl;
-    }
-    return output.str();
+    PlayerNode* temp;
+    temp = *headRef;
+    this->buildScoreBoard(temp, nextNodePtr);
+    return this->sum
 }
+
+//
+//Builds an output summary for the passed in list head and function pointer
+//
+//@precondition none
+//@postcondition none
+//
+//@param headRef the reference to the head node of the PlayerCollection
+//@param nextNodePtr the function to call to get the next node in the list
+//
+//@return the built summary output
+//
+string OutputFormatter::getFileOutput(PlayerNode** headRef,PlayerNode* (PlayerNode::*nextNodePtr)())
+{
+    this->fileOutput.str("");
+    PlayerNode* temp;
+    temp = *headRef;
+    this->buildFileOutput(temp, nextNodePtr);
+    return fileOutput.str();
+}
+
+void OutputFormatter::buildFileOutput(PlayerNode* head, PlayerNode* (PlayerNode::*nextNodePtr)())
+{
+    if(head == nullptr)
+    {
+        return;
+    }
+    this->fileOutput << head->getFirstName() << "," << head->getLastName()<< "," << to_string(head->getScore()) << ","  << head->getTime() << endl;
+    this->buildFileOutput((head->*nextNodePtr)(), nextNodePtr);
+}
+
+void OutputFormatter::buildScoreBoard(PlayerNode* head, PlayerNode* (PlayerNode::*nextNodePtr)())
+{
+    if(head == nullptr)
+    {
+        return;
+    }
+
+    this->summary <<setw(6) << left << head->getFirstName() << setw(15) << head->getLastName()<< setw(15) << head->getScore() << setw(15) << head->getTime() << endl;
+    this->buildScoreBoard((head->*nextNodePtr)(), nextNodePtr);
+
+
+}
+
 }

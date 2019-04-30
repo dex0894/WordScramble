@@ -21,12 +21,17 @@ namespace format
 class OutputFormatter
 {
 private:
+    void buildFileOutput(PlayerNode* head, PlayerNode* (PlayerNode::*nextNodePtr)());
+    void buildScoreBoard(PlayerNode* head, PlayerNode* (PlayerNode::*nextNodePtr)());
+    ostringstream fileOutput;
+    ostringstream summary;
 public:
     OutputFormatter();
     virtual ~OutputFormatter();
     string buildAllPossibleWordsOutput(map<string,string> words);
     string buildValidWordsOutput(vector<string> words);
-    string buildScoreBoardOutput(vector<Player>);
+    string getScoreBoardOutput(PlayerNode** headRef,PlayerNode* (PlayerNode::*nextNodePtr)());
+    string getFileOutput(PlayerNode** headRef,PlayerNode* (PlayerNode::*nextNodePtr)());
 };
 }
 #endif // OUTPUTFORMATTER_H

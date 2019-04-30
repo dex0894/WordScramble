@@ -45,6 +45,10 @@
 		<Unit filename="model/LetterGenerator.h" />
 		<Unit filename="model/Player.cpp" />
 		<Unit filename="model/Player.h" />
+		<Unit filename="model/PlayerCollection.cpp" />
+		<Unit filename="model/PlayerCollection.h" />
+		<Unit filename="model/PlayerNode.cpp" />
+		<Unit filename="model/PlayerNode.h" />
 		<Unit filename="scoreboard.csv" />
 		<Unit filename="utils/Utils.cpp" />
 		<Unit filename="utils/Utils.h" />

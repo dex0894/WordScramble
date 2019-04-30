@@ -14,12 +14,14 @@ class Player
         string firstName;
         string lastName;
         int score;
+        int timeAlloted;
     public:
-        Player(const string firstName, const string lastName, int score);
+        Player(const string firstName, const string lastName, int score, int time);
         virtual ~Player();
         string getFirstName();
         string getLastName();
         int getScore();
+        int getTime();
 };
 }
 #endif // PLAYER_H
