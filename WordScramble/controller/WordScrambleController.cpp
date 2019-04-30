@@ -193,4 +193,17 @@ void WordScrambleController::addPlayer(Player* player)
 {
     this->playerCollection.add(player);
 }
+
+//Adds new player to player colllection
+//@precondition
+//@postcondition
+//@param
+void WordScrambleController:: addNewPlayer(string fistName, string lastName, int score, int time)
+{
+    loadScoreBoard();
+    Player* newPlayer = new Player(fistName, lastName, score, time);
+    addPlayer(newPlayer);
+    updateScoreBoard();
+}
+
 }
