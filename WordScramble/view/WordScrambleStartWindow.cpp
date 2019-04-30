@@ -3,6 +3,12 @@
 namespace view
 {
 
+// Object to displayer start window
+//@precondition none
+//@postcondition none
+//@param width is the width of the window
+//@param height is the height of the window
+//@param title is the title of the window
 WordScrambleStartWindow::WordScrambleStartWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     this->newLetterLimit = 0;

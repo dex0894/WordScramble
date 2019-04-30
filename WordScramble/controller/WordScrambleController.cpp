@@ -50,6 +50,7 @@ void WordScrambleController::loadScoreBoard()
 //
 void WordScrambleController::generateRandomLetters(int letterCount)
 {
+
     this->randomLetters = this->letterGenerator.generateRandomLetters(letterCount);
     this->determineAllPossibleWords();
     if(this->allPossibleWords.empty())
@@ -98,15 +99,6 @@ void WordScrambleController::clearAllValidWordsEntered()
 }
 
 //
-//Resets the total score to 0
-//
-//@precondition none
-//@postcondition totalScore == 0
-void WordScrambleController::resetTotalScore()
-{
-    this->totalScore = 0;
-}
-//
 // displays all words that have been entered by user
 //
 //@precondition none
@@ -146,12 +138,18 @@ bool WordScrambleController::isAValidWord(string selectedWord)
     return this->allPossibleWords.count(selectedWord);
 }
 
-
+//Gets the total score of the player
+//@precondition none
+//@postcondition none
+//@return the total score
 int WordScrambleController::getTotalScore()
 {
     return this->totalScore;
 }
-
+//Updates the total score
+//@precondition none
+//@postcondition none
+//@param  addedValue is value you wish to add to the total score
 void WordScrambleController::updateTotalScore(int addedValue)
 {
     totalScore += addedValue;
@@ -188,8 +186,7 @@ void WordScrambleController::updateScoreBoard()
 bool WordScrambleController::newHighScore()
 {
     int highScore = this->playerCollection.getHighScore();
-    return true;
-    //return this->totalScore > highScore;
+    return this->totalScore > highScore;
 }
 
 //
@@ -201,7 +198,7 @@ bool WordScrambleController::newHighScore()
 //@param the player to add
 void WordScrambleController::addPlayer(Player* player)
 {
-        this->playerCollection.add(player);
+    this->playerCollection.add(player);
 }
 
 //Adds new player to player colllection
@@ -210,9 +207,11 @@ void WordScrambleController::addPlayer(Player* player)
 //@param
 void WordScrambleController:: addNewPlayer(string fistName, string lastName, int score, int time)
 {
+    loadScoreBoard();
     Player* newPlayer = new Player(fistName, lastName, score, time);
-    this->addPlayer(newPlayer);
-    this->updateScoreBoard();
+    addPlayer(newPlayer);
+    updateScoreBoard();
+
 }
 
 }
