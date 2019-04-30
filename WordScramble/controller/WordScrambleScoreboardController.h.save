@@ -11,8 +11,12 @@ using namespace io;
 #include <algorithm>
 #include <vector>
 using namespace std;
+#include "PlayerCollection.h"
+using namespace model;
+#include "OutputFormatter.h"
+using namespace format;
 
-using namespc
+
 namespace controller
 {
 
@@ -28,6 +32,7 @@ public:
     WordScrambleScoreboardController();
     virtual ~WordScrambleScoreboardController();
     void setScoreBoardSortByScore(bool value);
+    void clearScore
     string getScoreBoardInfo();
 };
 }

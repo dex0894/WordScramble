@@ -39,6 +39,8 @@
 		<Unit filename="format/OutputFormatter.h" />
 		<Unit filename="io/ScoreBoardCSVReader.cpp" />
 		<Unit filename="io/ScoreBoardCSVReader.h" />
+		<Unit filename="io/ScoreBoardCSVWriter.cpp" />
+		<Unit filename="io/ScoreBoardCSVWriter.h" />
 		<Unit filename="io/TextFileReader.cpp" />
 		<Unit filename="io/TextFileReader.h" />
 		<Unit filename="main.cpp" />

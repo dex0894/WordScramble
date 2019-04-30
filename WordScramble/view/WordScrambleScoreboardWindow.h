@@ -18,8 +18,9 @@ class WordScrambleScoreboardWindow : public Fl_Window
 {
 private:
     WordScrambleScoreboardController controller;
-    Fl_Text_Buffer *scoreboardTextBuffer;
-    Fl_Text_Display *scoreboardTextDisplay;
+    Fl_Text_Buffer* scoreboardTextBuffer;
+    Fl_Button* clearScoreBoardBtn;
+    Fl_Text_Display* scoreboardTextDisplay;
     string scoreSortDisplay;
     string timeSortDisplay;
     static const int FIRST_RADIO_BUTTON = 0;

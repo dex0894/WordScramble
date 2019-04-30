@@ -2,6 +2,7 @@
 #define WORDSCRAMBLESCOREBOARDCONTROLLER_H
 
 #include "ScoreBoardCSVReader.h"
+#include "ScoreBoardCSVWriter.h"
 using namespace io;
 #include "Utils.h"
 #include <algorithm>
@@ -24,6 +25,7 @@ class WordScrambleScoreboardController
 {
 private:
     ScoreBoardCSVReader scoreboardReader;
+    ScoreBoardCSVWriter scoreboardWriter;
     PlayerCollection playerCollection;
     OutputFormatter formatter;
     bool sortByScore = true;
@@ -32,6 +34,7 @@ public:
     WordScrambleScoreboardController();
     virtual ~WordScrambleScoreboardController();
     void setScoreBoardSortByScore(bool value);
+    void clearScoreBoard();
     string getScoreBoardInfo();
 };
 }

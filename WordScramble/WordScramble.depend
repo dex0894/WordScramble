@@ -27,7 +27,7 @@
 	"Utils.h"
 	"../controller/WordScrambleController.h"
 
-1556609202 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
+1556610270 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
 	"WordScrambleController.h"
 
 1556609735 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
@@ -325,7 +325,7 @@
 	<iostream>
 	"Player.h"
 
-1556608205 source:/home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.cpp
+1556610403 source:/home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.cpp
 	"PlayerCollection.h"
 
 1556610290 /home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.h
@@ -357,10 +357,10 @@
 1556586084 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/PlayerNode.cpp
 	"PlayerNode.h"
 
-1556608488 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.cpp
+1556612419 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.cpp
 	"WordScrambleScoreboardWindow.h"
 
-1556606685 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.h
+1556612457 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.h
 	"WordScrambleWindow.h"
 	"WordScrambleSettingsWindow.h"
 	<FL/Fl.H>
@@ -369,8 +369,9 @@
 	<string>
 	"WordScrambleScoreboardController.h"
 
-1556606748 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleScoreboardController.h
+1556611899 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleScoreboardController.h
 	"ScoreBoardCSVReader.h"
+	"ScoreBoardCSVWriter.h"
 	"Utils.h"
 	<algorithm>
 	<iostream>
@@ -381,7 +382,7 @@
 	"PlayerCollection.h"
 	"OutputFormatter.h"
 
-1556606466 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleScoreboardController.cpp
+1556612568 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleScoreboardController.cpp
 	"WordScrambleScoreboardController.h"
 
 1556609304 source:/home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVWriter.cpp

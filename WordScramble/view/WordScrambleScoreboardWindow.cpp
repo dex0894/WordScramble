@@ -27,6 +27,7 @@ WordScrambleScoreboardWindow::~WordScrambleScoreboardWindow()
         delete this->sortRadioGroupButton[i];
     }
     delete this->sortRadioGroup;
+    delete this->clearScoreBoardBtn;
 
 }
 

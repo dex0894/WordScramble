@@ -62,4 +62,15 @@ void WordScrambleScoreboardController::setScoreBoardSortByScore(bool value)
     this->sortByScore = value;
 }
 
+//
+//Clears the current scoreboard
+//
+//@precondition none
+//@postcondition scoreboard cleared
+//
+void WordScrambleScoreboardController::clearScoreBoard()
+{
+    this->scoreboardWriter.writeToCSV(" ");
+}
+
 }
