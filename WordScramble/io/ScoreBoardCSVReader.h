@@ -1,7 +1,7 @@
 #ifndef SCOREBOARDCSVREADER_H
 #define SCOREBOARDCSVREADER_H
 
-
+#include "Utils.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -16,7 +16,6 @@ using namespace model;
 namespace io
 {
 
-static const string FILENAME = "scoreboard.csv";
 class ScoreBoardCSVReader
 {
 private:
@@ -32,7 +31,6 @@ public:
     ScoreBoardCSVReader();
     virtual ~ScoreBoardCSVReader();
     vector<Player*> parseCSVFile();
-
 };
 }
 #endif // SCOREBOARDCSVREADER_H

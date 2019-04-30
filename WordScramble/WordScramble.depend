@@ -27,10 +27,10 @@
 	"Utils.h"
 	"../controller/WordScrambleController.h"
 
-1556606601 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
+1556609202 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
 	"WordScrambleController.h"
 
-1556606688 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
+1556609735 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
 	"Utils.h"
 	<algorithm>
 	<iostream>
@@ -40,6 +40,7 @@
 	<vector>
 	"TextFileReader.h"
 	"ScoreBoardCSVReader.h"
+	"ScoreBoardCSVWriter.h"
 	"../model/LetterGenerator.h"
 	"../model/AllPossibleWords.h"
 	"PlayerCollection.h"
@@ -48,7 +49,8 @@
 1556520544 source:/home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.cpp
 	"TextFileReader.h"
 
-1556520489 /home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.h
+1556609371 /home/csuser/GroupFWordScramble/WordScramble/io/TextFileReader.h
+	"Utils.h"
 	<vector>
 	<string>
 	<iostream>
@@ -67,7 +69,7 @@
 	<string.h>
 	<vector>
 
-1556597645 /home/csuser/GroupFWordScramble/WordScramble/utils/Utils.h
+1556609379 /home/csuser/GroupFWordScramble/WordScramble/utils/Utils.h
 	<string>
 	<algorithm>
 	<sstream>
@@ -88,7 +90,7 @@
 	<string>
 	<map>
 
-1556608064 source:/home/csuser/GroupFWordScramble/WordScramble/format/OutputFormatter.cpp
+1556609055 source:/home/csuser/GroupFWordScramble/WordScramble/format/OutputFormatter.cpp
 	"OutputFormatter.h"
 
 1556584897 /home/csuser/GroupFWordScramble/WordScramble/format/OutputFormatter.h
@@ -115,10 +117,11 @@
 	<FL/Fl_Button.H>
 	<string>
 
-1556581175 source:/home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVReader.cpp
+1556609413 source:/home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVReader.cpp
 	"ScoreBoardCSVReader.h"
 
-1556581131 /home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVReader.h
+1556609402 /home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVReader.h
+	"Utils.h"
 	<iostream>
 	<fstream>
 	<string>
@@ -325,7 +328,7 @@
 1556608205 source:/home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.cpp
 	"PlayerCollection.h"
 
-1556585394 /home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.h
+1556610290 /home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.h
 	<string>
 	<iostream>
 	<sstream>
@@ -354,7 +357,7 @@
 1556586084 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/PlayerNode.cpp
 	"PlayerNode.h"
 
-1556608270 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.cpp
+1556608488 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.cpp
 	"WordScrambleScoreboardWindow.h"
 
 1556606685 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.h
@@ -380,4 +383,14 @@
 
 1556606466 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleScoreboardController.cpp
 	"WordScrambleScoreboardController.h"
+
+1556609304 source:/home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVWriter.cpp
+	"ScoreBoardCSVWriter.h"
+
+1556609323 /home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVWriter.h
+	"Utils.h"
+	<iostream>
+	<fstream>
+	<string>
+	<bits/stdc++.h>
 

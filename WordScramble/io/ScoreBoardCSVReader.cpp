@@ -23,7 +23,7 @@ vector<Player*> ScoreBoardCSVReader::parseCSVFile()
     int score;
     int time;
     vector<string> storedFields;
-    ifstream myFile (FILENAME);
+    ifstream myFile (FILE_NAME);
 
     if (myFile.is_open())
     {

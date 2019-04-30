@@ -112,4 +112,16 @@ PlayerNode** const PlayerCollection::getTimeHead()
     return &this->timeHead;
 }
 
+//
+//Gets the high score from the collection
+//
+//@precondition none
+//@postcondition none
+//
+//@return the high score
+int PlayerCollection::getHighScore()
+{
+    return this->scoreHead->getScore();
+}
+
 }

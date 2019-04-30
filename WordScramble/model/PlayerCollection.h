@@ -26,7 +26,7 @@ class PlayerCollection
         void add(Player* player);
         PlayerNode** const getScoreHead();
         PlayerNode** const getTimeHead();
-
+        int getHighScore();
 };
 }
 #endif // PLAYERCOLLECTION_H

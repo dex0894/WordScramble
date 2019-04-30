@@ -11,6 +11,7 @@
 using namespace std;
 #include "TextFileReader.h"
 #include "ScoreBoardCSVReader.h"
+#include "ScoreBoardCSVWriter.h"
 using namespace io;
 #include "../model/LetterGenerator.h"
 #include "../model/AllPossibleWords.h"
@@ -27,6 +28,7 @@ class WordScrambleController
 private:
     TextFileReader reader;
     ScoreBoardCSVReader scoreboardReader;
+    ScoreBoardCSVWriter scoreboardWriter;
     PlayerCollection playerCollection;
     OutputFormatter formatter;
     LetterGenerator letterGenerator;
@@ -38,6 +40,7 @@ private:
     void loadScoreBoard();
     void removeSpaces();
     void determineAllPossibleWords();
+    void updateScoreBoard();
     int totalScore;
     int currentScore;
 public:
@@ -54,6 +57,7 @@ public:
     void clearAllValidWordsEntered();
     int getTotalScore();
     void updateTotalScore(int addedValue);
+    bool newHighScore();
 };
 }
 #endif // WORDSCRAMBLECONTROLLER_H

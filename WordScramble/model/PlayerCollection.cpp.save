@@ -46,7 +46,7 @@ void PlayerCollection::sortedInsert(PlayerNode* &head, Player* player, T (Player
     PlayerNode *currPlayer;
     PlayerNode *prevPlayer;
 
-    if(head == nullptr || (head->*dataPtr)() >= (newPlayer->*dataPtr)())
+    if(head == nullptr || (head->*dataPtr)() <= (newPlayer->*dataPtr)())
     {
         (newPlayer->*setNodePtr)(head);
         head = newPlayer;
@@ -54,7 +54,7 @@ void PlayerCollection::sortedInsert(PlayerNode* &head, Player* player, T (Player
     else
     {
         currPlayer = head;
-        while(currPlayer != nullptr && (currPlayer->*dataPtr)() <= (newPlayer->*dataPtr)())
+        while(currPlayer != nullptr && (currPlayer->*dataPtr)() >= (newPlayer->*dataPtr)())
         {
             if ((currPlayer->*dataPtr)() == (newPlayer->*dataPtr)())
             {
@@ -95,9 +95,9 @@ void PlayerCollection::destructCollection(PlayerNode* &head, PlayerNode* (Player
 //@postcondition none
 //
 //@return the score head
-&PlayerNode** PlayerCollection::getScoreHead()
+PlayerNode** const PlayerCollection::getScoreHead()
 {
-    return this->scoreHead;
+    return &this->scoreHead;
 }
 
 //
@@ -107,9 +107,20 @@ void PlayerCollection::destructCollection(PlayerNode* &head, PlayerNode* (Player
 //@postcondition none
 //
 //@return the time head
-PlayerNode** PlayerCollection::getTimeHead()
+PlayerNode** const PlayerCollection::getTimeHead()
 {
     return &this->timeHead;
+}
+
+//
+//Gets the high score from the collection
+//
+//@precondition none
+//@
+//
+int PlayerCollection::getHighScore()
+{
+    return this->scoreHead->getScore();
 }
 
 }

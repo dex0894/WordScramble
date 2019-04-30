@@ -1,0 +1,21 @@
+#include "ScoreBoardCSVWriter.h"
+
+namespace io
+{
+
+//Creates a new ScoreBoardCSVWriter
+//@precondition none
+//@postcondition none
+ScoreBoardCSVWriter::ScoreBoardCSVWriter()
+{
+    //ctor
+}
+
+//Destructs the  object when its lifetime ends.
+ScoreBoardCSVWriter::~ScoreBoardCSVWriter()
+{
+    //dtor
+}
+
+void Sc
+}

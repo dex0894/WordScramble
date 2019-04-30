@@ -18,6 +18,8 @@ typedef int (PlayerNode::*ScoreFunc)();
 typedef int (PlayerNode::*TimeFunc)();
 typedef PlayerNode* (PlayerNode::*NextNodeFunc)();
 typedef void (PlayerNode::*SetNodeFunc)(PlayerNode*);
+static const string SCOREBOARD_FILE_NAME = "scoreboard.csv";
+static const string FILE_NAME = "dictionary.txt";
 static const ScoreFunc GET_SCORE_FUNC_PTR = &PlayerNode::getScore;
 static const TimeFunc GET_TIME_FUNC_PTR = &PlayerNode::getTime;
 static const NextNodeFunc NEXT_SCORE_FUNC_PTR = &PlayerNode::getNextScoreNode;

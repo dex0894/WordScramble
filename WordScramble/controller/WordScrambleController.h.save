@@ -38,6 +38,7 @@ private:
     void loadScoreBoard();
     void removeSpaces();
     void determineAllPossibleWords();
+    void updateScoreBoard();
     int totalScore;
     int currentScore;
 public:

@@ -148,7 +148,6 @@ void WordScrambleController::updateTotalScore(int addedValue)
     totalScore += addedValue;
 }
 
-
 //
 // Shuffles the the random letters characters
 //
@@ -157,6 +156,24 @@ void WordScrambleController::updateTotalScore(int addedValue)
 void WordScrambleController::shuffleStrings()
 {
     random_shuffle(this->randomLetters.begin(), this->randomLetters.end());
+}
+
+void WordScrambleController::updateScoreBoard()
+{
+    this->scoreboardWriter.writeToCSV(this->formatter.getFileOutput(this->playerCollection.getScoreHead(), NEXT_SCORE_FUNC_PTR));
+}
+
+//
+//Compares the players current score to the scoreboard's high score
+//
+//@precondition none
+//@postcondition none
+//
+//@return true if new high score
+bool WordScrambleController::newHighScore()
+{
+    int highScore = this->playerCollection.getHighScore();
+    return this->totalScore > highScore;
 }
 
 }

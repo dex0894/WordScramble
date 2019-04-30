@@ -98,7 +98,7 @@ void OutputFormatter::buildFileOutput(PlayerNode* head, PlayerNode* (PlayerNode:
     {
         return;
     }
-    this->fileOutput << head->getFirstName() << "," << head->getLastName()<< "," << to_string(head->getScore()) << ","  << head->getTime() << endl;
+    this->fileOutput << head->getFirstName() << "," << head->getLastName()<< "," << head->getScore() << ","  << head->getTime() << endl;
     this->buildFileOutput((head->*nextNodePtr)(), nextNodePtr);
 }
 

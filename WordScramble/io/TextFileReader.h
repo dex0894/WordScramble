@@ -1,6 +1,7 @@
 #ifndef TEXTFILEREADER_H
 #define TEXTFILEREADER_H
 
+#include "Utils.h"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -10,8 +11,6 @@ using namespace std;
 
 namespace io
 {
-
-static const string FILE_NAME = "dictionary.txt";
 
 class TextFileReader
 {
@@ -23,8 +22,6 @@ public:
     virtual ~TextFileReader();
 
     vector<string> readFile();
-
-
 
 };
 }
