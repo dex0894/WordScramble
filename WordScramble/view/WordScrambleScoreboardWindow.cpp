@@ -12,6 +12,7 @@ WordScrambleScoreboardWindow::WordScrambleScoreboardWindow(int width, int height
     this->scoreboardTextDisplay->textfont(FL_COURIER);
     this->scoreboardTextDisplay->buffer(this->scoreboardTextBuffer);
     this->scoreboardTextBuffer->text(this->controller.getScoreBoardInfo().c_str());
+    this->clearScoreBoardBtn = new Fl_Button(200, 20,140, 30, "Reset ScoreBoard");
     end();
 }
 
@@ -23,7 +24,6 @@ WordScrambleScoreboardWindow::~WordScrambleScoreboardWindow()
     for(int i=0; i<TOTAL_SORTING_METHODS; i++)
     {
         delete this->sortRadioSelectedLabels[i];
-        delete this->sortRadioGroupButton[i];
         delete this->sortRadioGroupButton[i];
     }
     delete this->sortRadioGroup;

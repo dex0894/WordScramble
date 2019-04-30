@@ -69,10 +69,7 @@ void WordScrambleStartWindow::cbStartGame(Fl_Widget* widget, void* data)
 void WordScrambleStartWindow::cbScoreBoard(Fl_Widget* widget, void* data)
 {
     WordScrambleStartWindow* currentWindow = (WordScrambleStartWindow*)data;
-    WordScrambleWindow gameWindow(540, 420, "");
     WordScrambleScoreboardWindow scoreboard(540, 300, "Scoreboard");
-    scoreboard.setScoreDisplay();
-    scoreboard.set
     scoreboard.set_non_modal();
     scoreboard.show();
     while(scoreboard.shown())
