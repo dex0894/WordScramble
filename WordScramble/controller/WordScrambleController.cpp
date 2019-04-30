@@ -138,12 +138,18 @@ bool WordScrambleController::isAValidWord(string selectedWord)
     return this->allPossibleWords.count(selectedWord);
 }
 
-
+//Gets the total score of the player
+//@precondition none
+//@postcondition none
+//@return the total score
 int WordScrambleController::getTotalScore()
 {
     return this->totalScore;
 }
-
+//Updates the total score
+//@precondition none
+//@postcondition none
+//@param  addedValue is value you wish to add to the total score
 void WordScrambleController::updateTotalScore(int addedValue)
 {
     totalScore += addedValue;
@@ -205,6 +211,7 @@ void WordScrambleController:: addNewPlayer(string fistName, string lastName, int
     Player* newPlayer = new Player(fistName, lastName, score, time);
     addPlayer(newPlayer);
     updateScoreBoard();
+
 }
 
 }
