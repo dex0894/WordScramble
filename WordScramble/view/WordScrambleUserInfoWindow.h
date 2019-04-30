@@ -1,0 +1,40 @@
+#ifndef WORDSCRAMBLEUSERINFOWINDOW_H
+#define WORDSCRAMBLEUSERINFOWINDOW_H
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Group.H>
+#include <FL/Fl_Round_Button.H>
+#include <FL/Fl_Output.H>
+#include <FL/Fl_Text_Buffer.H>
+#include <FL/Fl_Text_Display.H>
+#include <FL/Fl_Button.H>
+#include <FL/fl_types.h>
+#include <Fl/fl_draw.H>
+#include <Fl/Fl_Progress.H>
+#include <Fl/Fl_File_Chooser.H>
+#include "OKCancelWindow.h"
+#include <string>
+using namespace std;
+
+namespace view {
+class WordScrambleUserInfoWindow : public OKCancelWindow
+{
+    private:
+        void okHandler();
+        void cancelHandler();
+        Fl_Input *firstName;
+        Fl_Input *lastName;
+
+    public:
+        WordScrambleUserInfoWindow();
+        virtual ~WordScrambleUserInfoWindow();
+        string getFirstName();
+        string getLastName();
+
+
+
+};
+}
+#endif // WORDSCRAMBLEUSERINFOWINDOW_H

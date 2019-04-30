@@ -109,6 +109,8 @@ void WordScrambleWindow::cbTimer(void *data)
         fl_alert("Times up");
         window->submitButton->deactivate();
         Fl::remove_timeout(cbTimer,data);
+        window->displayRequestForUserInfo(data);
+
     }
     else
     {
@@ -116,6 +118,29 @@ void WordScrambleWindow::cbTimer(void *data)
         Fl::repeat_timeout(1.0,cbTimer, data);
         window->actualClock->value(currentValue + 1.0);
     }
+}
+
+
+
+void WordScrambleWindow::displayRequestForUserInfo(void *data)
+{
+        WordScrambleWindow* window = (WordScrambleWindow*)data;
+
+        WordScrambleUserInfoWindow userInfoWindow;
+        userInfoWindow.set_modal();
+        userInfoWindow.show();
+        while (userInfoWindow.shown())
+        {
+            Fl::wait();
+            window->deactivate();
+        }
+        window->activate();
+
+    if(userInfoWindow.getWindowResult() == OKCancelWindow::WindowResult::OK)
+    {
+
+    }
+
 }
 
 void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)

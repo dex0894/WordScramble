@@ -21,7 +21,7 @@ using namespace std;
 #include <stdio.h>
 #include <ctype.h>
 #include "Utils.h"
-
+#include "WordScrambleUserInfoWindow.h"
 #include "../controller/WordScrambleController.h"
 using namespace controller;
 
@@ -63,6 +63,8 @@ private:
     Fl_Button* newGameButton;
     WordScrambleController controller;
     void determineProgressBarColor( WordScrambleWindow* window);
+    void displayRequestForUserInfo(void *data);
+
 
 public:
     WordScrambleWindow(int width, int height, const char* title);

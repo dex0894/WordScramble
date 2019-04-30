@@ -65,6 +65,8 @@
 		<Unit filename="view/WordScrambleSettingsWindow.h" />
 		<Unit filename="view/WordScrambleStartWindow.cpp" />
 		<Unit filename="view/WordScrambleStartWindow.h" />
+		<Unit filename="view/WordScrambleUserInfoWindow.cpp" />
+		<Unit filename="view/WordScrambleUserInfoWindow.h" />
 		<Unit filename="view/WordScrambleWindow.cpp" />
 		<Unit filename="view/WordScrambleWindow.h" />
 		<Extensions>

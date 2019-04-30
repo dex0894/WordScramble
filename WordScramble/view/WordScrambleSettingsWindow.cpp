@@ -19,6 +19,7 @@ WordScrambleSettingsWindow::WordScrambleSettingsWindow() : OKCancelWindow(330, 2
     end();
 }
 
+//Deconstructs object when it looses scope
 WordScrambleSettingsWindow::~WordScrambleSettingsWindow()
 {
     for(int i=0; i<TOTAL_SORTING_METHODS; i++)
@@ -153,22 +154,26 @@ void WordScrambleSettingsWindow::letterLimitMethodChanged()
     {
         if (this->letterLimitRadioGroupButton[i]->value())
         {
-            if(i == FIRST_RADIO_BUTTON)
-            {
-                this->LetterLimitSelection = SEVEN_LETTERS;
-            }
-            else if( i == SECOND_RADIO_BUTTON)
-            {
-                this->LetterLimitSelection = FIVE_LETTERS;
-            }
-            else
-            {
-                this->LetterLimitSelection = SIX_LETTERS;
-            }
+            this->determineLetterLimitSelection(i);
 
         }
     }
 }
+
+
+void WordScrambleSettingsWindow::determineLetterLimitSelection(int value)
+{
+    if(value == FIRST_RADIO_BUTTON) {
+        this->LetterLimitSelection = SEVEN_LETTERS;
+    }
+    else if(value == SECOND_RADIO_BUTTON){
+        this->LetterLimitSelection = SIX_LETTERS;
+    }
+    else {
+        this->LetterLimitSelection = FIVE_LETTERS;
+    }
+}
+
 
 void WordScrambleSettingsWindow::timeLimitMethodChanged()
 {
@@ -176,20 +181,23 @@ void WordScrambleSettingsWindow::timeLimitMethodChanged()
     {
         if (this->timeLimitRadioGroupButton[i]->value())
         {
-            if(i == FIRST_RADIO_BUTTON)
-            {
-                cout << "Selected " << endl;
-                this->timeLimitSelection = ONE_MINUTE;
-            }
-            else if( i == SECOND_RADIO_BUTTON)
-            {
-                this->timeLimitSelection = TWO_MINUTES;
-            }
-            else
-            {
-                this->timeLimitSelection = THREE_MINUTES;
-            }
+            this->determineTimeLimitSelection(i);
         }
+    }
+}
+
+
+
+void WordScrambleSettingsWindow::determineTimeLimitSelection(int value)
+{
+    if(value == FIRST_RADIO_BUTTON) {
+        this->timeLimitSelection = ONE_MINUTE;
+    }
+    else if( value == SECOND_RADIO_BUTTON){
+        this->timeLimitSelection = TWO_MINUTES;
+    }
+    else {
+        this->timeLimitSelection = THREE_MINUTES;
     }
 }
 
