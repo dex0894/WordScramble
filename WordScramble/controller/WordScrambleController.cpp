@@ -50,7 +50,6 @@ void WordScrambleController::loadScoreBoard()
 //
 void WordScrambleController::generateRandomLetters(int letterCount)
 {
-
     this->randomLetters = this->letterGenerator.generateRandomLetters(letterCount);
     this->determineAllPossibleWords();
     if(this->allPossibleWords.empty())
@@ -98,6 +97,15 @@ void WordScrambleController::clearAllValidWordsEntered()
     this->allValidWordsEntered.clear();
 }
 
+//
+//Resets the total score to 0
+//
+//@precondition none
+//@postcondition totalScore == 0
+void WordScrambleController::resetTotalScore()
+{
+    this->totalScore = 0;
+}
 //
 // displays all words that have been entered by user
 //
@@ -180,7 +188,8 @@ void WordScrambleController::updateScoreBoard()
 bool WordScrambleController::newHighScore()
 {
     int highScore = this->playerCollection.getHighScore();
-    return this->totalScore > highScore;
+    return true;
+    //return this->totalScore > highScore;
 }
 
 //
@@ -192,7 +201,7 @@ bool WordScrambleController::newHighScore()
 //@param the player to add
 void WordScrambleController::addPlayer(Player* player)
 {
-    this->playerCollection.add(player);
+        this->playerCollection.add(player);
 }
 
 //Adds new player to player colllection
@@ -201,10 +210,9 @@ void WordScrambleController::addPlayer(Player* player)
 //@param
 void WordScrambleController:: addNewPlayer(string fistName, string lastName, int score, int time)
 {
-    loadScoreBoard();
     Player* newPlayer = new Player(fistName, lastName, score, time);
-    addPlayer(newPlayer);
-    updateScoreBoard();
+    this->addPlayer(newPlayer);
+    this->updateScoreBoard();
 }
 
 }

@@ -129,6 +129,8 @@ void WordScrambleWindow::displayRequestForUserInfo(void *data)
         WordScrambleWindow* window = (WordScrambleWindow*)data;
 
         WordScrambleUserInfoWindow userInfoWindow;
+        userInfoWindow.setPlayerScore(window->controller.getTotalScore());
+        userInfoWindow.setPlayerTime(window->timeLimit);
         userInfoWindow.set_modal();
         userInfoWindow.show();
         while (userInfoWindow.shown())
@@ -136,13 +138,10 @@ void WordScrambleWindow::displayRequestForUserInfo(void *data)
             Fl::wait();
             window->deactivate();
         }
+        Player* player = userInfoWindow.getPlayer();
+        window->controller.addPlayer(player);
+        window->controller.updateScoreBoard();
         window->activate();
-
-    if(userInfoWindow.getWindowResult() == OKCancelWindow::WindowResult::OK)
-    {
-        window->controller.addNewPlayer(userInfoWindow.getFirstName(), userInfoWindow.getLastName(), window->controller.getTotalScore(), window->timeLimit);
-    }
-
 }
 
 void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)
@@ -258,7 +257,8 @@ void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
     window->submitButton->activate();
     window->controller.generateRandomLetters(window->totalLetters);
     window->controller.clearAllValidWordsEntered();
-
+    window->controller.resetTotalScore();
+    window->setTotalPointsText(to_string(window->controller.getTotalScore()));
     window->setScrambledWordText(window->controller.getRandomLetters());
     window->setPossibleWordsText(window->controller.allPossibleWordsFromLetters());
     window->setValidWordsText(window->controller.displayAllValidWordsEntered());

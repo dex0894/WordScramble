@@ -60,6 +60,7 @@ public:
     void addPlayer(Player* player);
     void updateScoreBoard();
     bool newHighScore();
+    void resetTotalScore();
     void addNewPlayer(string fistName, string lastName, int score, int time);
 };
 }
