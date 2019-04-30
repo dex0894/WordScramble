@@ -5,6 +5,8 @@ namespace view
 
 WordScrambleStartWindow::WordScrambleStartWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
+    this->newLetterLimit = 0;
+    this->newTimeLimit = 0;
     begin();
     this->startGameButton = new Fl_Button(X_LOCATION, 120, 90, 25, "Start Game");
     this->startGameButton->callback(cbStartGame, this);
@@ -41,6 +43,10 @@ void WordScrambleStartWindow::cbStartGame(Fl_Widget* widget, void* data)
     WordScrambleStartWindow* currentWindow = (WordScrambleStartWindow*)data;
     WordScrambleWindow gameWindow(540, 420, "Word Scramble by Kevin Flynn and Dexter Tarver");
     gameWindow.set_non_modal();
+    if(currentWindow->newLetterLimit != 0 && currentWindow->newTimeLimit!= 0)
+    {
+        gameWindow.updateSettings(currentWindow->newTimeLimit, currentWindow->newLetterLimit);
+    }
     gameWindow.show();
 
     while (gameWindow.shown())
@@ -83,8 +89,16 @@ void WordScrambleStartWindow::cbSettings(Fl_Widget* widget, void* data)
     while (settingsWindow.shown())
     {
         Fl::wait();
+        currentWindow->deactivate();
     }
-    cout << settingsWindow.getTotalTime() << endl;
+    currentWindow->activate();
+
+    if(settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK)
+    {
+        currentWindow->newTimeLimit = settingsWindow.getUpdatedTimeLimit();
+        currentWindow->newLetterLimit = settingsWindow.getUpdatedLetterLimit();
+    }
 
 }
+
 }

@@ -5,7 +5,7 @@ namespace view
 
 WordScrambleSettingsWindow::WordScrambleSettingsWindow() : OKCancelWindow(330, 215, "Settings")
 {
-
+    this->cancelled = true;
     const int X_INPUT_LOCATION = 110;
     begin();
     this->setOKLocation(70, 180);
@@ -22,7 +22,16 @@ WordScrambleSettingsWindow::WordScrambleSettingsWindow() : OKCancelWindow(330, 2
 
 WordScrambleSettingsWindow::~WordScrambleSettingsWindow()
 {
-    //dtor
+    for (int i=0; i<TOTAL_SORTING_METHODS; i++)
+    {
+        delete this->radioSelectedLabels[i];
+        delete this->timeLimitRadioGroupButton[i];
+        delete this->letterLimitRadioGroupButton[i];
+    }
+    delete this->timeLimitRadioGroup;
+    delete this->letterCountRadioGroup;
+    delete this->timeLimitOutput;
+    delete this->letterLimitOutput;
 }
 
 //
@@ -32,7 +41,7 @@ WordScrambleSettingsWindow::~WordScrambleSettingsWindow()
 //@postcondition none
 //
 //@return the letter count
-int WordScrambleSettingsWindow::getLetterCount()
+int WordScrambleSettingsWindow::getUpdatedLetterLimit()
 {
     return this->LetterLimitSelection;
 }
@@ -44,7 +53,7 @@ int WordScrambleSettingsWindow::getLetterCount()
 //@postcondition none
 //
 //@return the total time
-int WordScrambleSettingsWindow::getTotalTime()
+int WordScrambleSettingsWindow::getUpdatedTimeLimit()
 {
     return this->timeLimitSelection;
 }
@@ -80,9 +89,6 @@ void WordScrambleSettingsWindow::createAndDisplayTimeLimitRadioButtons()
 }
 
 
-
-
-
 void WordScrambleSettingsWindow::createAndDisplayLetterAmountRadioButtons()
 {
     const int X_RADIO_GROUP = 185;
@@ -109,8 +115,8 @@ void WordScrambleSettingsWindow::createAndDisplayLetterAmountRadioButtons()
 
     this->letterCountRadioGroup->end();
 
-    this->letterLimitRadioGroupButton[0]->set();
-    this->LetterLimitSelection = SEVEN_LETTERS;
+    this->letterLimitRadioGroupButton[1]->set();
+    this->LetterLimitSelection = SIX_LETTERS;
 }
 
 
@@ -163,7 +169,7 @@ void WordScrambleSettingsWindow::letterLimitMethodChanged()
                 this->LetterLimitSelection = FIVE_LETTERS;
             }
             else {
-                this->LetterLimitSelection = FOUR_LETTERS;
+                this->LetterLimitSelection = SIX_LETTERS;
             }
 
         }
@@ -192,11 +198,16 @@ void WordScrambleSettingsWindow::timeLimitMethodChanged()
         }
     }
 }
+bool WordScrambleSettingsWindow::wasCancelled()
+{
+    return this->cancelled;
+}
 
 
 
 void WordScrambleSettingsWindow::okHandler()
 {
+    this->cancelled = false;
     this->hide();
 }
 

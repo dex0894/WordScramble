@@ -17,6 +17,8 @@ namespace view
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     CURRENT_TIME = 0;
+    TIME_LIMIT = 60;
+    TOTAL_LETTERS = 6;
     begin();
     this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
     this->wordEntry->callback(cbWordEntry,this);
@@ -250,7 +252,7 @@ void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
     window->actualClock->color2(FL_GREEN);
     window->CURRENT_TIME = 0;
 
-    window->controller.generateRandomLetters(TOTAL_LETTERS);
+    window->controller.generateRandomLetters(window->TOTAL_LETTERS);
     window->controller.clearAllValidWordsEntered();
 
     window->setScrambledWordText(window->controller.getRandomLetters());
@@ -316,5 +318,16 @@ void WordScrambleWindow::setScrambledWordText(const string& outputText)
 
     this->scrambledWordTextBuffer->text(outputText.c_str());
 }
+    void WordScrambleWindow::updateSettings(int newTimeLimit, int newLetterLimt)
+    {
+        TOTAL_LETTERS = newLetterLimt;
+        TIME_LIMIT = newTimeLimit;
+        this->actualClock->maximum(TIME_LIMIT);
+        this->controller.generateRandomLetters(TOTAL_LETTERS);
+        this->setScrambledWordText(this->controller.getRandomLetters());
+        this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
+        this->setTotalPointsText(to_string(this->controller.getTotalScore()));
+
+    }
 
 }

@@ -16,19 +16,20 @@ namespace view
 class WordScrambleStartWindow : public Fl_Window
 {
 private:
+    int newTimeLimit;
+    int newLetterLimit;
     static const int X_LOCATION = 180;
     Fl_Button* settingsButton;
     Fl_Button* highScoreButton;
     Fl_Button* startGameButton;
     Fl_Text_Display* gameTitle;
+
 public:
     WordScrambleStartWindow(int width, int height, const char* title);
     virtual ~WordScrambleStartWindow();
     static void cbStartGame(Fl_Widget* widget, void* data);
     static void cbScoreBoard(Fl_Widget* widget, void* data);
     static void cbSettings(Fl_Widget* widget, void* data);
-
-
 };
 }
 #endif // WORDSCRAMBLESTARTWINDOW_H
