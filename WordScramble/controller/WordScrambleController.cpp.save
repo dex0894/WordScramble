@@ -13,6 +13,7 @@ namespace controller
 WordScrambleController::WordScrambleController()
 {
     this->loadDictionary();
+    this->loadScoreBoard();
     this->totalScore = 0;
 }
 
@@ -159,8 +160,10 @@ void WordScrambleController::shuffleStrings()
 }
 
 //
-//Writes t
+//Updates the scoreboard with the new players
 //
+//@precondition none
+//@postcondition none
 //
 void WordScrambleController::updateScoreBoard()
 {
@@ -177,7 +180,8 @@ void WordScrambleController::updateScoreBoard()
 bool WordScrambleController::newHighScore()
 {
     int highScore = this->playerCollection.getHighScore();
-    return this->totalScore > highScore;
+    return true;
+    return this->totalScore > highScore
 }
 
 //
@@ -191,4 +195,17 @@ void WordScrambleController::addPlayer(Player* player)
 {
     this->playerCollection.add(player);
 }
+
+//Adds new player to player colllection
+//@precondition
+//@postcondition
+//@param
+void WordScrambleController:: addNewPlayer(string fistName, string lastName, int score, int time)
+{
+    loadScoreBoard();
+    Player* newPlayer = new Player(fistName, lastName, score, time);
+    addPlayer(newPlayer);
+    updateScoreBoard();
+}
+
 }

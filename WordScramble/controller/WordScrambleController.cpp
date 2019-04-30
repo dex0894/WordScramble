@@ -13,6 +13,7 @@ namespace controller
 WordScrambleController::WordScrambleController()
 {
     this->loadDictionary();
+    this->loadScoreBoard();
     this->totalScore = 0;
 }
 
