@@ -39,6 +39,10 @@ void WordScrambleController::loadScoreBoard()
     }
 }
 
+void WordScrambleController::resetTotalScore()
+{
+    this->totalScore = 0;
+}
 //
 // Generates a random string of six letters and then
 //generates all possible words from those random letters

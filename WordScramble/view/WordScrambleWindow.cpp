@@ -252,7 +252,6 @@ void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     window->actualClock->value(0);
-
     window->actualClock->color2(FL_GREEN);
     window->currentTime = 0;
     window->submitButton->activate();
