@@ -3,10 +3,10 @@
 	"view/WordScrambleWindow.h"
 	"view/WordScrambleStartWindow.h"
 
-1556601030 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
+1556615567 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
-1556597645 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.h
+1556615567 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Group.H>
@@ -25,12 +25,13 @@
 	<stdio.h>
 	<ctype.h>
 	"Utils.h"
+	"WordScrambleUserInfoWindow.h"
 	"../controller/WordScrambleController.h"
 
 1556610270 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.cpp
 	"WordScrambleController.h"
 
-1556609735 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
+1556616588 /home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleController.h
 	"Utils.h"
 	<algorithm>
 	<iostream>
@@ -57,11 +58,11 @@
 	<sstream>
 	<fstream>
 
-1556238571 source:/home/csuser/GroupFWordScramble/WordScramble/model/LetterGenerator.cpp
+1556615445 source:/home/csuser/GroupFWordScramble/WordScramble/model/LetterGenerator.cpp
 	"LetterGenerator.h"
 	"Utils.h"
 
-1556238386 /home/csuser/GroupFWordScramble/WordScramble/model/LetterGenerator.h
+1556615504 /home/csuser/GroupFWordScramble/WordScramble/model/LetterGenerator.h
 	<string>
 	<iostream>
 	<cmath>
@@ -76,13 +77,13 @@
 	"Player.h"
 	"PlayerNode.h"
 
-1556597645 source:/home/csuser/GroupFWordScramble/WordScramble/utils/Utils.cpp
+1556615428 source:/home/csuser/GroupFWordScramble/WordScramble/utils/Utils.cpp
 	"Utils.h"
 
 1556597645 source:/home/csuser/GroupFWordScramble/WordScramble/model/AllPossibleWords.cpp
 	"AllPossibleWords.h"
 
-1556597645 /home/csuser/GroupFWordScramble/WordScramble/model/AllPossibleWords.h
+1556615497 /home/csuser/GroupFWordScramble/WordScramble/model/AllPossibleWords.h
 	"Utils.h"
 	<iostream>
 	<ostream>
@@ -130,7 +131,7 @@
 	"Player.h"
 	"Utils.h"
 
-1556579513 /home/csuser/GroupFWordScramble/WordScramble/model/Player.h
+1556615505 /home/csuser/GroupFWordScramble/WordScramble/model/Player.h
 	<string>
 
 1556580934 source:/home/csuser/GroupFWordScramble/WordScramble/model/Player.cpp
@@ -143,10 +144,10 @@
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
-1556604035 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleSettingsWindow.cpp
+1556615567 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleSettingsWindow.cpp
 	"WordScrambleSettingsWindow.h"
 
-1556597645 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleSettingsWindow.h
+1556615567 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleSettingsWindow.h
 	"OKCancelWindow.h"
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
@@ -328,7 +329,7 @@
 1556610403 source:/home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.cpp
 	"PlayerCollection.h"
 
-1556610290 /home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.h
+1556615506 /home/csuser/GroupFWordScramble/WordScramble/model/PlayerCollection.h
 	<string>
 	<iostream>
 	<sstream>
@@ -357,7 +358,7 @@
 1556586084 source:/home/csuser/Downloads/GroupFWordScramble.git/WordScramble/model/PlayerNode.cpp
 	"PlayerNode.h"
 
-1556615135 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.cpp
+1556615357 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.cpp
 	"WordScrambleScoreboardWindow.h"
 
 1556615191 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleScoreboardWindow.h
@@ -385,7 +386,7 @@
 1556614807 source:/home/csuser/GroupFWordScramble/WordScramble/controller/WordScrambleScoreboardController.cpp
 	"WordScrambleScoreboardController.h"
 
-1556609304 source:/home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVWriter.cpp
+1556615451 source:/home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVWriter.cpp
 	"ScoreBoardCSVWriter.h"
 
 1556609323 /home/csuser/GroupFWordScramble/WordScramble/io/ScoreBoardCSVWriter.h
@@ -634,5 +635,26 @@
 	"WordScrambleScoreboardWindow.h"
 
 1556614683 source:/home/csuser/GroupFWordScramble.git/WordScramble/view/WordScrambleUserInfoWindow.cpp
+	"WordScrambleUserInfoWindow.h"
+
+1556615567 /home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleUserInfoWindow.h
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Round_Button.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<FL/Fl_Button.H>
+	<FL/fl_types.h>
+	<Fl/fl_draw.H>
+	<Fl/Fl_Progress.H>
+	<Fl/Fl_File_Chooser.H>
+	"OKCancelWindow.h"
+	<string>
+
+1556616078 source:/home/csuser/GroupFWordScramble/WordScramble/view/WordScrambleUserInfoWindow.cpp
 	"WordScrambleUserInfoWindow.h"
 

@@ -1,5 +1,6 @@
 #include "WordScrambleUserInfoWindow.h"
-namespace view  {
+namespace view
+{
 
 //Created to make a object of WordScrambleUserInfoWindow
 //@precondition none
@@ -15,7 +16,8 @@ WordScrambleUserInfoWindow::WordScrambleUserInfoWindow() : OKCancelWindow(300, 1
     this->lastName = new Fl_Input(115, 45, 150, 25, "Last Name:");
 
 
-    end();}
+    end();
+}
 // deconstructs  WordScrambleUserInfoWindow when it looses scope
 WordScrambleUserInfoWindow::~WordScrambleUserInfoWindow()
 {
@@ -44,12 +46,14 @@ void WordScrambleUserInfoWindow::okHandler()
 {
     string firstName = this->firstName->value();
     string lastName = this->lastName->value();
-    if(firstName.empty() || lastName.empty()){
+    if(firstName.empty() || lastName.empty())
+    {
         fl_alert("Please list information");
 
     }
-    else {
-            this->hide();
+    else
+    {
+        this->hide();
     }
 
 }

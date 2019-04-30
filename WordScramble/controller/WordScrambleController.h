@@ -40,7 +40,7 @@ private:
     void loadScoreBoard();
     void removeSpaces();
     void determineAllPossibleWords();
-    void updateScoreBoard();
+
     int totalScore;
     int currentScore;
 public:
@@ -57,6 +57,8 @@ public:
     void clearAllValidWordsEntered();
     int getTotalScore();
     void updateTotalScore(int addedValue);
+    void addPlayer(Player* player);
+    void updateScoreBoard();
     bool newHighScore();
 };
 }
