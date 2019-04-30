@@ -90,4 +90,20 @@ const int calculateScoreByWord(string word)
     return score;
 }
 
+//
+// Returns the number of times a letter is used in a string
+//
+// @precondition none
+// @postcondition none
+//
+// @param word the word you want to determine the score for
+//@param letter is the letter you wish to compare the with
+// @return integer based on the length of the word
+//
+size_t letterCount(string word, char letter)
+{
+    size_t allLettersUsed = std::count(word.begin(), word.end(), letter);
+    return allLettersUsed;
+}
+
 

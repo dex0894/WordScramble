@@ -45,6 +45,7 @@ void WordScrambleStartWindow::cbStartGame(Fl_Widget* widget, void* data)
     gameWindow.set_non_modal();
     if(currentWindow->newLetterLimit != 0 && currentWindow->newTimeLimit!= 0)
     {
+        cout << currentWindow->newTimeLimit << endl;
         gameWindow.updateSettings(currentWindow->newTimeLimit, currentWindow->newLetterLimit);
     }
     gameWindow.show();
@@ -68,6 +69,7 @@ void WordScrambleStartWindow::cbStartGame(Fl_Widget* widget, void* data)
 //
 void WordScrambleStartWindow::cbScoreBoard(Fl_Widget* widget, void* data)
 {
+    WordScrambleStartWindow* currentWindow = (WordScrambleStartWindow*)data;
 
 }
 

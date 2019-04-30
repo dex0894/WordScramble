@@ -16,21 +16,21 @@ namespace view
 //
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
-    CURRENT_TIME = 0;
-    TIME_LIMIT = 60;
-    TOTAL_LETTERS = 6;
+    this->currentTime = 0;
+    this->timeLimit = 60;
+    this->totalLetters = 6;
     begin();
     this->wordEntry = new Fl_Input(220, 375, 150, 25, "Enter Word:");
+    this->wordEntry->when(FL_WHEN_CHANGED| FL_WHEN_ENTER_KEY_CHANGED);
     this->wordEntry->callback(cbWordEntry,this);
-    this->wordEntry->handle(FL_KEYDOWN);
-    this->controller.generateRandomLetters(TOTAL_LETTERS);
+    this->controller.generateRandomLetters(this->totalLetters);
     this->possibleWordsOutputLabel = new Fl_Output(130, 50, 0, 0, "Possible Words");
     this->possibleWordsTextBuffer = new Fl_Text_Buffer();
     this->possibleWordsTextDisplay = new Fl_Text_Display(20, 60, 250, 200);
 
     this->timeRemainingLabel = new Fl_Output(65, 20, 0,0, "Time: ");
     this->actualClock = new Fl_Progress(65, 10, 125,25);
-    this->actualClock->maximum(TIME_LIMIT);
+    this->actualClock->maximum(this->timeLimit);
     this->actualClock->color2(FL_GREEN);
     Fl::add_timeout(1.0,cbTimer,this);
 
@@ -111,20 +111,20 @@ WordScrambleWindow::~WordScrambleWindow()
 void WordScrambleWindow::cbTimer(void *data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    cout << window->CURRENT_TIME << endl;
+    cout << window->currentTime << endl;
     float currentValue = window->actualClock->value();
-    window->CURRENT_TIME++;
-    if(window->CURRENT_TIME > window->actualClock->maximum())
+    window->currentTime++;
+    if(window->currentTime > window->actualClock->maximum())
     {
         fl_alert("Times up");
-        window->submitButton->hide();
+        window->submitButton->deactivate();
         Fl::remove_timeout(cbTimer,data);
     }
     else
     {
         window->determineProgressBarColor(window);
         Fl::repeat_timeout(1.0,cbTimer, data);
-        window->actualClock->value(currentValue +0.95555);
+        window->actualClock->value(currentValue + 1.0);
     }
 }
 
@@ -133,11 +133,11 @@ void  WordScrambleWindow::determineProgressBarColor(WordScrambleWindow* window)
     float currValue = window->actualClock->value();
     float maxValue = window->actualClock->maximum();
     float progressOfBar = currValue / maxValue;
-    if(progressOfBar > .25 && progressOfBar < .75)
+    if(progressOfBar > ONE_FOURTHS_PROGRESS && progressOfBar < THREE_FOURTHS_PROGRESS)
     {
         window->actualClock->color2(FL_YELLOW);
     }
-    else if(progressOfBar >= .75)
+    else if(progressOfBar >= THREE_FOURTHS_PROGRESS)
     {
         window->actualClock->color2(FL_RED);
     }
@@ -158,22 +158,18 @@ void WordScrambleWindow::cbWordEntry(Fl_Widget* widget, void* data)
 {
 
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    if(window->wordEntry->changed() != 0){
-            cout << "Event fired" << endl;
-    }
     string word = window->wordEntry->value();
     string letterChoice = window->controller.getRandomLetters();
     string uppercaseWord = toUpper(word);
-    letterChoice = toUpper(letterChoice);
-    bool validAmountOfLetters = window->controller.isAValidWord(word);
-
+    char currentLetter = uppercaseWord[uppercaseWord.size()-1];
+    size_t currWordLetterCount = letterCount(uppercaseWord, currentLetter);
+    size_t randomLetterCount = letterCount(letterChoice, currentLetter);
     bool allValidLetters = uppercaseWord.find_first_not_of(letterChoice) == std::string::npos;
-    if(!allValidLetters || !validAmountOfLetters)
+    if(!allValidLetters || currWordLetterCount > randomLetterCount)
     {
         word.pop_back();
         const char * charOfWord = word.c_str();
         window->wordEntry->value(charOfWord);
-        delete charOfWord;
     }
 }
 
@@ -189,16 +185,10 @@ void WordScrambleWindow::cbWordEntry(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbSubmit(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    window->submitButton->show();
-
     string word = window->wordEntry->value();
-    string letterChoice = window->controller.getRandomLetters();
     word = toUpper(word);
-    letterChoice = toUpper(letterChoice);
-    bool allValidLetters = word.find_first_not_of(letterChoice) == std::string::npos;
     bool isAValidAmountOfLetters = word.length() >= 3;
-    bool validAmountOfLetters = window->controller.isAValidWord(word);
-    if(!allValidLetters || !validAmountOfLetters || !isAValidAmountOfLetters )
+    if(!window->controller.isAValidWord(word) || !isAValidAmountOfLetters )
     {
         fl_alert("Invalid Word, 10 points will be deducted");
         window->controller.updateTotalScore(POINT_DEDUCTION);
@@ -250,9 +240,9 @@ void WordScrambleWindow::cbNewGame(Fl_Widget* widget, void* data)
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     window->actualClock->value(0);
     window->actualClock->color2(FL_GREEN);
-    window->CURRENT_TIME = 0;
-
-    window->controller.generateRandomLetters(window->TOTAL_LETTERS);
+    window->currentTime = 0;
+    window->submitButton->activate();
+    window->controller.generateRandomLetters(window->totalLetters);
     window->controller.clearAllValidWordsEntered();
 
     window->setScrambledWordText(window->controller.getRandomLetters());
@@ -320,10 +310,10 @@ void WordScrambleWindow::setScrambledWordText(const string& outputText)
 }
     void WordScrambleWindow::updateSettings(int newTimeLimit, int newLetterLimt)
     {
-        TOTAL_LETTERS = newLetterLimt;
-        TIME_LIMIT = newTimeLimit;
-        this->actualClock->maximum(TIME_LIMIT);
-        this->controller.generateRandomLetters(TOTAL_LETTERS);
+        this->totalLetters = newLetterLimt;
+        this->timeLimit = newTimeLimit;
+        this->actualClock->maximum(this->timeLimit);
+        this->controller.generateRandomLetters(this->totalLetters);
         this->setScrambledWordText(this->controller.getRandomLetters());
         this->setPossibleWordsText(this->controller.allPossibleWordsFromLetters());
         this->setTotalPointsText(to_string(this->controller.getTotalScore()));

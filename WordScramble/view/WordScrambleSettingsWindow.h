@@ -30,17 +30,18 @@ public:
 
 private:
 
-    static const int CURRENT_GROUP = 1;
     static const int FIRST_RADIO_BUTTON = 0;
     static const int SECOND_RADIO_BUTTON = 1;
+    static const int THIRD_RADIO_BUTTON = 2;
+    static const int CURRENT_GROUP = 1;
     static const int SELECTION_TYPES_PER_GROUP = 3;
     static const int TOTAL_SORTING_METHODS = CURRENT_GROUP * SELECTION_TYPES_PER_GROUP;
-    bool cancelled;
     vector<string> timeLimitType = {"1 minute", "2 minute", "3 minutes"};
     vector<string> wordAmountType = {"7 letters", "6 letters", "5 letters"};
 
-    vector<string> sortingTypes = {"Time", "Letters"};
-    string* radioSelectedLabels[TOTAL_SORTING_METHODS];
+    string* timeLimitRadioSelectedLabels[TOTAL_SORTING_METHODS];
+    string* letterLimitRadioSelectedLabels[TOTAL_SORTING_METHODS];
+
 
     Fl_Output *timeLimitOutput;
     Fl_Group *timeLimitRadioGroup;
@@ -70,7 +71,6 @@ public:
     int getUpdatedTimeLimit();
     static void cbTimeLimitMethodChanged(Fl_Widget* widget, void* data);
     static void cbLetterLimitMethodChanged(Fl_Widget* widget, void* data);
-    bool wasCancelled();
 
 };
 }
