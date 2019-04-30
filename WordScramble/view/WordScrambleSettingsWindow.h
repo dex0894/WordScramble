@@ -22,10 +22,13 @@ class WordScrambleSettingsWindow : public OKCancelWindow
 {
 public:
     //
-    // Defines the sorting methods that can be used to sort the methods.
+    // Defines the time limit that determines how many minutes the user has tp left
+    // to solve all possible words
     //
     enum TimeLimit {ONE_MINUTE = 60, TWO_MINUTES = 120, THREE_MINUTES = 180};
-
+    //
+    // Defines the letter limit that can determine how many random letters are allowed to be
+    // used
     enum LetterLimit {FIVE_LETTERS = 5, SIX_LETTERS = 6,  SEVEN_LETTERS = 7};
 
 private:
@@ -59,7 +62,8 @@ private:
     void createAndDisplayLetterAmountRadioButtons();
     void letterLimitMethodChanged();
     void timeLimitMethodChanged();
-
+    void determineLetterLimitSelection(int value);
+    void determineTimeLimitSelection(int value);
     void okHandler();
     void cancelHandler();
 
