@@ -49,13 +49,6 @@ bool AllPossibleWords::isAPossibleWord(string selectedWord, string randomLetters
     return result;
 }
 
-
-size_t AllPossibleWords::letterCount(string word, char letter)
-{
-    size_t allLettersUsed = std::count(word.begin(), word.end(), letter);
-    return allLettersUsed;
-}
-
 //
 //Gets the map of all possible words
 //@precondition none

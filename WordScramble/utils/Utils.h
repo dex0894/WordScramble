@@ -12,6 +12,7 @@ using namespace model;
 const string toUpper(string text);
 const string toLower(string text);
 const string hideText(string text);
+size_t letterCount(string word, char letter);
 const int calculateScoreByWord(string word);
 typedef int (PlayerNode::*ScoreFunc)();
 typedef int (PlayerNode::*TimeFunc)();

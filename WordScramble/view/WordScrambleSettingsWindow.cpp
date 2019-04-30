@@ -5,7 +5,6 @@ namespace view
 
 WordScrambleSettingsWindow::WordScrambleSettingsWindow() : OKCancelWindow(330, 215, "Settings")
 {
-    this->cancelled = true;
     const int X_INPUT_LOCATION = 110;
     begin();
     this->setOKLocation(70, 180);
@@ -22,9 +21,9 @@ WordScrambleSettingsWindow::WordScrambleSettingsWindow() : OKCancelWindow(330, 2
 
 WordScrambleSettingsWindow::~WordScrambleSettingsWindow()
 {
-    for (int i=0; i<TOTAL_SORTING_METHODS; i++)
+    for(int i=0; i<TOTAL_SORTING_METHODS; i++)
     {
-        delete this->radioSelectedLabels[i];
+        delete this->timeLimitRadioSelectedLabels[i];
         delete this->timeLimitRadioGroupButton[i];
         delete this->letterLimitRadioGroupButton[i];
     }
@@ -75,8 +74,8 @@ void WordScrambleSettingsWindow::createAndDisplayTimeLimitRadioButtons()
         {
             string label = this->timeLimitType[j];
             int offset = (i*SELECTION_TYPES_PER_GROUP) + j;
-            this->radioSelectedLabels[offset] = new string(label);
-            this->timeLimitRadioGroupButton[offset] = new Fl_Round_Button(X_RADIO_GROUP + i*160, Y_RADIO_GROUP + j*25, 12, 12, radioSelectedLabels[offset]->c_str());
+            this->timeLimitRadioSelectedLabels[offset] = new string(label);
+            this->timeLimitRadioGroupButton[offset] = new Fl_Round_Button(X_RADIO_GROUP + i*160, Y_RADIO_GROUP + j*25, 12, 12, timeLimitRadioSelectedLabels[offset]->c_str());
             this->timeLimitRadioGroupButton[offset]->type(FL_RADIO_BUTTON);
             this->timeLimitRadioGroupButton[offset]->callback(cbTimeLimitMethodChanged, this);
         }
@@ -106,15 +105,14 @@ void WordScrambleSettingsWindow::createAndDisplayLetterAmountRadioButtons()
         {
             string label = this->wordAmountType[j];
             int offset = (i*SELECTION_TYPES_PER_GROUP) + j;
-            this->radioSelectedLabels[offset] = new string(label);
-            this->letterLimitRadioGroupButton[offset] = new Fl_Round_Button(X_RADIO_GROUP + i*160, Y_RADIO_GROUP + j*25, 12, 12, radioSelectedLabels[offset]->c_str());
+            this->letterLimitRadioSelectedLabels[offset] = new string(label);
+            this->letterLimitRadioGroupButton[offset] = new Fl_Round_Button(X_RADIO_GROUP + i*160, Y_RADIO_GROUP + j*25, 12, 12, letterLimitRadioSelectedLabels[offset]->c_str());
             this->letterLimitRadioGroupButton[offset]->type(FL_RADIO_BUTTON);
             this->letterLimitRadioGroupButton[offset]->callback(cbLetterLimitMethodChanged, this);
         }
     }
 
     this->letterCountRadioGroup->end();
-
     this->letterLimitRadioGroupButton[1]->set();
     this->LetterLimitSelection = SIX_LETTERS;
 }
@@ -126,7 +124,7 @@ void WordScrambleSettingsWindow::createAndDisplayLetterAmountRadioButtons()
 // Callback when a radio button for settings has changed
 //
 // @precondition widget != 0 AND data != 0
-// @postcondition CardCollectionWindow::getSortOrder() == value of new sort order selected
+// @postcondition getLetterLimit == value of new letter limit selected
 //
 // @param widget The widget that initiatied the callback
 // @param data Any data that was passed with the call back. In this instance, a pointer to the window.
@@ -143,7 +141,7 @@ void WordScrambleSettingsWindow::cbTimeLimitMethodChanged(Fl_Widget* widget, voi
 // Callback when a radio button for settings has changed
 //
 // @precondition widget != 0 AND data != 0
-// @postcondition CardCollectionWindow::getSortOrder() == value of new sort order selected
+// @postcondition getLetterLimit == value of new letter limit selected
 //
 // @param widget The widget that initiatied the callback
 // @param data Any data that was passed with the call back. In this instance, a pointer to the window.
@@ -152,8 +150,6 @@ void WordScrambleSettingsWindow::cbLetterLimitMethodChanged(Fl_Widget* widget, v
 {
     WordScrambleSettingsWindow* window = (WordScrambleSettingsWindow*)data;
     window->letterLimitMethodChanged();
-
-
 }
 
 void WordScrambleSettingsWindow::letterLimitMethodChanged()
@@ -198,16 +194,10 @@ void WordScrambleSettingsWindow::timeLimitMethodChanged()
         }
     }
 }
-bool WordScrambleSettingsWindow::wasCancelled()
-{
-    return this->cancelled;
-}
-
 
 
 void WordScrambleSettingsWindow::okHandler()
 {
-    this->cancelled = false;
     this->hide();
 }
 

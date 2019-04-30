@@ -18,7 +18,8 @@
 #include <string>
 #include <iostream>
 using namespace std;
-
+#include <stdio.h>
+#include <ctype.h>
 #include "Utils.h"
 
 #include "../controller/WordScrambleController.h"
@@ -31,10 +32,12 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 private:
-    int TIME_LIMIT;
-    int TOTAL_LETTERS;
+    int timeLimit = 60;
+    int totalLetters = 6;
     static const int POINT_DEDUCTION = -10;
-    int CURRENT_TIME = 0;
+    static constexpr float ONE_FOURTHS_PROGRESS = 0.25;
+    static constexpr float THREE_FOURTHS_PROGRESS = 0.75;
+    int currentTime;
     void validWordEntered(string word);
     Fl_Output *possibleWordsOutputLabel;
     Fl_Text_Buffer *possibleWordsTextBuffer;
